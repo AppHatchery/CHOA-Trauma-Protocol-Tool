@@ -47,7 +47,7 @@ html[data-theme=dark]{
 --cat-emergency:#FF6B5E;--cat-neuro:#7C9DE0;--cat-ortho:#37D07A;--cat-screen:#F5B544;
 --tc-tree:#8FC7F0;--tb-tree:rgba(84,142,204,.18);--tc-calc:#7FE0AC;--tb-calc:rgba(55,208,122,.16);--tc-reference:#C4B0F0;--tb-reference:rgba(140,120,224,.18);
 }
-body{font-family:var(--font);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100vh;padding:28px 0 40px;background:var(--desk);transition:background .3s}
+body{font-family:var(--font);margin:0;padding:0;height:100vh;height:100dvh;overflow:hidden;background:var(--desk);transition:background .3s}
 
 
 
@@ -56,10 +56,10 @@ body{font-family:var(--font);display:flex;flex-direction:column;align-items:cent
 
 
 
-.shell{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;position:relative;width:100%;max-width:430px;margin:0 auto;background:var(--nav)}
+.shell{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;position:relative;width:100%;max-width:430px;margin:0 auto;background:var(--nav);-webkit-overflow-scrolling:touch}
 @media(min-width:431px){body::before{content:'';position:fixed;inset:0;background:linear-gradient(135deg,#0a1628 0%,#1a2744 100%);z-index:-1}}
 .topbar{background:var(--nav);display:flex;flex-direction:column;flex-shrink:0;z-index:10}
-.is{height:env(safe-area-inset-top,14px);min-height:14px}
+.is{height:env(safe-area-inset-top,0px)}
 .nr{display:flex;align-items:center;height:50px;border-top:1px solid var(--nav-line)}
 .nbk{display:none;align-items:center;align-self:stretch;gap:3px;padding:0 14px 0 10px;font-size:13px;font-weight:500;color:var(--nav-t);background:none;border:none;border-right:1px solid var(--nav-line);cursor:pointer;white-space:nowrap;flex-shrink:0}
 .nbk.v{display:flex}.nbk:active{background:var(--nav-ghost)}
@@ -69,15 +69,16 @@ body{font-family:var(--font);display:flex;flex-direction:column;align-items:cent
 .thm{display:none;align-items:center;justify-content:center;align-self:stretch;width:48px;background:none;border:none;border-left:1px solid var(--nav-line);color:var(--nav-t);cursor:pointer;flex-shrink:0}
 .thm:active{background:var(--nav-ghost)}
 @media(hover:hover) and (pointer:fine){.thm:hover{background:var(--nav-ghost)}}
-.content{flex:1;overflow-y:auto;overflow-x:hidden;background:var(--bg)}.content::-webkit-scrollbar{display:none}
-.tabbar{flex-shrink:0;background:var(--card);border-top:1px solid var(--border);display:flex;align-items:stretch;padding-bottom:env(safe-area-inset-bottom,0px)}
+.content{flex:1;overflow-y:auto;overflow-x:hidden;background:var(--bg);-webkit-overflow-scrolling:touch}.content::-webkit-scrollbar{display:none}
+.tabbar{flex-shrink:0;background:var(--card);border-top:1px solid var(--border);display:flex;align-items:flex-start;padding-bottom:env(safe-area-inset-bottom,0px)}
 .tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;padding:6px 2px;border-top:2px solid transparent;height:62px}
 .tab.on{border-top-color:var(--tc,var(--blue))}
 .tab:active{background:var(--hover)}
 @media(hover:hover) and (pointer:fine){.tab:hover{background:var(--hover)}}
 .tab i{font-size:19px;color:var(--t3)}.tab.on i{color:var(--tc,var(--blue))}
 .tlb{font-size:9.5px;font-weight:500;color:var(--t3);white-space:nowrap}.tab.on .tlb{font-weight:700;color:var(--tc,var(--blue))}
-.fab{position:absolute;right:14px;z-index:25;width:46px;height:46px;border-radius:23px;background:var(--blue);color:var(--on-accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.22),var(--glow)}
+.fab{position:fixed;right:14px;z-index:100;width:46px;height:46px;border-radius:23px;background:var(--blue);color:var(--on-accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 14px rgba(0,101,160,.45);bottom:calc(62px + env(safe-area-inset-bottom,0px) + 14px);transition:bottom 200ms ease}
+.fab.inp{bottom:calc(env(safe-area-inset-bottom,0px) + 14px)}
 .fab:active{background:var(--blue-dk)}
 @media(hover:hover) and (pointer:fine){.fab:hover{background:var(--blue-dk)}}
 .so{padding:12px 14px 10px}
@@ -461,7 +462,7 @@ function r(){
   const inP=scr==='tree'||scr==='terminal';
   tb.style.display=inP?'none':'flex';
   const tt=document.getElementById('themeToggle');if(tt)tt.style.display=scr==='home'?'flex':'none';
-  if(fab)fab.style.bottom=(inP?14:74)+'px';
+  if(fab){fab.classList.toggle('inp',inP);}
   nb.classList.toggle('v',scr!=='home');
   ns.textContent='';
   if(scr==='home'){nt.textContent='CHOA Trauma Protocols';}
