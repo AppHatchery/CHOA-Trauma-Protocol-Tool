@@ -2,7 +2,13 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<title>CHOA Trauma Protocol Suite — Mobile Prototype</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F172A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CHOA Protocols">
+<meta name="mobile-web-app-capable" content="yes">
+<title>CHOA Trauma Protocol Suite</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -42,17 +48,18 @@ html[data-theme=dark]{
 --tc-tree:#8FC7F0;--tb-tree:rgba(84,142,204,.18);--tc-calc:#7FE0AC;--tb-calc:rgba(55,208,122,.16);--tc-reference:#C4B0F0;--tb-reference:rgba(140,120,224,.18);
 }
 body{font-family:var(--font);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100vh;padding:28px 0 40px;background:var(--desk);transition:background .3s}
-.lbl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--nav-sub);margin-bottom:14px}
-.iphone{position:relative;width:322px;background:var(--frame);border-radius:46px;border:1px solid var(--frame-b);box-shadow:0 24px 60px rgba(0,0,0,.4),0 8px 20px rgba(0,0,0,.3);transition:background .3s}
-.pb{position:absolute;background:var(--pb)}
-.pb-l{left:-3px;width:3.5px;border-radius:2px 0 0 2px}
-.pb-r{right:-3px;width:3.5px;border-radius:0 2px 2px 0}
-.sw{margin:9px;border-radius:37px;overflow:hidden;position:relative;height:634px;background:var(--bg)}
-.di{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:94px;height:28px;background:var(--notch);border-radius:18px;z-index:50;pointer-events:none}
-.hi{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:96px;height:4px;background:var(--hi);border-radius:2px;pointer-events:none;z-index:50}
-.shell{display:flex;flex-direction:column;height:634px;overflow:hidden;position:relative}
+
+
+
+
+
+
+
+
+.shell{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;position:relative;width:100%;max-width:430px;margin:0 auto;background:var(--nav)}
+@media(min-width:431px){body::before{content:'';position:fixed;inset:0;background:linear-gradient(135deg,#0a1628 0%,#1a2744 100%);z-index:-1}}
 .topbar{background:var(--nav);display:flex;flex-direction:column;flex-shrink:0;z-index:10}
-.is{height:46px}
+.is{height:env(safe-area-inset-top,14px);min-height:14px}
 .nr{display:flex;align-items:center;height:50px;border-top:1px solid var(--nav-line)}
 .nbk{display:none;align-items:center;align-self:stretch;gap:3px;padding:0 14px 0 10px;font-size:13px;font-weight:500;color:var(--nav-t);background:none;border:none;border-right:1px solid var(--nav-line);cursor:pointer;white-space:nowrap;flex-shrink:0}
 .nbk.v{display:flex}.nbk:active{background:var(--nav-ghost)}
@@ -63,8 +70,8 @@ body{font-family:var(--font);display:flex;flex-direction:column;align-items:cent
 .thm:active{background:var(--nav-ghost)}
 @media(hover:hover) and (pointer:fine){.thm:hover{background:var(--nav-ghost)}}
 .content{flex:1;overflow-y:auto;overflow-x:hidden;background:var(--bg)}.content::-webkit-scrollbar{display:none}
-.tabbar{height:62px;flex-shrink:0;background:var(--nav);border-top:1px solid var(--nav-line);display:flex;align-items:stretch}
-.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;padding:6px 2px;border-top:2px solid transparent}
+.tabbar{flex-shrink:0;background:var(--card);border-top:1px solid var(--border);display:flex;align-items:stretch;padding-bottom:env(safe-area-inset-bottom,0px)}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;padding:6px 2px;border-top:2px solid transparent;height:62px}
 .tab.on{border-top-color:var(--tc,var(--blue))}
 .tab:active{background:var(--hover)}
 @media(hover:hover) and (pointer:fine){.tab:hover{background:var(--hover)}}
@@ -184,7 +191,7 @@ body{font-family:var(--font);display:flex;flex-direction:column;align-items:cent
 .bg2{display:flex;align-items:center;justify-content:center;width:calc(100% - 28px);margin:8px 14px 14px;padding:13px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--card);color:var(--t2);font-size:13.5px;cursor:pointer;font-family:inherit}
 .bg2:active{background:var(--blue-lt);border-color:var(--blue);color:var(--blue)}
 @media(hover:hover) and (pointer:fine){.bg2:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-lt)}}
-.chatov{position:absolute;inset:0;z-index:45;background:var(--bg);display:flex;flex-direction:column}
+.chatov{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;flex-direction:column;max-width:430px;margin:0 auto;left:50%;transform:translateX(-50%);width:100%}
 .ctb{background:var(--nav);flex-shrink:0}
 .cnr{display:flex;align-items:center;height:50px;border-top:1px solid var(--nav-line)}
 .cbk{display:flex;align-items:center;align-self:stretch;gap:3px;padding:0 14px 0 10px;font-size:13px;font-weight:500;color:var(--nav-t);background:none;border:none;border-right:1px solid var(--nav-line);cursor:pointer;white-space:nowrap;flex-shrink:0}
@@ -218,16 +225,7 @@ body{font-family:var(--font);display:flex;flex-direction:column;align-items:cent
 </style>
 </head>
 <body>
-<p class="lbl">iPhone 16 &nbsp;&middot;&nbsp; All 16 protocols &nbsp;&middot;&nbsp; v9 — Search + AI chat</p>
-<div class="iphone">
-  <div class="pb pb-l" style="top:126px;height:28px"></div>
-  <div class="pb pb-l" style="top:165px;height:58px"></div>
-  <div class="pb pb-l" style="top:233px;height:58px"></div>
-  <div class="pb pb-r" style="top:186px;height:78px"></div>
-  <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:44px;height:6px;background:var(--pb);border-radius:0 0 4px 4px"></div>
-  <div class="sw">
-    <div class="di"></div>
-    <div class="shell" id="shell">
+<div class="shell" id="shell">
       <div class="topbar">
         <div class="is"></div>
         <div class="nr">
@@ -263,9 +261,6 @@ body{font-family:var(--font);display:flex;flex-direction:column;align-items:cent
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06"/><path d="M15 19l2 2l4 -4"/></svg><span class="tlb">Screen</span>
         </button>
       </nav>
-    </div>
-    <div class="hi" aria-hidden="true"></div>
-  </div>
 </div>
 
 <script>
@@ -630,7 +625,7 @@ const CHATBASE_ID='YVH0W_ZJbfX22eVM91HlF';
 
 function openChat(){
   if(document.getElementById('chatOv'))return;
-  const sw=document.querySelector('.sw');
+  const sw=document.querySelector('.shell');
   const o=document.createElement('div');
   o.id='chatOv';o.className='chatov';
   o.innerHTML=`
