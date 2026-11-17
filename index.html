@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F172A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CHOA Protocols">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Trauma Care Compass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--r:12px}
+html[data-theme=light]{
+--desk:#E8E4D8;--frame:#fff;--frame-b:#E4E0D3;--notch:#1B4638;--pb:#D5D0C2;--hi:rgba(0,0,0,.18);
+--bg:#FAF8F3;--card:#FFFFFF;--hover:#F4F1E8;--border:#ECE8DC;--border2:#D3CEBF;
+--t1:#2A2F38;--t2:#454B56;--t3:#646B77;
+--blue:#1B4638;--blue-dk:#123327;--blue-lt:#E6F2EC;--blue-bd:#B9DACB;--on-accent:#fff;--accent-tx:#1B4638;
+--green:#1F7A5C;--green-lt:#E2F4EC;--green-bd:#B4E0CE;
+--act:#6A2FD0;--act-lt:#F2EAFD;--act-bd:#D9C3F7;--on-act:#fff;
+--red:#C5431F;--red-lt:#FDEEE8;--red-bd:#F6CBBC;
+--amber:#8A6D00;
+--nav:#1B4638;--nav-t:#fff;--nav-sub:#A9D8C6;--nav-line:rgba(255,255,255,.14);--nav-ghost:rgba(255,255,255,.08);
+--pip:#1B4638;--on-pip:#fff;
+--sh:0 2px 12px rgba(27,70,56,.07);--glow:0 2px 12px rgba(27,70,56,.1);
+--font:'Roboto',system-ui,-apple-system,sans-serif;--head:'Darker Grotesque','Roboto',system-ui,sans-serif;
+--cat-emergency:#EC6740;--cat-neuro:#8642EE;--cat-ortho:#2C8C6F;--cat-screen:#B5C13A;
+--tc-tree:#1B4638;--tb-tree:#E6F2EC;--tc-calc:#555B0C;--tb-calc:#F4F7C9;--tc-reference:#5B21B6;--tb-reference:#F1E8FD;
+}
+html[data-theme=dark]{
+--desk:#15191F;--frame:#000;--frame-b:rgba(255,255,255,.1);--notch:#000;--pb:#2A2F38;--hi:rgba(255,255,255,.25);
+--bg:#20252C;--card:#2A2F38;--hover:#323845;--border:#3A414D;--border2:#4D5666;
+--t1:#F6F4EE;--t2:#D4D7DC;--t3:#A5ACB7;
+--blue:#8FE3C9;--blue-dk:#B8F0DF;--blue-lt:rgba(143,227,201,.12);--blue-bd:rgba(143,227,201,.34);--on-accent:#10301F;--accent-tx:#A9EBD6;
+--green:#6FD9B0;--green-lt:rgba(111,217,176,.12);--green-bd:rgba(111,217,176,.34);
+--act:#C89DF5;--act-lt:rgba(200,157,245,.13);--act-bd:rgba(200,157,245,.36);--on-act:#2A1450;
+--red:#FF9170;--red-lt:rgba(255,145,112,.13);--red-bd:rgba(255,145,112,.34);
+--amber:#D9E55C;
+--nav:#1B4638;--nav-t:#F6F4EE;--nav-sub:#9CCBB8;--nav-line:rgba(255,255,255,.14);--nav-ghost:rgba(255,255,255,.08);
+--pip:#1B4638;--on-pip:#F6F4EE;
+--sh:0 2px 10px rgba(0,0,0,.32);--glow:0 0 14px rgba(143,227,201,.35);
+--font:'Roboto',system-ui,-apple-system,sans-serif;--head:'Darker Grotesque','Roboto',system-ui,sans-serif;
+--cat-emergency:#FF9170;--cat-neuro:#C89DF5;--cat-ortho:#6FD9B0;--cat-screen:#D9E55C;
+--tc-tree:#A9EBD6;--tb-tree:rgba(143,227,201,.15);--tc-calc:#E3EC84;--tb-calc:rgba(217,229,92,.15);--tc-reference:#DDBFF9;--tb-reference:rgba(200,157,245,.16);
+}
+h1,h2,h3,h4,.tq,.tmti,.fn,.bnn,.drwl,.nt{font-family:var(--head);font-weight:800;letter-spacing:-.01em}
+.tq{font-size:23px;line-height:1.15}.tmti{font-size:24px;line-height:1.15}.fn{font-size:20px}.rsc h3{font-size:20px}
+body{font-family:var(--font);margin:0;padding:0;height:100vh;height:100dvh;overflow:hidden;background:var(--desk);transition:background .3s}
+
+
+
+
+
+
+
+
+.shell{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;position:relative;width:100%;max-width:430px;margin:0 auto;background:var(--nav);-webkit-overflow-scrolling:touch}
+@media(min-width:431px){body::before{content:'';position:fixed;inset:0;background:linear-gradient(135deg,#102a21 0%,#1B4638 100%);z-index:-1}}
+.topbar{background:var(--nav);display:flex;flex-direction:column;flex-shrink:0;z-index:10}
+.is{height:env(safe-area-inset-top,0px)}
+.nr{display:flex;align-items:center;height:50px;border-top:1px solid var(--nav-line)}
+.nbk{display:none;align-items:center;align-self:stretch;gap:3px;padding:0 14px 0 10px;font-size:14px;font-weight:500;color:var(--nav-t);background:none;border:none;border-right:1px solid var(--nav-line);cursor:pointer;white-space:nowrap;flex-shrink:0}
+.nbk.v{display:flex}.nbk:active{background:var(--nav-ghost)}
+@media(hover:hover) and (pointer:fine){.nbk:hover{background:var(--nav-ghost)}}
+.nt{flex:1;padding:0 14px;font-size:15px;font-weight:600;letter-spacing:-.02em;color:var(--nav-t);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.ns{font-size:11px;font-weight:500;color:var(--nav-sub);padding-right:14px;flex-shrink:0}
+.thm{display:none;align-items:center;justify-content:center;align-self:stretch;width:48px;background:none;border:none;border-left:1px solid var(--nav-line);color:var(--nav-t);cursor:pointer;flex-shrink:0}
+.thm:active{background:var(--nav-ghost)}
+@media(hover:hover) and (pointer:fine){.thm:hover{background:var(--nav-ghost)}}
+.content{flex:1;overflow-y:auto;overflow-x:hidden;background:var(--bg);-webkit-overflow-scrolling:touch}.content::-webkit-scrollbar{display:none}
+.shell{background:var(--bg)}
+.topbar{background:var(--bg)}
+.nr{height:auto;min-height:56px;border-top:none;gap:10px;padding:8px 14px;align-items:center}
+.nbk{align-self:center;height:36px;padding:0 14px 0 8px;border:none;border-radius:18px;background:var(--pip);color:var(--on-pip);font-size:13px;font-weight:500}
+.nbk:active{background:var(--blue-dk)}
+.nwrap{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.nk{display:none;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t3);margin-bottom:2px}
+.nt{padding:0;font-size:22px;line-height:1.05;color:var(--t1)}
+.ns{padding-right:0;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--t3)}
+.thm{align-self:center;width:38px;height:38px;border:1px solid var(--border2);border-radius:19px;background:var(--card);color:var(--t1)}
+.thm:active{background:var(--blue-lt)}
+.topbar.home .nr{padding-top:14px;padding-bottom:10px;min-height:76px}
+.topbar.home .nk{display:block}
+.topbar.home .nt{font-size:36px;line-height:.95;white-space:normal}
+.tabbar{flex-shrink:0;background:var(--card);border-top:1px solid var(--border);display:flex;align-items:flex-start;padding-bottom:env(safe-area-inset-bottom,0px)}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;padding:6px 2px;border-top:2px solid transparent;height:62px}
+.tab.on{border-top-color:var(--tc,var(--blue))}
+.tab svg{color:var(--t2)}.tab.on svg{color:var(--tc,var(--blue))}
+html[data-theme=dark] .tab svg{color:#fff}
+html[data-theme=dark] .tab.on{border-top-color:var(--blue)}
+html[data-theme=dark] .tab.on svg,html[data-theme=dark] .tab.on .tlb{color:var(--blue)}
+html[data-theme=dark] .tlb{color:#E4E6EA}
+.tab:active{background:var(--hover)}
+@media(hover:hover) and (pointer:fine){.tab:hover{background:var(--hover)}}
+.tab i{font-size:20px;color:var(--t3)}.tab.on i{color:var(--tc,var(--blue))}
+.tlb{font-size:9.5px;font-weight:500;color:var(--t3);white-space:nowrap}.tab.on .tlb{font-weight:700;color:var(--tc,var(--blue))}
+.fab{position:absolute;right:14px;z-index:100;width:46px;height:46px;border-radius:23px;background:var(--blue);color:var(--on-accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 14px rgba(27,70,56,.35);bottom:calc(62px + env(safe-area-inset-bottom,0px) + 14px);transition:bottom 200ms ease}
+.fab.inp{bottom:calc(env(safe-area-inset-bottom,0px) + 14px)}
+.fab:active{background:var(--blue-dk)}
+@media(hover:hover) and (pointer:fine){.fab:hover{background:var(--blue-dk)}}
+.so{padding:12px 14px 10px}
+.sb{display:flex;align-items:center;gap:8px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:0 10px 0 12px;box-shadow:var(--sh)}
+.sb:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-lt)}
+.sb input{flex:1;border:none;background:none;padding:11px 0;font-size:15px;font-family:inherit;color:var(--t1);outline:none}
+.sb input::placeholder{color:var(--t3)}
+.sclr{background:none;border:none;cursor:pointer;color:var(--t3);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sclr:active{background:var(--border)}
+.sh{font-size:10px;letter-spacing:.07em;text-transform:uppercase;font-weight:700;color:var(--t3);padding:6px 14px}
+.cats-grid{display:flex;flex-direction:column;gap:9px;padding:0 14px 16px}
+.cat-card{display:flex;flex-direction:column;width:100%;padding:16px;background:var(--card);border:1.5px solid var(--border);border-radius:14px;cursor:pointer;text-align:left;box-shadow:var(--sh);transition:border-color 150ms,box-shadow 150ms}
+.cat-card:active{background:var(--hover);border-color:var(--border2);box-shadow:none}
+@media(hover:hover) and (pointer:fine){.cat-card:hover{border-color:var(--border2)}}
+.cl{background:var(--card);border-radius:var(--r);margin:0 14px 10px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--sh)}
+.cbtn{display:flex;align-items:center;gap:12px;width:100%;padding:14px 13px;background:none;border:none;border-bottom:1px solid var(--border);cursor:pointer;text-align:left}
+.cbtn:last-child{border-bottom:none}
+@media(hover:hover) and (pointer:fine){.cbtn:hover{background:var(--hover)}}
+.cbtn:active{background:var(--hover)}
+.cion{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cion i{font-size:19px;color:#fff}
+.cin{flex:1;min-width:0}.cna{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:2px}.csu{font-size:11.5px;color:var(--t3)}
+.cbdg{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;flex-shrink:0}
+.fo{padding:0 14px 14px}
+.fb{display:flex;flex-direction:column;width:100%;padding:16px;background:var(--pip);border:none;border-radius:var(--r);cursor:pointer;text-align:left;position:relative;overflow:hidden;box-shadow:var(--sh)}
+.fb:active{opacity:.9}
+.ft{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--nav-sub);margin-bottom:7px}
+.fn{font-size:16.5px;font-weight:700;color:var(--on-pip);letter-spacing:-.02em;margin-bottom:5px}
+.fs{font-size:13px;color:var(--nav-sub);line-height:1.5;padding-right:24px}
+.bh{display:flex;align-items:center;gap:12px;padding:16px 14px 12px}
+.bic{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bic i{font-size:23px;color:#fff}
+.bnn{font-size:21px;font-weight:700;color:var(--t1);letter-spacing:-.025em;line-height:1.2}.bsu{font-size:13px;color:var(--t3);margin-top:2px}
+.pr{display:flex;align-items:center;gap:11px;width:100%;padding:13px 12px;background:none;border:none;border-bottom:1px solid var(--border);cursor:pointer;text-align:left}
+.pr:last-child{border-bottom:none}
+@media(hover:hover) and (pointer:fine){.pr:hover{background:var(--hover)}}
+.pr:active{background:var(--hover)}
+.pbar{width:3px;height:40px;border-radius:2px;flex-shrink:0;background:var(--border2)}
+.pin{flex:1;min-width:0}.pna{font-size:14.5px;font-weight:600;color:var(--t1);margin-bottom:4px;line-height:1.2}
+.pm{display:flex;align-items:center;gap:6px}.pty{font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap}.ppo{font-size:10.5px;color:var(--t3)}
+.pch i{font-size:16px;color:var(--border2)}
+.nores{padding:24px 14px;text-align:center;font-size:14.5px;color:var(--t3);line-height:1.6}
+.tw{background:var(--bg);min-height:100%;padding-bottom:76px}
+.prg{display:flex;align-items:center;gap:5px;padding:14px 14px 10px;flex-wrap:wrap}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:all 220ms}
+.dot.dn{background:var(--blue);opacity:.4}.dot.dc{background:var(--blue);width:22px;border-radius:4px;box-shadow:var(--glow)}
+.tk{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--blue);padding:0 14px 8px}
+.tq{font-size:18px;font-weight:700;color:var(--t1);padding:0 14px 10px;line-height:1.35;letter-spacing:-.02em}
+.tif{margin:0 14px 12px;padding:11px 13px;background:var(--blue-lt);border-left:3px solid var(--blue);font-size:13px;color:var(--accent-tx);line-height:1.55;border-radius:0 8px 8px 0}
+.tck{margin:0 14px 12px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.tckr{display:flex;align-items:center;gap:10px;padding:10px 13px;border-bottom:1px solid var(--border);font-size:13.5px;color:var(--t2);width:100%;background:none;border-left:none;border-right:none;border-top:none;cursor:pointer;text-align:left;font-family:inherit}
+.tckr:last-child{border-bottom:none}
+@media(hover:hover) and (pointer:fine){.tckr:hover{background:var(--hover)}}
+.tckr:active{background:var(--blue-lt)}
+.tckr.ckd{background:var(--blue-lt)}
+.tcci{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:transparent;transition:all 150ms}
+.tckr.ckd .tcci{border-color:var(--blue);background:var(--blue);color:var(--on-accent)}
+.opt-note{font-style:normal;font-size:11px;color:var(--t3);margin-left:4px}
+.ob:disabled{opacity:.35;cursor:not-allowed}
+.ck-hint{font-size:11px;color:var(--t3);padding:4px 14px 10px;text-align:center}
+.stp{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--t3)}
+.entryd{margin:0 0 6px}.entryd summary{cursor:pointer;font-weight:600;font-size:12.5px}.entryd p{margin:6px 0 0;font-weight:500}
+.tif p{margin:0 0 6px}.tif p:last-child{margin-bottom:0}
+.il{margin:4px 0 4px 18px;padding:0}.il li{margin:2px 0}.il ul{margin:2px 0 2px 16px;padding:0}
+.rn{font-size:12px;color:var(--t3);margin:6px 0 0}
+.tier-h{margin:6px 14px 6px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--t2)}
+.tier-h.high{color:var(--red)}.tier-h.mod{color:var(--act)}
+.grp-h{margin:0;padding:8px 13px 4px;font-size:11px;font-weight:700;color:var(--t3);background:var(--hover);border-bottom:1px solid var(--border)}
+.tckr span ul{margin:4px 0 0 16px;padding:0;font-size:12.5px;color:var(--t3)}
+.tck .emb{margin:0;border:none;border-top:1px solid var(--border);border-radius:0;background:var(--blue-lt)}
+.emb{margin:0 14px 12px;border:1px solid var(--border);border-radius:var(--r);background:var(--card);padding:0}
+.emb summary{cursor:pointer;padding:11px 13px;font-size:13.5px;font-weight:600;color:var(--blue)}
+.emb .emn{margin:0;padding:0 13px 8px;font-size:12px;color:var(--t3)}
+.emb .emlink{display:inline-block;margin:0 13px 10px;font-size:13px;font-weight:700;color:var(--blue)}
+.emb iframe{width:100%;height:520px;border:0;border-top:1px solid var(--border);background:#fff}
+.tmbd .dt{margin:10px 0 0;border:1px solid var(--border);border-radius:8px;background:var(--card)}
+.tmbd .dt summary{cursor:pointer;padding:10px 12px;font-weight:700;color:var(--t1)}
+.tmbd .dt ol{margin:0 12px 10px 28px;padding:0}.tmbd .dt li{margin:8px 0}
+.rfd{margin:12px 14px 0;border:1px solid var(--border);border-radius:var(--r);background:var(--card)}
+.rfd summary{cursor:pointer;padding:11px 13px;font-size:13px;font-weight:700;color:var(--blue)}
+.rfb{padding:0 13px 12px;font-size:13px;color:var(--t2);line-height:1.5}.rfb h4{margin:12px 0 4px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--t1)}.rfb p{margin:4px 0}
+.rt{overflow-x:auto}.rt table{border-collapse:collapse;font-size:12px}.rt th,.rt td{border:1px solid var(--border);padding:4px 6px;text-align:left;vertical-align:top}
+.tools{display:flex;gap:8px;margin:14px 14px 0;flex-wrap:wrap}
+.tbtn{flex:1 1 140px;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 12px;border-radius:var(--r);border:1px solid var(--border2);background:var(--card);color:var(--t2);font:600 13px inherit;font-family:inherit;cursor:pointer}
+.tbtn:active{background:var(--blue-lt)}
+.ovl{position:absolute;inset:0;z-index:300;background:var(--bg);display:flex;flex-direction:column}
+.ovh{display:flex;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 10px;border-bottom:1px solid var(--border);background:var(--card)}
+.ovh .ovt{flex:1;min-width:0;font-size:13px;font-weight:700;color:var(--t1);line-height:1.3}
+.ovh button,.ovh a{font:600 13px inherit;font-family:inherit;color:var(--blue);background:none;border:none;cursor:pointer;text-decoration:none;padding:6px 4px}
+.ovb{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;background:var(--hover);padding:8px}
+.ovb img{display:block;width:100%;height:auto;margin:0 0 8px;background:#fff;border-radius:4px;cursor:zoom-in}
+.ovb.z img{width:230%;max-width:none;cursor:zoom-out}
+.ovhint{font-size:11.5px;color:var(--t3);text-align:center;padding:2px 0 8px}
+.rsh{position:absolute;inset:0;z-index:300;background:rgba(0,0,0,.45);display:flex;align-items:flex-end}
+.rsc{width:100%;background:var(--card);border-radius:16px 16px 0 0;padding:16px 16px calc(env(safe-area-inset-bottom,0px) + 16px);max-height:90%;overflow:auto}
+.rsc h3{margin:0 0 4px;font-size:16px;color:var(--t1)}
+.rsc .rctx{font-size:12px;color:var(--t3);margin:0 0 12px;line-height:1.4}
+.rchips{display:flex;flex-direction:column;gap:6px;margin:0 0 10px}
+.rchip{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--border2);border-radius:10px;background:none;color:var(--t2);font:500 13.5px inherit;font-family:inherit;text-align:left;cursor:pointer}
+.rchip[aria-pressed="true"]{border-color:var(--blue);background:var(--blue-lt);color:var(--t1);font-weight:600}
+.rsc textarea{width:100%;box-sizing:border-box;min-height:70px;border:1px solid var(--border2);border-radius:10px;padding:10px;font:13.5px inherit;font-family:inherit;background:var(--bg);color:var(--t1);margin:0 0 10px;resize:vertical}
+.rsc .rsend{width:100%;padding:13px;border:none;border-radius:var(--r);background:var(--blue);color:var(--on-accent);font:700 14px inherit;font-family:inherit;cursor:pointer}
+.rsc .rcancel{width:100%;padding:10px;border:none;background:none;color:var(--t3);font:600 13px inherit;font-family:inherit;cursor:pointer;margin-top:4px}
+.rsc .rdone{font-size:13.5px;color:var(--t1);line-height:1.5}
+.risk-ctr{margin:0 14px 10px;padding:13px 14px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--card);display:flex;align-items:center;gap:12px;transition:background 200ms,border-color 200ms;box-shadow:var(--sh)}
+.risk-ctr.mod{background:var(--act-lt);border-color:var(--act-bd)}
+.risk-ctr.high{background:var(--red-lt);border-color:var(--red-bd)}
+.risk-ct{font-size:31px;font-weight:800;letter-spacing:-.04em;color:var(--t3);line-height:1;min-width:34px;text-align:center;transition:color 200ms}
+.risk-ctr.mod .risk-ct{color:var(--act)}
+.risk-ctr.high .risk-ct{color:var(--red)}
+.risk-info{flex:1}
+.risk-desc{font-size:11.5px;color:var(--t3);margin-bottom:5px;line-height:1.4;transition:color 200ms}
+.risk-ctr.mod .risk-desc{color:var(--act)}
+.risk-ctr.high .risk-desc{color:var(--red)}
+.risk-lv{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:var(--border2);color:var(--t3);transition:all 200ms}
+.risk-ctr.mod .risk-lv{background:var(--act);color:var(--on-act)}
+.risk-ctr.high .risk-lv{background:var(--red);color:var(--on-act)}
+.ots{display:flex;flex-direction:column;gap:8px;padding:2px 14px 12px}
+.ob{width:100%;display:flex;align-items:stretch;background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);cursor:pointer;text-align:left;overflow:hidden;box-shadow:var(--sh)}
+@media(hover:hover) and (pointer:fine){.ob:hover{border-color:var(--border2);background:var(--hover)}}
+.ob:active{background:var(--hover)}
+.ostr{width:4px;flex-shrink:0}.ostr.esc{background:var(--red)}.ostr.act{background:var(--act)}.ostr.clr{background:var(--green)}.ostr.nxt{background:var(--blue)}
+.obd{flex:1;padding:13px 13px 13px 11px}
+.otg{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.ob.esc .otg{color:var(--red)}.ob.act .otg{color:var(--act)}.ob.clr .otg{color:var(--green)}.ob.nxt .otg{color:var(--accent-tx)}
+.olb{font-size:14px;font-weight:600;color:var(--t1);line-height:1.3}
+.trb{display:flex;align-items:center;gap:9px;width:calc(100% - 28px);margin:0 14px 14px;padding:11px 13px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;font-size:13.5px;color:var(--t3);box-shadow:var(--sh)}
+@media(hover:hover) and (pointer:fine){.trb:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-lt)}}
+.trb:active{background:var(--blue-lt);border-color:var(--blue);color:var(--blue)}
+.drww{position:absolute;inset:0;z-index:300}
+.drwo{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.drwd{position:absolute;bottom:0;left:0;right:0;background:var(--card);border-radius:16px 16px 0 0;padding:0 0 calc(env(safe-area-inset-bottom,0px) + 20px);max-height:70%;overflow-y:auto}.drwd::-webkit-scrollbar{display:none}
+.drwh{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 10px;border-bottom:1px solid var(--border)}
+.drwl{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t3)}
+.drwc{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--bg);border:none;cursor:pointer;color:var(--t3)}
+.drwc:active{background:var(--border)}
+.drwr{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border)}.drwr:last-child{border-bottom:none}
+.drwn{width:20px;height:20px;border-radius:50%;background:var(--blue);color:var(--on-accent);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.drwq{font-size:11.5px;color:var(--t3);margin-bottom:3px;line-height:1.3}.drwa{font-size:14px;font-weight:600;color:var(--t1);line-height:1.3}
+.tmw{background:var(--bg);min-height:100%;padding-bottom:76px}
+.tmc{margin:13px 14px 0;border-radius:var(--r);padding:18px;border:1.5px solid}
+.tmc.esc{background:var(--red-lt);border-color:var(--red-bd)}.tmc.ok{background:var(--act-lt);border-color:var(--act-bd)}.tmc.clr{background:var(--green-lt);border-color:var(--green-bd)}
+.tmtg{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:6px;margin-bottom:9px}
+.tmc.esc .tmtg{color:var(--red)}.tmc.ok .tmtg{color:var(--act)}.tmc.clr .tmtg{color:var(--green)}
+.tmdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tmc.esc .tmdot{background:var(--red)}.tmc.ok .tmdot{background:var(--blue)}.tmc.clr .tmdot{background:var(--green);box-shadow:var(--glow)}
+.tmti{font-size:18px;font-weight:700;color:var(--t1);margin-bottom:9px;line-height:1.3;letter-spacing:-.02em}
+.tmbd{font-size:13.5px;color:var(--t2);line-height:1.6}
+.tmpath{margin:10px 14px 0;background:var(--card);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;box-shadow:var(--sh)}
+.tmpr{display:flex;align-items:flex-start;gap:10px;padding:10px 13px;border-bottom:1px solid var(--border)}.tmpr:last-child{border-bottom:none}
+.tmpn{width:18px;height:18px;border-radius:50%;background:var(--blue);color:var(--on-accent);font-size:9.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.tmpq{font-size:12px;color:var(--t3);font-weight:400;line-height:1.3;margin-bottom:2px}.tmsel{margin:5px 0 0 16px;padding:0;font-size:12.5px;font-weight:400;color:var(--t2);line-height:1.35}.tmsel li{margin:2px 0}
+.tmpa{font-size:13.5px;font-weight:600;color:var(--t1);line-height:1.35}
+.bp{display:flex;align-items:center;justify-content:center;width:calc(100% - 28px);margin:12px 14px 0;padding:14px;border-radius:var(--r);border:none;background:var(--blue);color:var(--on-accent);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+.bp:active{background:var(--blue-dk)}
+@media(hover:hover) and (pointer:fine){.bp:hover{background:var(--blue-dk)}}
+.bg2{display:flex;align-items:center;justify-content:center;width:calc(100% - 28px);margin:8px 14px 14px;padding:13px;border-radius:var(--r);border:1.5px solid var(--border);background:var(--card);color:var(--t2);font-size:14.5px;cursor:pointer;font-family:inherit}
+.bg2:active{background:var(--blue-lt);border-color:var(--blue);color:var(--blue)}
+@media(hover:hover) and (pointer:fine){.bg2:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-lt)}}
+.clinks{display:flex;align-items:center;gap:6px;padding:8px 12px;background:var(--bg);border-bottom:1px solid var(--border);overflow-x:auto;flex-shrink:0;white-space:nowrap}
+.clinks[hidden]{display:none}
+.cl-l{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);flex-shrink:0}
+.cl-b{display:inline-flex;align-items:center;gap:4px;font-family:inherit;font-size:13px;font-weight:600;color:var(--accent-tx);background:var(--blue-lt);border:1px solid var(--blue-bd);border-radius:999px;padding:6px 10px;cursor:pointer;flex-shrink:0}
+.chatov{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;flex-direction:column;max-width:430px;margin:0 auto;left:50%;transform:translateX(-50%);width:100%}
+.ctb{background:var(--nav);flex-shrink:0}
+.cnr{display:flex;align-items:center;height:50px;border-top:1px solid var(--nav-line)}
+.cbk{display:flex;align-items:center;align-self:stretch;gap:3px;padding:0 14px 0 10px;font-size:14px;font-weight:500;color:var(--nav-t);background:none;border:none;border-right:1px solid var(--nav-line);cursor:pointer;white-space:nowrap;flex-shrink:0}
+.cbk:active{background:var(--nav-ghost)}
+@media(hover:hover) and (pointer:fine){.cbk:hover{background:var(--nav-ghost)}}
+.ctt{flex:1;padding:0 14px;font-size:15px;font-weight:600;color:var(--nav-t);letter-spacing:-.02em}
+.cbdge{background:var(--blue);color:var(--on-accent);font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;margin-right:14px;letter-spacing:.04em}
+.msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}.msgs::-webkit-scrollbar{display:none}
+.cempty{flex:1;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+.cempty-ic{width:50px;height:50px;border-radius:25px;background:var(--pip);color:var(--on-pip);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;letter-spacing:.03em}
+.cempty p{font-size:14px;color:var(--t3);line-height:1.65;max-width:220px;margin:0 auto}
+.msg{display:flex;align-items:flex-end;gap:8px;max-width:87%}
+.msg.u{align-self:flex-end;flex-direction:row-reverse}
+.msg.a{align-self:flex-start}
+.apip{width:26px;height:26px;border-radius:50%;background:var(--pip);color:var(--on-pip);font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bub{padding:10px 13px;border-radius:16px;font-size:14px;line-height:1.55;word-break:break-word}
+.msg.u .bub{background:var(--blue);color:var(--on-accent);border-bottom-right-radius:4px}
+.msg.a .bub{background:var(--card);color:var(--t1);border:1px solid var(--border);border-bottom-left-radius:4px;box-shadow:var(--sh)}
+.bub.typing{display:flex;gap:5px;align-items:center;padding:14px 16px;min-width:60px}
+.tdot{width:7px;height:7px;border-radius:50%;background:var(--border2);animation:td 1s infinite}
+.tdot:nth-child(2){animation-delay:.15s}.tdot:nth-child(3){animation-delay:.3s}
+@keyframes td{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.cia{padding:10px 14px 14px;background:var(--card);border-top:1px solid var(--border);flex-shrink:0}
+.cib{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--border);border-radius:24px;padding:0 8px 0 14px}
+.cib:focus-within{border-color:var(--blue)}
+.ci{flex:1;border:none;background:none;padding:11px 0;font-size:15px;font-family:inherit;color:var(--t1);outline:none}
+.ci::placeholder{color:var(--t3)}
+.csnd{width:36px;height:36px;border-radius:18px;background:var(--blue);color:var(--on-accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.csnd:active{background:var(--blue-dk)}.csnd:disabled{background:var(--border2);cursor:default}
+@media(hover:hover) and (pointer:fine){.csnd:hover:not(:disabled){background:var(--blue-dk)}}
+/* readability pass: larger subtext */
+.ppo{font-size:13px}.pty{font-size:11px;padding:3px 9px}.csu{font-size:13px}.cbdg{font-size:11.5px}
+.sh{font-size:12px}.tk{font-size:12px}.ft{font-size:11px}.tlb{font-size:11px}
+.nk{font-size:12px}.ns,.stp{font-size:12.5px}.opt-note,.ck-hint{font-size:13px}
+.tier-h{font-size:12px}.grp-h{font-size:12.5px}.emb .emn{font-size:13px}
+.rfb{font-size:14px}.rfb h4{font-size:13px}.rt table{font-size:13px}.rt th,.rt td{padding:5px 7px}
+.ovhint{font-size:13px}.rsc .rctx{font-size:13px}.risk-desc{font-size:13px}.risk-lv{font-size:10.5px}
+.otg{font-size:11px}.olb{font-size:15px}.tif{font-size:14.5px}.tckr{font-size:14.5px}
+.drwl{font-size:12px}.drwq{font-size:13px}.drwa{font-size:15px}.drwn,.tmpn{font-size:11px}
+.tmtg{font-size:11px}.tmpq{font-size:13px}.tmsel{font-size:13.5px}.tmpa{font-size:14.5px}.cl-l{font-size:12px}
+.tmbd{font-size:14.5px}.grp-h,.tier-h{letter-spacing:.05em}
+.tif.clist{background:var(--card,var(--bg));border:1.5px solid var(--blue);border-left-width:5px;border-radius:12px;padding:12px 14px;color:var(--t1)}
+.tif.clist .clh{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-tx);margin:0 0 4px}
+.clrows{display:flex;flex-direction:column}
+.clrow{display:flex;align-items:flex-start;gap:12px;text-align:left;width:100%;background:none;border:0;border-top:1px solid rgba(128,128,128,.25);padding:11px 0;font:inherit;font-size:16px;font-weight:600;line-height:1.35;color:var(--t1);cursor:pointer;min-height:44px}
+.clrow:first-child{border-top:0}
+.clbx{flex:0 0 22px;width:22px;height:22px;margin-top:0;border:2px solid var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;color:transparent}
+.clrow.ckd .clbx{background:var(--blue);color:var(--bg)}
+.clrow.ckd{color:var(--t1)}
+.clrow ul{font-weight:400;font-size:14.5px;margin:4px 0 0 16px;padding:0}
+.clst{margin:8px 0 0;font-size:13px;font-weight:600;color:var(--t2,var(--t1))}
+.ob.pre{box-shadow:0 0 0 2.5px var(--blue)}
+.ob.pre .olb::after{content:" ✓";color:var(--blue)}
+.clmg{font-weight:700;margin:0 0 4px}
+.tif.actb{margin-bottom:14px}.tif.actb p:not(.clmg){font-size:16px;font-weight:500;color:var(--t1)}
+.ots .ob.nxt{--oc:var(--cat-ortho)}.ots .ob.nxt:nth-child(2){--oc:var(--cat-neuro)}.ots .ob.nxt:nth-child(3){--oc:#2F86B5}.ots .ob.nxt:nth-child(4){--oc:var(--cat-emergency)}
+html[data-theme=dark] .ots .ob.nxt:nth-child(3){--oc:#7CC4E6}
+.ots .ob.nxt .ostr{background:var(--oc);width:6px}
+.ots .ob.nxt{background:var(--card);border-color:var(--border)}
+.ots .ob.nxt .olb{color:var(--t1)}
+.ob.pre{box-shadow:0 0 0 2.5px var(--oc,var(--blue))}.ob.pre .olb::after{color:var(--oc,var(--blue))}
+#cl-ots .ob.nxt{background:var(--card);border-color:var(--border)}#cl-ots .ob.nxt.pre{background:var(--card);border-color:var(--oc)}
+.tif.entb{background:color-mix(in srgb,var(--cat-screen) 20%,var(--card));border-left-color:var(--cat-screen);color:var(--t1);margin-bottom:14px}
+.tif.entb summary{color:#6B7410;font-size:13.5px;font-weight:700}
+html[data-theme=dark] .tif.entb summary{color:var(--cat-screen)}
+.tif.entb .entryd{margin:0}
+.rfs{border-top:1px solid var(--border);margin:0}
+.rfs>summary{cursor:pointer;font-weight:700;font-size:14.5px;padding:11px 0;color:var(--t1);list-style:none;display:flex;align-items:center;gap:8px}
+.rfs>summary::-webkit-details-marker{display:none}
+.rfs>summary::before{content:"";width:8px;height:8px;border-right:2px solid var(--accent-tx);border-bottom:2px solid var(--accent-tx);transform:rotate(-45deg);transition:transform .15s;flex:0 0 8px}
+.rfs[open]>summary::before{transform:rotate(45deg)}
+.rfsb{padding:0 0 12px}
+</style>
+</head>
+<body>
+<div class="shell" id="shell">
+      <div class="topbar">
+        <div class="is"></div>
+        <div class="nr">
+          <button class="nbk" id="navBack" onclick="goBack()">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6l6 6"/></svg>
+            <span id="blbl">Back</span>
+          </button>
+          <div class="nwrap"><div class="nk" id="nkick">CHOA trauma protocols</div><div class="nt" id="ntitle">Trauma Care Compass</div></div>
+          <div class="ns" id="nstep" aria-live="polite"></div>
+          <button class="thm" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+        </div>
+      </div>
+      <div class="content" id="content" role="main"></div>
+      <button class="fab" id="fab" onclick="openChat()" aria-label="Open AI assistant" style="bottom:74px">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M3 4C3 2.9 3.9 2 5 2H15C16.1 2 17 2.9 17 4V12C17 13.1 16.1 14 15 14H7L3 18V4Z" fill="currentColor"/>
+        </svg>
+      </button>
+      <nav class="tabbar" id="tabbar" aria-label="Main navigation">
+        <button class="tab on" id="t-home" onclick="switchTab('home')" style="--tc:var(--blue)" aria-current="true" aria-label="All protocols">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg><span class="tlb">All</span>
+        </button>
+        <button class="tab" id="t-emergency" onclick="switchTab('emergency')" style="--tc:var(--cat-emergency)" aria-label="Emergency">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.871l-8.106 -13.534a1.914 1.914 0 0 0 -3.274 0z"/><path d="M12 16h.01"/></svg><span class="tlb">ED</span>
+        </button>
+        <button class="tab" id="t-neuro" onclick="switchTab('neuro')" style="--tc:var(--cat-neuro)" aria-label="Neurology">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"/></svg><span class="tlb">Neuro</span>
+        </button>
+        <button class="tab" id="t-ortho" onclick="switchTab('ortho')" style="--tc:var(--cat-ortho)" aria-label="Orthopedics">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span class="tlb">Ortho</span>
+        </button>
+        <button class="tab" id="t-screen" onclick="switchTab('screen')" style="--tc:var(--cat-screen)" aria-label="Screening">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06"/><path d="M15 19l2 2l4 -4"/></svg><span class="tlb">Screen</span>
+        </button>
+      </nav>
+</div>
+
+<script>
+
+// ── ICON HELPER ───────────────────────────────────────────────────
+const SVG_P={'arrow-right':'<path d="M5 12h14"/><path d="M13 6l6 6l-6 6"/>','layout-grid':'<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>','alert-triangle':'<path d="M12 9v4"/><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.871l-8.106 -13.534a1.914 1.914 0 0 0 -3.274 0z"/><path d="M12 16h.01"/>',eye:'<circle cx="12" cy="12" r="2"/><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"/>',plus:'<path d="M12 5v14"/><path d="M5 12h14"/>','shield-check':'<path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06"/><path d="M15 19l2 2l4 -4"/>','chevron-left':'<path d="M15 6l-6 6l6 6"/>','chevron-right':'<path d="M9 6l6 6l-6 6"/>',search:'<circle cx="10" cy="10" r="7"/><path d="M21 21l-6 -6"/>',check:'<path d="M5 12l5 5l10 -10"/>',x:'<path d="M18 6l-12 12"/><path d="M6 6l12 12"/>','list-details':'<path d="M13 5h8"/><path d="M13 9h5"/><path d="M13 15h8"/><path d="M13 19h5"/><rect x="3" y="4" width="6" height="6" rx="1"/><rect x="3" y="14" width="6" height="6" rx="1"/>'};
+function ico(n,s=20){const p=SVG_P[n]||'';return '<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';}
+
+// ── ALL 14 PROTOCOL TREES (compiled from the step-by-step Word summaries) ──
+const T={
+  tbi:{start:"gcs",nodes:{
+    "gcs":{"q":"What is the patient's GCS?","k":"GCS","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Patient with a history of acute traumatic head injury</p></details>","opts":[{"l":"GCS ≤ 8","s":"ok","nx":"sev"},{"l":"GCS 9–12","s":"ok","nx":"mod"},{"l":"GCS 13","s":"ok","nx":"ct"},{"l":"GCS ≥ 14","s":"ok","nx":"skull"}]},
+    "mod":{"q":"GCS 9–12: manage as listed, then check — are any of the following present?","k":"Cushing signs / pupil changes","info":"<ul class=\"il\"><li>Avoid hypoxemia (&gt;94%)</li><li>Avoid hypotension: NS fluid bolus/maintenance rate</li><li>Monitor HR</li><li>Labs (CBC, BMP, DIC panel)</li><li><b>Any of the following present:</b><ul><li>Pupil changes</li><li>Bradycardia</li><li>Hypertension</li><li>Irregular respirations</li></ul></li></ul>","opts":[{"l":"YES","s":"ok","nx":"sev"},{"l":"NO","s":"ok","nx":"cth"}]},
+    "cth":{"q":"Obtain CTH and NSGY consult. Is the CTH positive for intracranial trauma?","k":"CTH positive for intracranial trauma","opts":[{"l":"YES","s":"ok","nx":"admit"},{"l":"NO","s":"ok","nx":"consult"}]},
+    "ct":{"q":"Recommend head CT","k":"Do this","info":"<ul class=\"il\"><li>Recommend head CT</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"citbi"}]},
+    "citbi":{"q":"Is there evidence of ciTBI?","k":"Evidence of ciTBI","opts":[{"l":"YES","s":"ok","nx":"consult"},{"l":"NO","s":"ok","nx":"reassess"}]},
+    "skull":{"q":"Is there evidence of skull fx or an abnormal neuro exam?","k":"Skull fx or abnormal neuro exam","info":"","opts":[{"l":"YES","s":"ok","nx":"ct"},{"l":"NO","s":"ok","nx":"sig"}]},
+    "sig":{"q":"Are any of the following present?","k":"Concerning symptoms or signs","info":"<ul class=\"il\"><li>AMS</li><li>Repetitive questioning</li><li>Somnolence</li><li>Persistent slow verbal response</li><li>Occipital, parietal, temporal hematoma</li><li>Severe headache</li><li>Multiple emesis</li><li>Severe mechanism</li></ul>","opts":[{"l":"YES","s":"ok","nx":"add"},{"l":"NO","s":"ok","nx":"reassess"}]},
+    "add":{"q":"Are any of the following present?","k":"Moderate-risk features","info":"<ul class=\"il\"><li>Multiple symptoms</li><li>LOC</li><li>Worsening signs/symptoms</li><li>Younger infant</li><li>Delayed onset seizure</li><li>Persistent GCS 13/14</li></ul>","opts":[{"l":"YES","s":"ok","nx":"obs"},{"l":"NO","s":"ok","nx":"reassess"}]},
+    "reassess":{"q":"Reassess the patient. Are all of the following met?","k":"Reassessment criteria all met","info":"<ul class=\"il\"><li>Neurological normal</li><li>Pain/emesis controlled</li><li>Caretakers understand DC instructions</li><li>Caretakers able to RTED if symptoms worsen</li></ul>","opts":[{"l":"YES","s":"ok","nx":"dc"},{"l":"No","s":"ok","nx":"G_reassess"}]}
+  },ends:{
+    "sev":{"type":"esc","tag":"Action required","title":"Emergent NSGY consult, PICU admission","body":"<ul class=\"il\"><li>Emergent NSGY consult</li><li>Notify PICU of admission</li><li>RSI</li><li>Emergent CTH</li><li>Admit to PICU under NSGY vs Trauma</li></ul>"},
+    "admit":{"type":"ok","tag":"Pathway outcome","title":"Admit to NSGY vs Trauma","body":""},
+    "consult":{"type":"ok","tag":"Pathway outcome","title":"Consult NSGY, admission to NSGY vs Trauma per provider discretion","body":""},
+    "obs":{"type":"ok","tag":"Pathway outcome","title":"ED obs x4hrs or CTH at provider's discretion","body":"<ul class=\"il\"><li>ED observation for 4 hours (x4hrs), or CT head (CTH), at the provider's discretion</li></ul>"},
+    "G_reassess":{"type":"ok","tag":"Not specified","title":"The source does not say what to do here","body":"<p>No \"No\" branch is drawn from this box, so what to do when the criteria are not all met is not specified in the flowchart.</p>"},
+    "dc":{"type":"clr","tag":"Low risk / cleared","title":"Discharge home","body":""}
+  }},
+  cspine:{start:"a",nodes:{
+    "a":{"q":"Are any of the following present?","k":"Unreliable exam features","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Patient needing C-spine clearance</p></details><ul class=\"il\"><li>Patient is unconscious</li><li>Symptoms masked by pain medications/intoxicants</li><li>Distracting injuries</li><li>History of neuro deficits</li></ul>","opts":[{"l":"YES","s":"ok","nx":"obt"},{"l":"NO","s":"ok","nx":"assess1"}]},
+    "obt":{"q":"Is the patient obtunded or intubated/sedated?","k":"Obtunded or intubated/sedated","opts":[{"l":"YES","s":"ok","nx":"age"},{"l":"NO","s":"ok","nx":"films"}]},
+    "age":{"q":"What is the patient's age?","k":"Age","opts":[{"l":"Age < 16","s":"ok","nx":"mri"},{"l":"Age ≥ 16","s":"ok","nx":"ct"}]},
+    "assess1":{"q":"Assess. Are any of the following present?","k":"Neck tenderness or pain with motion","info":"<ul class=\"il\"><li>C-spine tenderness/pain</li><li>Limited ROM</li><li>Pain with ROM</li></ul>","opts":[{"l":"YES","s":"ok","nx":"films"},{"l":"NO","s":"ok","nx":"clear"}]},
+    "films":{"q":"Maintain C-spine immobilization. Is the lateral and/or AP positive?","k":"Lateral and/or AP positive","info":"<ul class=\"il\"><li>Maintain C-spine immobilization</li></ul>","opts":[{"l":"YES","s":"ok","nx":"nsgy"},{"l":"NO","s":"ok","nx":"persist"}]},
+    "persist":{"q":"Does the patient have persistent symptoms?","k":"Persistent symptoms","opts":[{"l":"YES","s":"ok","nx":"nsgymri"},{"l":"NO","s":"ok","nx":"assess2"}]},
+    "assess2":{"q":"Assess. Are any of the following present?","k":"Re-check for neck findings","info":"<ul class=\"il\"><li>C-spine tenderness/pain</li><li>Limited ROM</li><li>Pain with ROM</li></ul>","opts":[{"l":"NO","s":"ok","nx":"clear"},{"l":"Yes","s":"ok","nx":"G_assess2"}]}
+  },ends:{
+    "mri":{"type":"ok","tag":"Pathway outcome","title":"MRI C-spine","body":""},
+    "ct":{"type":"ok","tag":"Pathway outcome","title":"CT C-spine","body":""},
+    "clear":{"type":"clr","tag":"Low risk / cleared","title":"C-collar may be clinically cleared by MD, APP, Trauma RN","body":""},
+    "nsgy":{"type":"ok","tag":"Pathway outcome","title":"Consult NSGY","body":""},
+    "nsgymri":{"type":"ok","tag":"Pathway outcome","title":"Consult NSGY and obtain MRI C-spine","body":"<ul class=\"il\"><li>Consult NSGY</li><li>MRI C-spine</li></ul>"},
+    "G_assess2":{"type":"ok","tag":"Not specified","title":"The source does not say what to do here","body":"<p>No \"Yes\" branch is drawn from this second Assess box, so the next step when tenderness, limited ROM or pain with ROM is still present is not specified in the flowchart.</p>"}
+  }},
+  extremity:{start:"hard",nodes:{
+    "hard":{"q":"Are there hard signs of vascular injury?","k":"Hard signs of vascular injury","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Patient presents with an extremity injury</p></details>","opts":[{"l":"YES","s":"ok","nx":"hardout"},{"l":"NO","s":"ok","nx":"open"}]},
+    "open":{"q":"Is it an open fracture?","k":"Open fx","opts":[{"l":"YES","s":"ok","nx":"cont"},{"l":"NO","s":"ok","nx":"comp"}]},
+    "cont":{"q":"Is the fracture contaminated?","k":"Contaminated","info":"<ul class=\"il\"><li>Emergent Ortho consult</li><li>Provide tetanus ppx: &lt; 7 yo DTaP; ≥ 7 yo provide Tdap</li></ul>","opts":[{"l":"YES","s":"ok","nx":"allc"},{"l":"NO","s":"ok","nx":"type"}]},
+    "allc":{"q":"Contaminated fracture: is the patient allergic to ceftriaxone?","k":"Allergic to ceftriaxone (contaminated)","opts":[{"l":"YES","s":"ok","nx":"levomet"},{"l":"NO","s":"ok","nx":"cefmet"}]},
+    "type":{"q":"Non-contaminated fracture: what is the fracture type?","k":"Fracture type","opts":[{"l":"Type I and II","s":"ok","nx":"cefall"},{"l":"Type III","s":"ok","nx":"ceftall"}]},
+    "cefall":{"q":"Type I and II: is the patient allergic to cefazolin?","k":"Allergic to cefazolin","opts":[{"l":"YES","s":"ok","nx":"clinda"},{"l":"NO","s":"ok","nx":"cefaz"}]},
+    "ceftall":{"q":"Type III: is the patient allergic to ceftriaxone?","k":"Allergic to ceftriaxone (Type III)","opts":[{"l":"YES","s":"ok","nx":"levo"},{"l":"NO","s":"ok","nx":"ceft"}]},
+    "comp":{"q":"Is there vascular compromise (e.g., diminished pulse, ABI &lt; 0.9, delayed cap refill)?","k":"Vascular compromise","opts":[{"l":"YES","s":"ok","nx":"emerg"},{"l":"NO","s":"ok","nx":"plain"}]},
+    "emerg":{"q":"Emergent plain films, Ortho consult and reduction","k":"Do this","info":"<ul class=\"il\"><li>Emergent plain films, Ortho consult and reduction</li><li>CTA of the extremity only after reduction of fracture if applicable</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"cta"}]},
+    "cta":{"q":"Is there vascular injury on CTA?","k":"Vascular injury on CTA","opts":[{"l":"YES","s":"ok","nx":"vasc"},{"l":"NO","s":"ok","nx":"admit"}]}
+  },ends:{
+    "hardout":{"type":"esc","tag":"Action required","title":"Emergent vascular surgery consult, control bleeding, resuscitate with blood products","body":"<ul class=\"il\"><li>Emergent Vascular surgery consult</li><li>Control bleeding</li><li>Resuscitate with blood products</li></ul>"},
+    "levomet":{"type":"ok","tag":"Pathway outcome","title":"Levofloxacin IV 10 mg/kg q24h + Metronidazole IV 30 mg/kg q24h","body":""},
+    "cefmet":{"type":"ok","tag":"Pathway outcome","title":"Ceftriaxone IV 50 mg/kg q24h + Metronidazole IV 30 mg/kg q24h","body":""},
+    "clinda":{"type":"ok","tag":"Pathway outcome","title":"Clindamycin IV/PO 10 mg/kg q8h","body":""},
+    "cefaz":{"type":"ok","tag":"Pathway outcome","title":"Cefazolin IV 30 mg/kg q8h x24hrs","body":""},
+    "levo":{"type":"ok","tag":"Pathway outcome","title":"Levofloxacin IV 50 mg/kg q24h","body":""},
+    "ceft":{"type":"ok","tag":"Pathway outcome","title":"Ceftriaxone IV 50 mg/kg q24h x24hrs","body":""},
+    "plain":{"type":"ok","tag":"Pathway outcome","title":"Plain films and consult Ortho","body":""},
+    "vasc":{"type":"ok","tag":"Pathway outcome","title":"Consult vascular surgery","body":""},
+    "admit":{"type":"ok","tag":"Pathway outcome","title":"Admit with q2h NV checks to the limb","body":""}
+  }},
+  ir:{start:"call",nodes:{
+    "call":{"q":"IR attending initiates the IR trauma call","k":"Do this","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Trauma patient requires IR intervention (after hours)</p></details><ul class=\"il\"><li>IR attending initiates IR trauma call to:<ul><li>IR Technologists</li><li>Anesthesia attending</li></ul></li></ul>","opts":[{"l":"Continue","s":"ok","nx":"tech"}]},
+    "tech":{"q":"IR Tech arrives and calls the ED Trauma Nurse","k":"Do this","info":"<ul class=\"il\"><li>IR Tech arrives and calls ED Trauma Nurse when IR team is ready</li><li>IR Tech reminds ED trauma nurse that they will need to \"accompany patient and stay until released by anesthesia\"</li><li>IR Tech calls ED Charge Nurse if ED Trauma Nurse is not available</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"trans"}]},
+    "trans":{"q":"Transported to IR","k":"Do this","info":"<ul class=\"il\"><li>ED Trauma Nurse accompanies patient for transport to IR</li><li>ED Trauma Nurse is available for assisting anesthesia during patient induction and stabilization</li><li>ED Trauma Nurse will be directed by anesthesia to return to the ED if patient stable</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"done"}]},
+    "done":{"q":"IR case completed. Is the patient stable or unstable for transport?","k":"Patient stable or unstable for transport","opts":[{"l":"Stable","s":"ok","nx":"stable"},{"l":"Unstable","s":"ok","nx":"unstable"}]}
+  },ends:{
+    "stable":{"type":"ok","tag":"Pathway outcome","title":"Stable patient transport","body":"<ul class=\"il\"><li>The anesthesia team and IR team will transport to the ICU/OR</li><li>ICU nurse resource to be called if needed for transport to ICU</li><li>OR transport nurse assistance will be based upon OR nurse availability</li></ul>"},
+    "unstable":{"type":"ok","tag":"Pathway outcome","title":"Unstable patient transport","body":"<ul class=\"il\"><li>The ED nurse remaining in IR will assist anesthesia and IR team to transport patient to ICU/OR</li></ul>"}
+  }},
+  long_bone:{start:"d1",nodes:{
+    "d1":{"q":"Which situation applies?","k":"Situation","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Patient with a long bone fracture who is multiply injured</p></details>","opts":[{"l":"Isolated long bone fracture and patient stability permits","s":"ok","nx":"iso"},{"l":"Evidence of instability related to the underlying fracture","s":"ok","nx":"exp"},{"l":"Clinical instability preventing the patient from undergoing surgical intervention","s":"ok","nx":"dco"}]}
+  },ends:{
+    "iso":{"type":"ok","tag":"Pathway outcome","title":"Definitive fixation within 24 hours","body":"<ul class=\"il\"><li>Isolated long bone fractures are managed with definitive fixation within 24 hours in all situations where patient stability permits</li></ul>"},
+    "exp":{"type":"ok","tag":"Pathway outcome","title":"Definitive fixation in an expedited fashion","body":"<ul class=\"il\"><li>In patients with evidence of instability related to the underlying fracture, fixation will occur in an expedited fashion</li></ul>"},
+    "dco":{"type":"ok","tag":"Pathway outcome","title":"Damage control orthopedics","body":"<ul class=\"il\"><li>Damage control orthopedics including external fixation or traction may be used for temporary stability</li></ul>"}
+  }},
+  pelvic:{start:"d1",nodes:{
+    "d1":{"q":"Which situation applies?","k":"Situation","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Patient with a pelvic or acetabular fracture</p></details>","opts":[{"l":"Patient hemodynamically unstable from a pelvic ring fracture and arriving to Children's","s":"ok","nx":"unst"},{"l":"Pelvic or acetabular fracture needing a treat-here or transfer-out decision","s":"ok","nx":"ortho"},{"l":"Call coming into the Transfer Center for a patient with a pelvic fracture","s":"ok","nx":"tc"}]},
+    "ortho":{"q":"All pelvic and acetabular fractures receive an Orthopedic consultation to determine capability and disposition","k":"Do this","info":"<ul class=\"il\"><li>All pelvic and acetabular fractures will receive an Orthopedic consultation to determine capability and disposition</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"scope"}]},
+    "scope":{"q":"Is the fracture within the scope of the pediatric Orthopedist's care?","k":"Within scope of the pediatric Orthopedist","info":"<ul class=\"il\"><li>Outside the scope of the pediatric Orthopedist on call includes both column acetabular fractures, sacral iliac disruption, or fractures with severe joint comminution</li></ul>","opts":[{"l":"YES","s":"ok","nx":"here"},{"l":"NO","s":"ok","nx":"ota"}]},
+    "ota":{"q":"Ortho consults the designated Children's credentialed OTA provider","k":"Do this","info":"<ul class=\"il\"><li>Ortho will consult with a designated Children's credentialed provider that has completed an OTA-approved fellowship to perform definitive surgical reconstruction at Children's</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"timely"}]},
+    "timely":{"q":"Is the Children's credentialed OTA provider able to come timely for repair?","k":"OTA provider able to come timely","info":"","opts":[{"l":"YES","s":"ok","nx":"recon"},{"l":"NO","s":"ok","nx":"grady"}]},
+    "tc":{"q":"Transfer Center notifies the Ortho attending on call to ask about capability","k":"Do this","info":"<ul class=\"il\"><li>When a call is received to the Transfer Center for a patient with a pelvic fracture, the Ortho attending on call is notified to ask about capability</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"cap"}]},
+    "cap":{"q":"Is the injury within Ortho capability?","k":"Within Ortho capability","opts":[{"l":"YES","s":"ok","nx":"edacc"},{"l":"NO","s":"ok","nx":"decl"}]}
+  },ends:{
+    "unst":{"type":"esc","tag":"Action required","title":"Options for management of the unstable patient with pelvic ring fracture","body":"<ul class=\"il\"><li>Initial pelvic radiograph in the trauma bay</li><li>Application of a pelvic binder in the trauma bay</li><li>Initiation of emergency release blood products and the massive transfusion protocol</li><li>Access to emergent cross-sectional imaging</li><li>Emergent access to Interventional Radiology for embolization</li><li>Emergent access to Orthopedic Surgery and the OR for external fixation of the pelvis</li><li>Emergent access to Trauma Surgery and the OR for preperitoneal pelvic packing</li></ul>"},
+    "here":{"type":"ok","tag":"Pathway outcome","title":"Cared for at Children's Healthcare of Atlanta","body":"<ul class=\"il\"><li>All fractures deemed to be within the scope of the pediatric Orthopedist's care will be cared for at Children's Healthcare of Atlanta</li></ul>"},
+    "recon":{"type":"ok","tag":"Pathway outcome","title":"Definitive surgical reconstruction at Children's by the OTA provider","body":""},
+    "grady":{"type":"ok","tag":"Pathway outcome","title":"Transfer to an adult trauma center (Grady Memorial Hospital)","body":"<ul class=\"il\"><li>Children's Healthcare of Atlanta has pre-arranged transfer agreements with an adult trauma center capable of providing care for these patients (Grady Memorial Hospital)</li></ul>"},
+    "edacc":{"type":"ok","tag":"Pathway outcome","title":"Call goes to the Emergency Department physician for acceptance of the patient per the current process","body":""},
+    "decl":{"type":"ok","tag":"Pathway outcome","title":"Send the call to the ED Attending and Surgery Attending for further discussion regarding best options for care","body":"<ul class=\"il\"><li>Applies if the pelvic fracture is outside of Ortho capability and a decline is requested</li></ul>"}
+  }},
+  open_fx:{start:"wash",nodes:{
+    "wash":{"q":"Wash out time","k":"Do this","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Patient with an open fracture</p></details><ul class=\"il\"><li>Open fractures requiring I&amp;D will be washed out within 24 hours</li><li>Appropriate antibiotics, based on fracture type, should be administered within 1 hour of arrival and documented</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"tet"}]},
+    "tet":{"q":"Tetanus prophylaxis: has the patient had a tetanus vaccination in the last 5 years?","k":"Tetanus vaccination in the last 5 years","info":"<ul class=\"il\"><li>All open fractures will receive immediate tetanus prophylaxis when needed (if no tetanus vaccination in the last 5 years)</li></ul>","opts":[{"l":"YES","s":"ok","nx":"cont"},{"l":"NO","s":"ok","nx":"age"}]},
+    "age":{"q":"What is the patient's age?","k":"Age","opts":[{"l":"< 7 years old","s":"ok","nx":"dtap"},{"l":"≥ 7 years old","s":"ok","nx":"tdap"}]},
+    "dtap":{"q":"Provide DTaP (Infanrix on formulary)","k":"Do this","info":"<ul class=\"il\"><li>Provide DTaP (Infanrix on formulary)</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"cont"}]},
+    "tdap":{"q":"Provide Tdap (Boostrix on formulary)","k":"Do this","info":"<ul class=\"il\"><li>Provide Tdap (Boostrix on formulary)</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"cont"}]},
+    "cont":{"q":"Antibiotics: is the fracture contaminated with soil?","k":"Contaminated with soil","info":"","opts":[{"l":"YES","s":"ok","nx":"callc"},{"l":"NO","s":"ok","nx":"type"}]},
+    "callc":{"q":"Contaminated with soil, Type II or III: is the patient allergic to ceftriaxone?","k":"Allergic to ceftriaxone (contaminated)","opts":[{"l":"YES","s":"ok","nx":"levomet"},{"l":"NO","s":"ok","nx":"cefmet"}]},
+    "type":{"q":"Non-contaminated: what is the fracture type?","k":"Fracture type (non-contaminated)","opts":[{"l":"Type I and II","s":"ok","nx":"cefall"},{"l":"Type III","s":"ok","nx":"ceftall"}]},
+    "cefall":{"q":"Type I and II: is the patient allergic to cefazolin?","k":"Allergic to cefazolin","info":"<ul class=\"il\"><li>Patients with penicillin allergy can safely receive cefazolin</li></ul>","opts":[{"l":"YES","s":"ok","nx":"clinda"},{"l":"NO","s":"ok","nx":"cefaz"}]},
+    "ceftall":{"q":"Type III: is the patient allergic to ceftriaxone/cephalosporins?","k":"Allergic to ceftriaxone/cephalosporins (Type III)","opts":[{"l":"YES","s":"ok","nx":"levo"},{"l":"NO","s":"ok","nx":"ceft"}]}
+  },ends:{
+    "levomet":{"type":"ok","tag":"Pathway outcome","title":"Levofloxacin 10 mg/kg/dose IV q24h (max 750 mg/dose) PLUS Metronidazole 30 mg/kg/dose IV q24h (max 1500 mg/dose)","body":"<ul class=\"il\"><li>Once daily dosing</li><li>Duration: 24 hours (can extend up to 72 hours if delay in closure or incomplete debridement)</li></ul>"},
+    "cefmet":{"type":"ok","tag":"Pathway outcome","title":"Ceftriaxone 50 mg/kg/dose IV q24h (max 2000 mg/dose) PLUS Metronidazole 30 mg/kg/dose IV q24h (max 1500 mg/dose)","body":"<ul class=\"il\"><li>Duration: 24 hours (can extend up to 72 hours if delay in closure or incomplete debridement)</li></ul>"},
+    "clinda":{"type":"ok","tag":"Pathway outcome","title":"Clindamycin 10 mg/kg/dose IV/PO q8h (max 600 mg/dose)","body":"<ul class=\"il\"><li>Duration: 24 hours</li></ul>"},
+    "cefaz":{"type":"ok","tag":"Pathway outcome","title":"Cefazolin 30 mg/kg/dose IV q8h (max 2000 mg/dose), OR Cephalexin 15 mg/kg/dose PO TID (max 500 mg/dose)","body":"<ul class=\"il\"><li>Duration: 24 hours</li></ul>"},
+    "levo":{"type":"ok","tag":"Pathway outcome","title":"Levofloxacin 10 mg/kg/dose IV/PO q24h (max 750 mg/dose)","body":"<ul class=\"il\"><li>Duration: 24 hours</li></ul>"},
+    "ceft":{"type":"ok","tag":"Pathway outcome","title":"Ceftriaxone 50 mg/kg/dose IV q24h (max 2000 mg/dose)","body":"<ul class=\"il\"><li>Duration: 24 hours</li></ul>"}
+  }},
+  tta:{start:"tta0",nodes:{
+    "tta0":{"q":"Select all that apply","k":"Activation criteria","tiers":[{"name":"Trauma STAT (Level I) criteria","nx":"statL","cls":"high","items":["<b>Airway/ventilatory compromise:</b> intubated; need for emergent airway","<b>Penetrating injuries</b> (refer to ED Capabilities policy): head; neck/chest/abdomen/pelvis (includes groin and buttocks) — triage to AMBH","Traumatic arrest/CPR at scene","Patient receiving blood or blood products","<b>Shock/age-specific hypotension:</b> systolic BP less than 70 mm Hg + (2 x age in years)","GCS ≤ 8 OR AVPU = \"P\" or \"U\" with traumatic mechanism (excludes ground level falls with seizure; see ED policy Medical Emergency Response)","Uncontrolled bleeding or tourniquet in place for hemorrhage","Amputations proximal to elbow or knee"]},{"name":"Trauma ALERT (Level II) criteria","nx":"alertL","cls":"mod","items":["GCS 9-13 OR AVPU = \"V\" with traumatic mechanism","Face/extremity gunshot wound or stabbing","Pulseless extremity","New onset paralysis attributed to a traumatic injury","Pelvic fracture","Amputations or degloving distal to the elbow or knee (excluding fingers and toes); consider crush injury, significant degloving injury, or significant tissue injury","2 or more long bone fractures (femur, tibia/fibula, humerus, radius/ulna)","Burns meeting burn unit criteria (≥ 15% BSA or by policy)","Open or depressed skull fracture","Inter-facility transfer with documented/diagnosed intra-abdominal injury, intra-cranial injury, intra-thoracic injury, vascular injury, or unstable spinal injury within 24 hours of injury"]},{"name":"Trauma EVAL (Level III) criteria","nx":"evalL","cls":"mod","items":["<b>MVC with:</b> ejection or death in same passenger compartment; extrication time &gt; 20 minutes; rollover; high speed (&gt; 50 mph)","Auto/pedestrian or auto/bicycle impact","Motorized vehicle crash (ATV, golf cart, go cart, dirt bike, etc.)","Falls &gt; two times the height of the child or &gt; 20 feet","Blunt abdominal trauma with tenderness or seat belt sign","Patients immobilized on a long spine board","Concern for non-accidental trauma (NAT)"]}],"nxNone":"Enone","noneLbl":"None selected — continue","embed":{"title":"Age-specific hypotension: SIPA calculator","url":"https://www.mdcalc.com/calc/10058/shock-index-pediatric-age-adjusted-sipa","note":"Use the Shock Index, Pediatric Age-Adjusted (SIPA) calculator from MDCalc to check this criterion."}}
+  },ends:{
+    "statL":{"type":"esc","tag":"Action required","title":"TRAUMA STAT (Level I) — 15 minute attending trauma surgeon response","body":"<ul class=\"il\"><li>Activate trauma page and call the Trauma Surgery Attending (use the number provided in Doc on Call)</li><li>Trauma Surgery Attending or Trauma Surgery Fellow [Arthur M. Blank Campus] is required in the trauma room within 15 minutes of the patient's arrival or from upgraded page time</li><li>All other trauma team members respond within 5 minutes of notification (or within 5 minutes of the patient's arrival if arrival may be delayed)</li><li>Team: see the team attendance table in section 4</li></ul>"},
+    "alertL":{"type":"esc","tag":"Action required","title":"TRAUMA ALERT (Level II)","body":"<ul class=\"il\"><li>Activate trauma page</li><li>The trauma provider on call (trauma surgery attending, trauma APP, Surgery APP or surgery resident) is required to respond to the trauma room within 15 minutes of the patient's arrival or from upgraded page time</li><li>All other trauma team members respond within 5 minutes of notification (or within 5 minutes of the patient's arrival if arrival may be delayed)</li><li>Team: see the team attendance table in section 4</li></ul>"},
+    "evalL":{"type":"ok","tag":"Pathway outcome","title":"TRAUMA EVALUATION (Level III)","body":"<ul class=\"il\"><li>Activate trauma page (both campuses)</li><li>All trauma team members respond within 5 minutes of notification (or within 5 minutes of the patient's arrival if arrival may be delayed)</li><li>Team: see the team attendance table in section 4</li></ul>"},
+    "Enone":{"type":"ok","tag":"Not specified","title":"No STAT, ALERT or EVAL criterion selected","body":"<p>No \"No\" branch is given in the policy, so what to do when no STAT, ALERT or EVAL criterion is met is not specified.</p>"}
+  }},
+  mtp:{start:"mtp0",nodes:{
+    "mtp0":{"q":"Select every MTP activation indication that applies","k":"MTP indications","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Injured or bleeding patient: provider considers activating the Massive Transfusion Protocol</p></details><p>Select all that apply. Any one indication supports activating MTP.</p>","tiers":[{"name":"MTP activation indications","nx":"mtpgo","cls":"high","items":[{"t":"Clinical massive hemorrhage in hard to control area","grp":"Uncontrolled bleeding"},{"t":"Uncontrolled bleeding, ongoing blood loss &gt; 150 mL/minute","grp":"Uncontrolled bleeding"},{"t":"Loss of 50% of blood volume within 4 hours","grp":"Uncontrolled bleeding"},{"t":"Loss of 1 blood volume in 24 hours (blood volume loss of 70 mL/kg in children and adolescents and 85 mL/kg in infants)","grp":"Uncontrolled bleeding"},{"t":"Penetrating torso trauma","grp":"Other indications"},{"t":"Age-specific hypotension","grp":"Other indications"},{"t":"Need for emergency release blood in a trauma patient located in the ER, OR or PICU","grp":"Also listed in the ED flowchart box \"Indications for Trauma MTP\""},{"t":"Patients who have received blood product from the referring facility","grp":"Also listed in the ED flowchart box \"Indications for Trauma MTP\""}]}],"nxNone":"Enone","noneLbl":"None selected — continue","embed":{"title":"Age-specific hypotension: SIPA calculator","url":"https://www.mdcalc.com/calc/10058/shock-index-pediatric-age-adjusted-sipa","note":"Use the Shock Index, Pediatric Age-Adjusted (SIPA) calculator from MDCalc to check this indication."}}
+  },ends:{
+    "mtpgo":{"type":"esc","tag":"Activate MTP","title":"Initiate the Massive Transfusion Protocol","body":"<p>Start by confirming the activation indications, then follow the workflow for where the patient is. Both are from Policy 7-23.</p><details class=\"dt\"><summary>Patient in the ED: BloodTrack workflow (steps 1–11)</summary><ol class=\"il\"><li><b>ED workflow step 1–2: MD identifies need; Team Lead RN/Scribe RN notifies the Blood Bank and places orders</b><ul class=\"il\"><li>1. MD identifies need for MTP</li><li>2. Team Lead RN/Scribe RN:<ul><li>Calls the blood bank to notify them of initiation of MTP for patient</li><li>Places order for MTP labs, Initiation of MTP (nurse instructional) order and Blood Product (per physician verbal order in mL/kg) in Epic</li></ul></li></ul></li><li><b>ED workflow step 3a: RN takes the green form to the BloodTrack refrigerator for the 1st package</b><ul class=\"il\"><li>RN takes Blood Bank Product Request Release Form (\"green form\") with patient label and weight to the BloodTrack refrigerator to obtain 1st package of MTP</li><li>If blood is not available in the BloodTrack refrigerator, go to the Blood Bank to retrieve the blood</li><li>ED RN/Medic/Tech/Lab draws MTP and Trauma Labs prior to blood administration</li></ul></li><li><b>ED workflow step 4: Access the BloodTrack system</b><ul class=\"il\"><li>a) RN scans network ID barcode or manually enters network ID and enters numeric password</li><li>b) RN selects \"Touch here for MTP Packs\"</li><li>c) RN selects MTP pack for patient's weight in kg</li><li>d) RN scans patient's linear barcode and verifies HAR</li></ul></li><li><b>ED workflow step 5: Remove blood product from the BloodTrack system</b><ul class=\"il\"><li>a) BloodTrack door opens</li><li>b) Drawer illuminates</li><li>c) RN opens the illuminated drawer and removes blood product for the 1st MTP package</li><li>d) RN closes drawer</li></ul></li><li><b>ED workflow step 6: RN inspects the blood product. Is the product acceptable?</b><ul class=\"il\"><li>Inspection criteria: package intact, blood product is cold, no coagulation or change in color noted, and correct labeling</li></ul></li><li><b>ED workflow step 7: RN scans the unit and documents visual inspection</b><ul class=\"il\"><li>RN scans unit and documents visual inspection of the unit in the BloodTrack system. Transaction is then approved.</li></ul></li><li><b>ED workflow step 8: Repeat steps 5–7 for each product</b><ul class=\"il\"><li>Repeat steps 5–7 until the BloodTrack system displays \"You have successfully taken all the products for this MTP package. Close the door.\"</li><li>The BloodTrack system continues to release blood products until the last product of the 1st MTP package has been retrieved</li></ul></li><li><b>ED workflow step 9: Place all blood products in the cooler and take to bedside</b><ul class=\"il\"><li>Place all blood products in cooler and take to bedside for administration</li><li>Blood is safe for use up to 8 hours after placed in cooler</li></ul></li><li><b>ED workflow step 10: Blood administration and documentation</b><ul class=\"il\"><li>a) Confirm volume (mL/kg) and rate for blood product infusion with physician before administration of each blood product</li><li>b) Verify and administer blood product per policy 7.02 Administration of Blood and Blood Products utilizing a blood warming device</li><li>c) Document each blood product administration in the Blood Product Administration template in Epic</li><li>d) Complete required documentation on the Transfusion Record and ensure the document is scanned into the patient's medical record</li></ul></li><li><b>ED workflow step 11: Continue until the Trauma Surgeon or ED Physician orders discontinuation of MTP</b><ul class=\"il\"><li>Continue to administer blood products per physician order and MTP protocol until Trauma Surgeon or ED Physician orders the discontinuation of MTP</li><li>Blood runner will be dispatched to collect subsequent MTP packages as requested by the Physician Team Lead</li><li>If the patient is admitted, transport remaining blood products with the patient and notify the Blood Bank of the admission destination. Provide the admitting nurse with the volume of each blood product that has been transfused prior to admission</li><li>If MTP is discontinued, notify the Blood Bank and return remaining blood products to the Blood Bank</li><li>If MTP is discontinued prior to obtaining the 2nd MTP package, notify the Blood Bank and return remaining blood products and the \"green form\" to the Blood Bank</li><li><b>Second package (flowchart box 3b):</b> after the patient arrives and the MD determines the need for a 2nd MTP package, an ED Blood Runner is dispatched to the Blood Bank with the completed green form. Bring a pink top blood sample, if possible, for type and screen; otherwise bring a pink top when returning for the next package. The Blood Bank begins packing the 2nd MTP package in a cooler at this time. The ED Runner may need to retrieve O-negative RBCs and platelets, then return to the Blood Bank to retrieve the cryoprecipitate and plasma to complete the 2nd package</li><li>If the green form is not received, the Blood Bank will contact the ANM on duty to resolve</li></ul></li></ol></details><details class=\"dt\"><summary>Patient not in the ED: initiation process B–G</summary><ol class=\"il\"><li><b>Non-ED, process B (1): Provider requests initiation; order placed in Epic</b><ul class=\"il\"><li>A patient's provider requests the initiation of MTP and an order is placed in Epic to document initiation of MTP</li></ul></li><li><b>Non-ED, process B (2): Contact the Blood Bank</b><ul class=\"il\"><li>A provider or their designee contacts the Blood Bank: Arthur M. Blank 5-6421; Scottish Rite 5-2045</li></ul></li><li><b>Non-ED, process B (3): Complete the Blood Bank Product Request Release Form</b><ul class=\"il\"><li>Complete the \"Blood Bank Product Request Release Form\" Massive Transfusion protocol section. The Physician must sign, date and time the form</li><li>If the responsible Physician is unable to sign at the time of initiation, their designee or another Physician can complete the documentation on their behalf. The initiating provider will have 24 hours from MTP initiation to sign all documentation</li></ul></li><li><b>Non-ED, process B (4): Check \"Initiate MTP\", add weight, send staff to the Blood Bank</b><ul class=\"il\"><li>Check the \"Initiate MTP\" box and include the patient's weight. Send a designated staff member to the blood bank with the completed form</li><li>To pick up subsequent MTP packs, bring either the photocopy of the original completed form or a new completed form so units are allocated to the correct patient</li><li>This form should NEVER be sent to the blood bank via the pneumatic tube system</li><li>This form should transfer with the patient from one patient care area to another. A new form is not indicated in a new patient care area unless the previous MTP has been discontinued</li><li>No other forms or orders for blood products are required once the form is completed and the MTP has been initiated</li></ul></li><li><b>Non-ED, process C: Required specimens</b><ul class=\"il\"><li>Collect both a lavender/purple and a light blue specimen for MTP Labs and Nursing Orders available in Epic. Specimens must have a patient label, handwritten date, time, STAT, and collector's initials. Send to main lab and notify lab personnel that specimens are for STAT massive transfusion protocol</li><li>MTP Labs and Nursing Orders: CBC, PT, PTT, D-Dimer &amp; Fibrinogen, Type &amp; Screen, ABORh, and CG8</li><li>A provider must order the initial labs in Epic (type MTP). Orders for post-transfusion labs should be ordered using the Subsequent MTP Labs order group in Epic. Hemoglobin/Hematocrit/Platelet (HHP) replaces CBC within \"Subsequent MTP labs\"</li><li>A separate lavender/purple specimen should be sent to the Blood Bank for blood type and screen, collected as soon as possible</li><li>MTP Labs and Nursing Orders should be considered after every package is completely transfused or at the provider's discretion. Type and screen only has to be performed once every 72 hrs. ABORh is required for all patients with no blood type on file if the specimen was not collected by phlebotomy</li><li>24 hours after MTP ends, send a new lavender/purple top specimen for repeat blood typing. If the patient's blood type has changed from baseline after a large volume of universally compatible product (i.e., baseline AB/Rh positive now typing as O/Rh negative), the lab obtains approval from an on-call blood bank provider or medical director to document this temporary blood type in the electronic medical record</li></ul></li><li><b>Non-ED, process D: Consent and blood product administration</b><ul class=\"il\"><li>Blood products can be administered in an emergency without obtaining a blood product consent (see policy PC 7-03 Consent for Transfusion of Blood and/or Blood Products). The consent must be obtained as soon as possible</li><li>In emergency situations, Children's uses various methods of rapid infusion to deliver large volumes of warmed blood and blood products at high flow rates. A provider order is required prior to initiating any rapid infusion. Follow the manufacturer's instructions for use</li></ul></li><li><b>Non-ED, process E: Coolers in transport</b><ul class=\"il\"><li>During MTP, coolers may be transferred between patient care areas accompanying the patient</li><li>Once the MTP has been terminated, all coolers (and their components) and unused blood products must be returned to the blood bank as soon as possible. Discard spiked or partially used products</li></ul></li><li><b>Process F: Termination of MTP</b><ul class=\"il\"><li>The provider must terminate the MTP when they deem clinically indicated. The Blood Bank will continue to prepare blood products for subsequent MTP packages until an official termination of MTP is completed</li><li>Termination is complete once a phone call is made to the Blood Bank with the name of the provider and an order is placed in Epic. Blood Bank: Arthur M. Blank 5-6421; Scottish Rite 5-2045</li><li><b>Process G, systematic oversight:</b> the Blood Bank Medical Director or designee reviews MTP cases to determine if initiation was appropriate (at least quarterly, at each campus-specific MTP review committee meeting and/or the system Transfusion Safety Oversight Committee), correlating lab data and clinical status to see if MTP was effective in mitigating coagulopathy and improving morbidity/mortality</li></ul></li></ol></details>"},
+    "Enone":{"type":"ok","tag":"Not specified","title":"No MTP indication selected","body":"<p>The policy gives no \"No\" branch, so what to do when no indication is met is not specified.</p>"}
+  }},
+  vte:{start:"mob",nodes:{
+    "mob":{"q":"What is the patient's mobility status?","k":"Mobility status","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Patient in the PICU. Assess all patients at admission to PICU and upon any change in diagnosis/symptoms/surgical severity. The patient should receive the standard intervention based on risk level within 24 hours of admission. Use the order set for PICU Venous Thromboembolism Prophylaxis Orders in Epic.</p></details><ul class=\"il\"><li><b>Baseline:</b> usual state of ambulation or mobility</li><li><b>Altered:</b> intubation, temporary inability to ambulate freely; includes an acute state of altered mobility or due to pharmacologic interventions, or injury. Expected immobility ≥ 72 hrs</li></ul>","opts":[{"l":"Baseline","s":"ok","nx":"rfB"},{"l":"Altered","s":"ok","nx":"rfA"}]},
+    "rfB":{"q":"Baseline mobility: how many VTE risk factors does the patient have?","k":"VTE risk factors (baseline mobility)","info":"<p>Select every VTE risk factor the patient has. Baseline mobility: 1 or more = At risk.</p>","riskCalc":{"threshold":1,"factors":["Antiphospholipid antibody syndrome","Braden Q ≤ 16 in the past 12 hours","Burns &gt; 50% body surface area","Cancer or malignancy, active","Critically ill","CVL or PICC, recent or current","Cyanotic heart disease or low-flow state","Dehydration, severe","DKA","Exogenous estrogen / oral contraceptive use, current or within 2 past weeks","Family history of VTE in 1st degree relative","Hyperosmolar state","Immobilization, chronic","Infection or sepsis (acute)","Inflammatory bowel disease (IBD)","Inherited thrombophilia (Deficiencies: Protein C, S, or antithrombin; Gene mutations: Factor V Leiden or prothrombin)","Obesity (&lt; 18 years old &amp; BMI &gt; 95th percentile; ≥ 18 years old &amp; BMI &gt; 30)","Personal history of DVT/PE/Stroke","Protein-losing disorder: nephrotic syndrome, chylous effusion, enteropathy","Spinal cord injury","Surgery (within last 30 days)","Systemic lupus erythematosus (SLE)","Trauma"],"nxLow":"low","nxHigh":"atB","unit":"VTE risk factor","noun":"factor","lowName":"Low risk","highName":"At risk","lowBadge":"LOW RISK","highBadge":"AT RISK","suffix":"1 or more = At risk","zeroLbl":"None — Continue (Low risk)"}},
+    "rfA":{"q":"Altered mobility: how many VTE risk factors does the patient have?","k":"VTE risk factors (altered mobility)","info":"<p>Select every VTE risk factor the patient has. Altered mobility: 2 or more = High risk.</p>","riskCalc":{"threshold":2,"factors":["Antiphospholipid antibody syndrome","Braden Q ≤ 16 in the past 12 hours","Burns &gt; 50% body surface area","Cancer or malignancy, active","Critically ill","CVL or PICC, recent or current","Cyanotic heart disease or low-flow state","Dehydration, severe","DKA","Exogenous estrogen / oral contraceptive use, current or within 2 past weeks","Family history of VTE in 1st degree relative","Hyperosmolar state","Immobilization, chronic","Infection or sepsis (acute)","Inflammatory bowel disease (IBD)","Inherited thrombophilia (Deficiencies: Protein C, S, or antithrombin; Gene mutations: Factor V Leiden or prothrombin)","Obesity (&lt; 18 years old &amp; BMI &gt; 95th percentile; ≥ 18 years old &amp; BMI &gt; 30)","Personal history of DVT/PE/Stroke","Protein-losing disorder: nephrotic syndrome, chylous effusion, enteropathy","Spinal cord injury","Surgery (within last 30 days)","Systemic lupus erythematosus (SLE)","Trauma"],"nxLow":"atA","nxHigh":"high","unit":"VTE risk factor","noun":"factor","lowName":"At risk","highName":"High risk","lowBadge":"AT RISK","highBadge":"HIGH RISK","suffix":"2 or more = High risk","zeroLbl":"None selected — Continue (At risk)"}}
+  },ends:{
+    "low":{"type":"clr","tag":"Low risk / cleared","title":"LOW RISK","body":"<ul class=\"il\"><li>Encourage ambulation/mobility</li></ul>"},
+    "atB":{"type":"ok","tag":"Pathway outcome","title":"AT RISK (baseline mobility, 1 or more risk factors)","body":"<ul class=\"il\"><li>Encourage ambulation/mobility</li><li>PT/OT</li></ul>"},
+    "atA":{"type":"ok","tag":"Pathway outcome","title":"AT RISK (altered mobility, 0 - 1 risk factors)","body":"<ul class=\"il\"><li>Encourage ambulation/mobility</li><li>PT/OT</li><li>SCD and/or compression stockings (mechanical VTE prophylaxis is indicated for patients &gt; 10 years)</li></ul>"},
+    "high":{"type":"esc","tag":"Action required","title":"HIGH RISK (altered mobility, 2 or more risk factors)","body":"<ul class=\"il\"><li>Encourage ambulation/mobility</li><li>PT/OT</li><li>SCD and/or compression stockings (mechanical VTE prophylaxis is indicated for patients &gt; 10 years)</li><li>Anticoagulation prophylaxis (see Pharmacologic Considerations in section 4)</li></ul>"}
+  }},
+  sbirt:{start:"inc",nodes:{
+    "inc":{"q":"Does the patient meet ALL inclusion criteria?","k":"Meets all SBIRT inclusion criteria","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Trauma patient admitted to the hospital</p></details><ul class=\"il\"><li>(1) 12 years of age or older</li><li>(2) Admitted to the hospital due to an injury</li><li>(3) Both mentally competent and sufficiently stable from a medical perspective to answer the questions on the CRAFFT Tool</li></ul>","opts":[{"l":"YES","s":"ok","nx":"intro"},{"l":"No","s":"ok","nx":"G_inc"}]},
+    "intro":{"q":"Trauma Services explains the screening and offers the handouts (any time during the admission)","k":"Do this","info":"<ul class=\"il\"><li>Trauma Services identifies the patients who meet inclusion criteria</li><li>At any time during the admission, Trauma Services will:<ul><li>Explain the purpose of the CRAFFT Tool to the patient and any parent or guardian present in the room</li><li>Provide the patient with the Patient Family Education Handout \"Questions and Answers for Adolescents: Screening &amp; Brief Intervention: Alcohol and Substance Abuse\"</li><li>Provide any parent or guardian present with the handout \"Questions and Answers for Parents: Screening &amp; Brief Intervention: Alcohol and Substance Abuse\"</li><li>Verbally request that the parent and/or guardian allow the trauma clinician to have a private conversation with the child</li></ul></li></ul>","opts":[{"l":"Continue","s":"ok","nx":"par"}]},
+    "par":{"q":"Does the parent and/or guardian agree to the private conversation and the questions?","k":"Parent/guardian agrees","opts":[{"l":"YES","s":"ok","nx":"open"},{"l":"NO","s":"ok","nx":"refuse"}]},
+    "open":{"q":"In a private setting, ask the adolescent to be honest (\"Please answer these next questions honestly\"), then ask the 3 opening questions. During the past 12 months, did you: (1) drink any alcohol (more than a few sips)? (2) smoke any marijuana or hashish? (3) use anything else to get high? Is the answer YES to any one or more?","k":"Any YES to the 3 opening questions","info":"<ul class=\"il\"><li>\"Anything else\" includes illegal drugs, over the counter prescription drugs, and things that you sniff or \"huff\"</li></ul>","opts":[{"l":"YES (any 1 or more)","s":"ok","nx":"all6"},{"l":"NO (all 3 are No)","s":"ok","nx":"car"}]},
+    "all6":{"q":"Ask all 6 CRAFFT questions","k":"Do this","info":"<ul class=\"il\"><li>Ask all 6 CRAFFT questions</li><li>Each \"Yes\" is scored 1 point</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"score"}]},
+    "car":{"q":"Ask the CAR question only","k":"Do this","info":"<ul class=\"il\"><li>Ask only the first CRAFFT question (CAR): \"Have you ever ridden in a CAR driven by someone (including yourself) who was high or had been using alcohol or drugs?\"</li><li>A \"Yes\" is scored 1 point</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"score"}]},
+    "score":{"q":"Score the CRAFFT Tool (each \"Yes\" = 1 point). What is the result?","k":"CRAFFT score and reported use","info":"<p>A \"positive screen\" is either (1) a \"yes\" response to any two of the questions on the CRAFFT Tool, or (2) a positive urine or serum alcohol or drug screen. A positive urine or serum screen is also a positive screen even if the CRAFFT score is lower; the policy does not draw this as a separate arrow.</p>","opts":[{"l":"Score 0 and no reported use of alcohol or drugs","s":"ok","nx":"praise"},{"l":"Score 0 or 1 and any reported use of alcohol or drugs","s":"ok","nx":"brief"},{"l":"Score of 2 or greater","s":"ok","nx":"pos"}]}
+  },ends:{
+    "G_inc":{"type":"ok","tag":"Not specified","title":"The source does not say what to do here","body":"<p>The policy gives no \"No\" branch, so what to do for a patient who does not meet all inclusion criteria is not specified (the policy simply applies to patients who meet them).</p>"},
+    "refuse":{"type":"ok","tag":"Pathway outcome","title":"Comply with the parent/guardian's wishes","body":"<ul class=\"il\"><li>The parent and/or guardian may refuse to leave the room or may refuse the questions altogether. The clinician will comply with the parent and/or guardian's wishes</li><li>Document the decision by the patient and/or parent not to participate in the CRAFFT screening or Brief Intervention in the medical record</li></ul>"},
+    "praise":{"type":"clr","tag":"Low risk / cleared","title":"Praise and encouragement","body":"<ul class=\"il\"><li>Adolescents who report no use of alcohol or drugs and have a CRAFFT score of 0 should receive praise and encouragement</li></ul>"},
+    "brief":{"type":"ok","tag":"Pathway outcome","title":"Encourage to stop and give brief advice on the adverse health effects of substance use (this is a \"Brief Intervention\")","body":"<ul class=\"il\"><li>Those who receive a score of 0 or 1 and report any use of alcohol or drugs should be encouraged to stop and receive brief advice regarding the adverse health effects of substance use</li></ul>"},
+    "pos":{"type":"esc","tag":"Action required","title":"POSITIVE SCREEN: Brief Intervention and referral to Psychiatry","body":"<ul class=\"il\"><li>A score of 2 or greater is a \"positive\" screen: the adolescent is at high risk for having an alcohol or drug-related disorder and requires further assessment</li><li>Any patient who has a positive screen will receive a clinically appropriate Brief Intervention and a referral to Psychiatry</li><li>Psychiatry should be consulted for the patient</li><li>A qualified health care professional will provide referrals for therapy/treatment for those patients who need and want more intensive, preventative therapy</li><li>Substance abuse resources should be provided to the patient and parent unless contraindicated under the confidentiality section</li><li>Trauma Services notifies psychiatry of a positive screen</li></ul>"}
+  }},
+  nat:{start:"hr",nodes:{
+    "hr":{"q":"Does the patient have a high risk injury¹ or multiple red flags?","k":"High risk injury or multiple red flags","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Patient presents to the Emergency Department or Urgent Care with a possible high-risk injury</p></details><ul class=\"il\"><li><b>High risk injuries¹:</b> (1) skull/facial fracture in child &lt; 2 years or nonverbal child; (2) long bone fracture in child &lt; 2 years or nonverbal child; (3) intracranial injury in child &lt; 2 years or nonverbal child at any age (exclude MVC); (4) rib fracture in child &lt; 3 years or nonverbal child at any age; (5) patterned and/or symmetrical burns; (6) domestic violence in the home or presents as victim of domestic violence; (7) injuries as defined by TEN-4-FACESp</li><li>Multiple red flags may include multiple concerns this admission or single concerns during multiple admissions (review EPIC FYI)</li></ul>","opts":[{"l":"YES","s":"ok","nx":"which"},{"l":"NO","s":"ok","nx":"disp1"}]},
+    "which":{"q":"Which high-risk injury is present?","k":"Which high risk injury","opts":[{"l":"Skull/facial fracture in child < 2 years or nonverbal child (item 1)","s":"ok","nx":"lowS"},{"l":"Long bone fracture in child < 2 years or nonverbal child (item 2)","s":"ok","nx":"lowL"},{"l":"Any other high-risk injury (items 3–7) or multiple red flags","s":"ok","nx":"work"}]},
+    "lowS":{"q":"Does the child meet ALL of the following criteria?","k":"All low-risk skull/facial fracture criteria met","info":"<ul class=\"il\"><li>a. Low risk fracture (simple, linear nature, parietal bone)</li><li>b. A reliable history of a fall from a height that can be corroborated by an adult/older child who was present during the incident. This may include an auditory account (e.g., heard a thud and found the child on the ground after being on an elevated surface)</li><li>c. The child is 6 months old and mobile</li><li>d. There are no additional fractures</li></ul>","opts":[{"l":"YES (all met)","s":"ok","nx":"dcS"},{"l":"NO (not all met)","s":"ok","nx":"work"}]},
+    "lowL":{"q":"Does the child meet ALL of the following criteria?","k":"All low-risk long bone fracture criteria met","info":"<ul class=\"il\"><li>a. &gt; 9 months old</li><li>b. Patient is cruising or walking</li><li>c. Low risk fracture (distal radius/ulna buckle fracture or a toddler fracture of the tibia)</li><li>d. There are no additional fractures</li></ul>","opts":[{"l":"YES (all met)","s":"ok","nx":"dcL"},{"l":"NO (not all met)","s":"ok","nx":"work"}]},
+    "work":{"q":"Proceed with the NAT work up: diagnostic trauma labs, diagnostic trauma imaging and consults","k":"Do this","info":"<ul class=\"il\"><li><b>Diagnostic Trauma Labs</b><ul><li>CBC</li><li>CMP</li><li>Lipase</li><li>If altered mental status, consider urine drug screen (UDS)</li></ul></li><li><b>Diagnostic Trauma Imaging</b><ul><li>Perform photo documentation in Epic if cutaneous findings</li><li>Head CT if patient is &lt; 6 months or neurological findings</li><li>Skeletal Survey &lt; 2 years</li><li>CT abdomen/pelvis with IV contrast if: AST/ALT &gt; 80; elevated lipase; significant concern for abdominal pain, tenderness, or bruising</li><li>In cardiac death with unknown etiology, obtain a post-mortem skeletal survey &lt; 2 years of age</li></ul></li><li><b>Consults</b><ul><li>Consult specialty teams as needed to treat the patient's specific injury</li><li>Consult Child Advocacy attending or fellow on call if there are questions surrounding evaluation, disposition, questions surrounding red flags/risk factors or equivocal findings</li><li>Consult Social Work (SW) for an assessment. SW to initiate referrals to DFCS and/or Law Enforcement if home safety concerns identified, need for further investigation for injury and/or as indicated by provider</li></ul></li></ul>","opts":[{"l":"Continue","s":"ok","nx":"adm"}]},
+    "adm":{"q":"Do findings on history, exam, labs, imaging, or social work evaluation require admission?","k":"Findings require admission","opts":[{"l":"YES","s":"ok","nx":"trauma"},{"l":"NO","s":"ok","nx":"disp2"}]}
+  },ends:{
+    "disp1":{"type":"ok","tag":"Pathway outcome","title":"Disposition per ED attending/APP","body":""},
+    "dcS":{"type":"ok","tag":"Pathway outcome","title":"Consult social work and consider discharge per ED Attending/Neurosurgery","body":""},
+    "dcL":{"type":"ok","tag":"Pathway outcome","title":"Consult social work and consider discharge per ED Attending/Orthopedics","body":""},
+    "trauma":{"type":"esc","tag":"Action required","title":"Consult/admit to trauma service","body":""},
+    "disp2":{"type":"ok","tag":"Pathway outcome","title":"Disposition per ED attending","body":""}
+  }},
+  csec:{start:"set",nodes:{
+    "set":{"q":"Which pathway applies?","k":"Pathway","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Concern for child sex trafficking / commercial sexual exploitation in a patient 11 years or older</p></details>","opts":[{"l":"Emergency Department","s":"ok","nx":"ed1"},{"l":"Urgent and Primary Care","s":"ok","nx":"uc1"},{"l":"Inpatient","s":"ok","nx":"ip1"},{"l":"Considering prophylactic treatment (STI, HIV, pregnancy)","s":"ok","nx":"pro1"}]},
+    "ed1":{"q":"ED: Does the Provider/Nurse have concerns of CST based on risk factors¹?","k":"ED: concerns of CST based on risk factors","info":"<ul class=\"il\"><li>¹ Risk factors for CST ≥ 11 years:<ul><li><b>Chief complaint of:</b> vaginal or penile discharge (or noted on exam); request for STI testing; request for pregnancy testing; intoxication or ingestion; suicide attempt; clearance exam for DFCS; acute sexual assault</li><li><b>Other:</b> child has an injury suspicious for being inflicted; child has a history of running away; staff has any other concerns of CST</li></ul></li></ul>","opts":[{"l":"YES","s":"ok","nx":"ed2"},{"l":"NO","s":"ok","nx":"rout"}]},
+    "ed2":{"q":"ED: Provider/Nurse consults Social Work","k":"Do this","info":"<ul class=\"il\"><li>Provider/Nurse consults Social Work</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"ed3"}]},
+    "ed3":{"q":"ED: Social Work uses the Short Screen for CST","k":"Do this","info":"<ul class=\"il\"><li>Social Work uses the Short Screen for CST</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"ed4"}]},
+    "ed4":{"q":"ED: Social Worker discusses the case with the attending","k":"Do this","info":"<ul class=\"il\"><li>Social Worker discusses the case with the attending</li><li>² If considering prophylactic treatment, see the prophylaxis pathway (STI, HIV, &amp; Pregnancy)</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"ed5"}]},
+    "ed5":{"q":"ED: Is there concern for CST?²","k":"ED: concern for CST","opts":[{"l":"No","s":"ok","nx":"rout"},{"l":"Yes, but not active CST","s":"ok","nx":"ed6"},{"l":"Yes, active CST","s":"ok","nx":"ed7"}]},
+    "ed6":{"q":"ED, concern for CST but not active CST: Is the patient being admitted?","k":"ED: admit (not active CST)","opts":[{"l":"Admit: No","s":"ok","nx":"ed6n"},{"l":"Admit: Yes","s":"ok","nx":"ed6y"}]},
+    "ed7":{"q":"ED, active CST: Call CPT Provider for a sexual abuse exam; call law enforcement/DFCS","k":"Do this","info":"<ul class=\"il\"><li>Call CPT Provider for sexual abuse exam</li><li>Call law enforcement/DFCS</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"ed8"}]},
+    "ed8":{"q":"ED, active CST: Is the patient being admitted?","k":"ED: admit (active CST)","opts":[{"l":"Admit: No","s":"ok","nx":"ed8n"},{"l":"Admit: Yes","s":"ok","nx":"ed8y"}]},
+    "uc1":{"q":"UC/Primary Care: A nurse uses the Abuse Screening tool in the Initial Assessment tool OR the provider suspects CST during the visit based on risk factors¹. Is abuse, neglect or CST suspected?","k":"UC/PC: abuse, neglect or CST suspected","info":"<ul class=\"il\"><li>¹ Risk factors for CST ≥ 11 years:<ul><li><b>Chief complaint of:</b> vaginal or penile discharge (or noted on exam); request for STI testing; request for pregnancy testing; intoxication or ingestion; suicide attempt; clearance exam for DFCS; acute sexual assault</li><li><b>Other:</b> child has an injury suspicious for being inflicted; child has a history of running away; staff has any other concerns of CST</li></ul></li><li><b>At any time, local law enforcement may be called if staff feels there is a flight risk or dangerous situation.</b></li></ul>","opts":[{"l":"No","s":"ok","nx":"ucr"},{"l":"Yes","s":"ok","nx":"uc2"}]},
+    "uc2":{"q":"UC/PC: Nurse contacts the lead provider and follows the Abuse Algorithm for UC","k":"Do this","info":"<ul class=\"il\"><li>Nurse contacts lead provider and follows the Abuse Algorithm for UC</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"uc3"}]},
+    "uc3":{"q":"UC/PC: Call is made to the Transfer Center","k":"Do this","info":"<ul class=\"il\"><li>Call is made to Transfer Center</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"uc4"}]},
+    "uc4":{"q":"UC/PC: Transfer Center contacts the provider on call for Stephanie V. Blank","k":"Do this","info":"<ul class=\"il\"><li>Transfer Center will contact provider on call for Stephanie V. Blank</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"uc5"}]},
+    "ip1":{"q":"Inpatient trigger: staff concern or Social Work identifies \"high risk\"","k":"Do this","info":"<ul class=\"il\"><li>Staff member(s) concern that the child is a CST victim based on risk factors¹, OR Social Work identifies the patient as \"high risk\"</li><li>¹ Risk factors for CST ≥ 11 years:<ul><li><b>Chief complaint of:</b> vaginal or penile discharge (or noted on exam); request for STI testing; request for pregnancy testing; intoxication or ingestion; suicide attempt; clearance exam for DFCS; acute sexual assault</li><li><b>Other:</b> child has an injury suspicious for being inflicted; child has a history of running away; staff has any other concerns of CST</li></ul></li></ul>","opts":[{"l":"Continue","s":"ok","nx":"ip2"}]},
+    "ip2":{"q":"Inpatient: Consult Social Work","k":"Do this","info":"<ul class=\"il\"><li>Consult Social Work</li><li>Social Worker uses the Short Screen for CST</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"ip3"}]},
+    "ip3":{"q":"Inpatient: Is CST suspected based on the Short Screen?²","k":"Inpatient: CST suspected on Short Screen","info":"<ul class=\"il\"><li>² If considering prophylactic treatment, see the prophylaxis pathway (STI, HIV, &amp; Pregnancy)</li></ul>","opts":[{"l":"No","s":"ok","nx":"ipr"},{"l":"Yes","s":"ok","nx":"ipy"}]},
+    "pro1":{"q":"Prophylaxis: Which patient group?","k":"Prophylaxis: patient group","info":"","opts":[{"l":"Pre-pubertal child","s":"ok","nx":"prep"},{"l":"Adolescent female (> Tanner Stage 3)","s":"ok","nx":"pro2"}]},
+    "pro2":{"q":"Adolescent female (&gt; Tanner Stage 3): STI post-exposure prophylaxis","k":"Do this","info":"<ul class=\"il\"><li>STI post exposure prophylaxis: Rocephin 500mg IM, Azithromycin 1G PO, Flagyl 2G PO, Ella 30mg PO, Zofran 8mg PO</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"pro3"}]},
+    "pro3":{"q":"Adolescent female: HIV post-exposure prophylaxis is based on exposure risk. What is the exposure risk?","k":"HIV exposure risk","info":"<ul class=\"il\"><li><b>Substantial risk for HIV exposure:</b> exposure of vagina, rectum, eye, mouth, or other mucous membrane, nonintact skin, or percutaneous contact, WITH blood, semen, vaginal secretions, rectal secretions, breast milk, or any body fluid that is visibly contaminated with blood, WHEN the source is known to be HIV-infected</li><li><b>Negligible risk for HIV exposure:</b> exposure of vagina, rectum, eye, mouth, or other mucous membrane, nonintact skin, or percutaneous contact, WITH urine, nasal secretions, saliva, sweat, or tears if not visibly contaminated with blood, REGARDLESS of the known or suspected HIV status of the source</li></ul>","opts":[{"l":"Substantial exposure risk","s":"ok","nx":"time"},{"l":"Negligible exposure risk","s":"ok","nx":"npep0"}]},
+    "time":{"q":"Substantial exposure risk: how long since the exposure?","k":"Time since exposure","info":"","opts":[{"l":"≤ 72 hours since exposure","s":"ok","nx":"src"},{"l":"≥ 72 hours since exposure","s":"ok","nx":"npep0"}]},
+    "src":{"q":"Within 72 hours: what is the HIV status of the source patient?","k":"Source patient HIV status","opts":[{"l":"Source patient known to be HIV positive","s":"ok","nx":"npY"},{"l":"Source patient of unknown HIV status","s":"ok","nx":"npC"}]}
+  },ends:{
+    "rout":{"type":"clr","tag":"Low risk / cleared","title":"Proceed with routine care and call CPT Provider for Sexual Abuse","body":"<ul class=\"il\"><li>Proceed with routine care</li><li>Call CPT Provider for Sexual Abuse</li></ul>"},
+    "ed6n":{"type":"ok","tag":"Pathway outcome","title":"Call CPT Provider for Sexual Abuse to discuss; consider calling law enforcement/DFCS","body":"<ul class=\"il\"><li>Call CPT Provider for Sexual Abuse to discuss</li><li>Consider calling law enforcement/DFCS</li></ul>"},
+    "ed6y":{"type":"ok","tag":"Pathway outcome","title":"Consult inpatient provider in AM; consider calling law enforcement/DFCS","body":"<ul class=\"il\"><li>Consult inpatient provider in AM</li><li>Consider calling law enforcement/DFCS</li></ul>"},
+    "ed8n":{"type":"esc","tag":"Action required","title":"Follow-up at the Center for Safe/Healthy Children in 2 weeks","body":""},
+    "ed8y":{"type":"esc","tag":"Action required","title":"CPT inpatient provider to follow up in AM","body":""},
+    "ucr":{"type":"clr","tag":"Low risk / cleared","title":"Continue routine care","body":""},
+    "uc5":{"type":"esc","tag":"Action required","title":"Provider and representative from Stephanie V. Blank determine next steps","body":"<ul class=\"il\"><li>Next steps may include: transfer to hospital for further evaluation; calling local DFCS</li></ul>"},
+    "ipr":{"type":"clr","tag":"Low risk / cleared","title":"Continue routine care","body":""},
+    "ipy":{"type":"esc","tag":"Action required","title":"Consult CPT inpatient provider","body":""},
+    "prep":{"type":"ok","tag":"Pathway outcome","title":"No STI prophylaxis is given. For HIV prophylaxis, contact Infectious Disease (ID)","body":""},
+    "npY":{"type":"esc","tag":"Action required","title":"nPEP recommended","body":"<ul class=\"il\"><li>nPEP = nonoccupational post-exposure prophylaxis</li><li>HIV post-exposure prophylaxis dosing: 14-25 kg: Biktarvy 30-120-15mg 1 QD for 28 days; &gt; 25 kg: Biktarvy 50-200-25mg 1 QD for 28 days</li></ul>"},
+    "npC":{"type":"ok","tag":"Pathway outcome","title":"Case-by-case determination","body":"<ul class=\"il\"><li>If you have additional questions, contact the Child Protection team via Doc on Call</li></ul>"},
+    "npep0":{"type":"clr","tag":"Low risk / cleared","title":"nPEP not recommended","body":""}
+  }},
+  bat:{start:"b0",nodes:{
+    "b0":{"q":"Trauma resuscitation and survey","k":"Do this","info":"<details class=\"entryd\"><summary>When to use this pathway</summary><p>Patient presents with a mechanism of injury or presenting symptom concerning for blunt abdominal trauma. Exclusion criteria: any penetrating trauma.</p></details><ul class=\"il\"><li>Trauma resuscitation (ATLS)</li><li>Primary/secondary survey</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"d1"}]},
+    "d1":{"q":"Does the patient have ANY of the following: hemodynamic instability, an abnormal GCS, or an unreliable physical exam (any distracting injuries)?","k":"Unstable or unreliable exam","opts":[{"l":"YES","s":"ok","nx":"b1"},{"l":"NO","s":"ok","nx":"b2"}]},
+    "b1":{"q":"Activate Trauma STAT², obtain the Extended Trauma Panel¹, Trauma Surgery determines the next step","k":"Do this","info":"<ul class=\"il\"><li>Activate Trauma STAT² (consult Trauma Surgery)</li><li>Obtain Extended Trauma Panel¹</li><li>Trauma Surgery to determine: abdominal/pelvis CT scan VS exploratory laparotomy VS interventional radiology</li><li><b>Additional lab and imaging orders:</b> C-spine x-ray; abdominal/pelvis CT scans; initiate MTP if hemodynamically unstable; serum pregnancy per system policy</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"ct"}]},
+    "b2":{"q":"Obtain the Basic Trauma Panel¹, then consider CT scan","k":"Do this","info":"<ul class=\"il\"><li>Obtain Basic Trauma Panel¹</li><li><b>Consider CT scan if the patient has any of the following (per physician discretion):</b> complaint of abdominal pain; gross hematuria (visible blood in urine); abdominal wall tenderness or distension; handlebar or seatbelt sign present; AST &gt; 200; lipase &gt; 400; unexplained or severe anemia (hemoglobin less than 7 g/dl); abnormal chest or pelvic x-ray; consider if the patient has a complex medical history (i.e., sickle cell, cardiac history)</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"ct"}]},
+    "ct":{"q":"Is a CT scan indicated?","k":"CT scan indicated","opts":[{"l":"NO","s":"ok","nx":"adm"},{"l":"YES","s":"ok","nx":"ctdo"}]},
+    "ctdo":{"q":"CT scan (if indicated)","k":"Do this","info":"<ul class=\"il\"><li>Abdominal/pelvis CT scan with IV contrast for patients who meet criteria</li><li>Radiology to report findings to the ED provider (ordering provider)</li><li>Notify the Trauma Service if the CT scan is positive, including any blush/extravasation</li><li><b>Trauma surgery to consult IR for all patients with solid organ injury (≥ grade 3), stable or unstable, with CT that shows blush/extravasation</b></li></ul>","opts":[{"l":"Continue","s":"ok","nx":"ctpos"}]},
+    "ctpos":{"q":"Is the CT scan positive?","k":"CT scan positive","opts":[{"l":"NO","s":"ok","nx":"adm"},{"l":"YES (continue to management on page 2)","s":"ok","nx":"ip"}]},
+    "ip":{"q":"Inpatient management: Is the CT scan with IV contrast positive?","k":"Positive CT scan with IV contrast","info":"<ul class=\"il\"><li>The chart draws three YES arrows from this question (free air or peritonitis; suspected hollow visceral injury; solid organ injury). A patient may fit more than one.</li></ul>","opts":[{"l":"NO","s":"ok","nx":"adm2"},{"l":"YES: free air or peritonitis","s":"ok","nx":"fa"},{"l":"YES: suspected hollow visceral injury","s":"ok","nx":"hv"},{"l":"YES: solid organ injury","s":"ok","nx":"so"}]},
+    "hv":{"q":"Suspected hollow visceral injury: the chart shows a Yes/No split below this box but does not write the question. Which branch applies?","k":"Hollow visceral injury","info":"","opts":[{"l":"Yes","s":"ok","nx":"hvy"},{"l":"No","s":"ok","nx":"hvn"}]},
+    "so":{"q":"Solid organ injury: Trauma surgery to consult IR for grade 3 or higher with blush/extravasation","k":"Do this","info":"<ul class=\"il\"><li>Trauma surgery to consult IR for all patients with solid organ injury (≥ grade 3), stable or unstable, with CT that shows blush/extravasation</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"atom"}]},
+    "atom":{"q":"Admit to hospital and follow the ATOMAC Guideline","k":"Do this","info":"<ul class=\"il\"><li>Admit to Hospital</li><li>Follow ATOMAC Guideline</li><li>ATOMAC applies to solid organ injury (kidney, liver, spleen) shown by CT scan, or suspected injury</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"bleed"}]},
+    "bleed":{"q":"ATOMAC: Is there ongoing or very recent bleeding? (As determined by the surgeon; may include high HR, low BP, delayed cap refill, rising SIPA score)","k":"Ongoing or very recent bleeding","opts":[{"l":"No","s":"ok","nx":"st"},{"l":"Yes","s":"ok","nx":"hypo"}]},
+    "st":{"q":"ATOMAC, stable: admit to non-ICU with monitoring","k":"Do this","info":"<ul class=\"il\"><li>Stable:<ul><li>Type and Screen</li><li>Admit to non-ICU</li><li>Vitals q2H x 4, then q4h</li><li>Bedrest overnight</li><li>Hb at 6, 12, and 24 hrs</li></ul></li></ul>","opts":[{"l":"Continue","s":"ok","nx":"sthb"}]},
+    "sthb":{"q":"ATOMAC, stable: Is Hb &lt; 7.0 or is the patient symptomatic?","k":"Hb < 7.0 or symptomatic (stable branch)","opts":[{"l":"No","s":"ok","nx":"floor"},{"l":"Yes","s":"ok","nx":"stx"}]},
+    "stx":{"q":"ATOMAC, stable branch with Hb &lt; 7.0 or symptomatic: transfuse","k":"Do this","info":"<ul class=\"il\"><li>10-20 ml/kg PRBC</li><li>NPO</li><li>Bedrest additional 24 hrs</li><li>Hb q6h until stable x2</li></ul>","opts":[{"l":"Stabilized","s":"ok","nx":"floor"},{"l":"Continued bleeding","s":"ok","nx":"picu"}]},
+    "hypo":{"q":"ATOMAC, hypoperfused","k":"Do this","info":"<ul class=\"il\"><li>10-20 mL/kg PRBC; consider 20 ml/kg LR or NS, if needed, while waiting for blood transfusion</li><li>Consider other causes (tamponade, spinal shock, etc.)</li><li>Consider the Massive Transfusion Protocol</li></ul>","opts":[{"l":"No response to PRBC; no other cause identified","s":"ok","nx":"surg"},{"l":"HR/BP/perfusion stabilize","s":"ok","nx":"ct2"}]},
+    "ct2":{"q":"CT if not already done","k":"Do this","info":"<ul class=\"il\"><li>CT if not already done</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"picu"}]},
+    "picu":{"q":"Admit to PICU","k":"Do this","info":"<ul class=\"il\"><li>Admit to PICU</li><li>Vitals per ICU routine</li><li>NPO</li><li>Hb q6h</li><li>Bedrest until Hb stable</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"pd"}]},
+    "pd":{"q":"PICU: Is Hb &lt; 7.0 or is the patient symptomatic?","k":"Hb < 7.0 or symptomatic (PICU)","opts":[{"l":"No","s":"ok","nx":"pstable"},{"l":"Yes","s":"ok","nx":"ptx"}]},
+    "pstable":{"q":"Patient stable","k":"Do this","info":"<ul class=\"il\"><li>Patient stable</li><li>No bleeding for 24 hrs</li><li>Transfer to floor, if not contraindicated by other injuries</li></ul>","opts":[{"l":"Stabilized","s":"ok","nx":"floor"}]},
+    "ptx":{"q":"PICU, Hb &lt; 7.0 or symptomatic: transfuse","k":"Do this","info":"<ul class=\"il\"><li>10-20 ml/kg PRBC</li><li>NPO</li><li>Bedrest x 24 hr</li><li>Hb q6h</li></ul>","opts":[{"l":"Hb or vital signs still unstable; > 40 mL/kg PRBC or > 4 units PRBC","s":"ok","nx":"nom"},{"l":"Hb ≥ 7.0; < 4 units PRBC and < 40 mL/kg PRBC","s":"ok","nx":"picu24"}]},
+    "picu24":{"q":"PICU until Hb stable for 24 hrs","k":"Do this","info":"<ul class=\"il\"><li>PICU until Hb stable for 24 hrs</li></ul>","opts":[{"l":"Rebleed or continued bleeding","s":"ok","nx":"nom"},{"l":"Hb stable","s":"ok","nx":"lower"}]},
+    "lower":{"q":"Hb stable: consider transfer to a lower level of care","k":"Do this","info":"<ul class=\"il\"><li>Hb Stable</li><li>Consider transfer to lower level of care</li></ul>","opts":[{"l":"Continue","s":"ok","nx":"floor"}]},
+    "nom":{"q":"Failure of non-operative management (NOM). Which option?","k":"Failure of NOM option","opts":[{"l":"Trauma surgery to consult IR","s":"ok","nx":"nomIR"},{"l":"Surgery","s":"ok","nx":"nomSx"},{"l":"Continued NOM at surgeon discretion","s":"ok","nx":"nomC"}]}
+  },ends:{
+    "adm":{"type":"ok","tag":"Pathway outcome","title":"Admit to Trauma Service if admission criteria³ are met, OR discharge if discharge criteria⁴ are met","body":"<ul class=\"il\"><li>Admit to Trauma Service if the patient meets admission criteria³ (consult Trauma Surgery)</li><li>If concern for NAT, follow the NAT Guideline</li><li>OR: discharge the patient if they meet discharge criteria⁴</li></ul>"},
+    "adm2":{"type":"ok","tag":"Pathway outcome","title":"Admission to Trauma Service for observation per physician discretion (see Admission Criteria³)","body":""},
+    "fa":{"type":"ok","tag":"Pathway outcome","title":"Decision making: exploratory laparotomy vs observation with resuscitation, based on the Trauma Surgeon's discretion","body":""},
+    "hvy":{"type":"ok","tag":"Pathway outcome","title":"Diagnostic laparoscopy vs admit for serial abdominal exams vs repeat CT scan (per physician discretion)","body":""},
+    "hvn":{"type":"ok","tag":"Pathway outcome","title":"Admit to hospital for serial exams","body":""},
+    "surg":{"type":"esc","tag":"Action required","title":"Surgery / IR per provider discretion","body":""},
+    "nomIR":{"type":"esc","tag":"Action required","title":"Trauma surgery to consult IR","body":""},
+    "nomSx":{"type":"esc","tag":"Action required","title":"Surgery","body":""},
+    "nomC":{"type":"ok","tag":"Pathway outcome","title":"Continued NOM at surgeon discretion","body":""},
+    "floor":{"type":"ok","tag":"Pathway outcome","title":"Transfer to floor; discharge when criteria are met","body":"<ul class=\"il\"><li><b>Transfer to floor:</b> floor status; regular diet; ambulate if Hb stable for 24 hrs</li><li><b>Discharge criteria:</b> vital signs stable; tolerating regular diet; minimal abdominal pain</li><li>Discharge instructions: see section 4</li></ul>"}
+  }}
+};
+
+// Factual reference content from each guideline (tables, lists, definitions), shown on outcome screens.
+const REF={"tta": "<h4>Activation level upgrade</h4><p>An activation level may be upgraded at the discretion of the ED Physician or the Trauma Surgeon.</p><h4>How activation works</h4><ul class=\"il\"><li>Communication Center, the ED charge RN or the transfer center determines the need to activate the trauma team based on the pre-determined criteria. The trauma team at the accepting campus is paged at the level of response indicated by the criteria.</li><li>For all Trauma STAT activations, the Trauma Surgery Attending is notified using the number provided in Doc on Call.</li><li>Communication Center will page a trauma update when available, ideally when the patient's estimated time of arrival (ETA) is under 20 minutes.</li><li>The page will indicate, if available: trauma activation level; trauma triage criteria; patient age; mechanism of injury; patient source; estimated patient arrival time; transport mode; date, time and initials.</li><li>All trauma team members remain in the trauma room until the physician leader or designee indicates that their role is no longer needed.</li><li>The ED attending is the physician in charge of trauma patients until transfer of service has taken place. If trauma surgery is consulted, transfer of service may take place (1) to the Trauma Surgery Attending or Fellow once present, or (2) to the admitting service, upon arrival to the admitting unit.</li></ul><h4>Where trauma transfers are seen first</h4><ul class=\"il\"><li>Trauma transfers from a referring ED that meet any level of trauma team activation will be seen in the Children's ED initially. This sub-set of patients should not be made direct admissions to inpatient units.</li><li>Trauma transfers from referring hospital operating rooms (OR) or post anesthesia care units (PACU) can be seen initially in the Children's ED or direct admitted to the Children's pediatric intensive care unit (PICU). This decision is at the discretion of the trauma attending and no other location is acceptable for the initial point of care for these patients.</li><li>Trauma transfers already admitted to referring hospital inpatient units may be direct admits or routed to the Children's ED at the discretion of the trauma attending.</li></ul><h4>Team attendance by activation level</h4><p>X = member attends. ABM = Arthur M. Blank campus; SR = Scottish Rite campus. STAT: activate trauma page and call Trauma Surgery Attending. ALERT and EVALUATION: activate trauma page. * = when available.</p><div class=\"rt\"><table><tr><th>Team member</th><th>STAT ABM</th><th>STAT SR</th><th>ALERT ABM</th><th>ALERT SR</th><th>EVAL (both campuses)</th></tr><tr><td>Trauma Surgery Attending</td><td>X</td><td>X</td><td>—</td><td>—</td><td>—</td></tr><tr><td>ED Attending</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td>Pediatric Trauma Surgery Fellow</td><td>X</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Trauma APP or Surgery APP or Surgery Resident</td><td>X</td><td>X</td><td>X</td><td>X</td><td>When consulted</td></tr><tr><td>Anesthesia Service or airway control physician</td><td>X</td><td>X</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Respiratory Care</td><td>X</td><td>X</td><td>X</td><td>X</td><td>—</td></tr><tr><td>ED RN Team Lead RN</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td>PICU RN</td><td>X</td><td>X</td><td>—</td><td>—</td><td>—</td></tr><tr><td>OR RN</td><td>X</td><td>X</td><td>—</td><td>—</td><td>—</td></tr><tr><td>ED RN</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td>Trauma RN *</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td>Paramedic/PCT</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td>Laboratory - Phlebotomist</td><td>X</td><td>X</td><td>X</td><td>X</td><td>—</td></tr><tr><td>Radiology Tech</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td>Security</td><td>X</td><td>X</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Child Life *</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td>Pharmacy</td><td>X</td><td>X</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Social Work/Chaplain</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr></table></div><h4>Team member roles</h4><div class=\"rt\"><table><tr><th>Role</th><th>Responsibilities</th></tr><tr><td>ED Attending</td><td>Serves as medical control for EMS calls; Assumes team leader function until trauma surgeon attending/surgery fellow arrives; Initial primary/secondary survey (if trauma surgeon attending not present); Coordinates team activities; Performs or assists with interventions/procedures such as airway control</td></tr><tr><td>Trauma Surgeon (Attending/Fellow)</td><td>Upon arrival, becomes the leader of all team activities; Initial primary/secondary survey; Performs or assists with interventions/procedures; Directs resuscitation</td></tr><tr><td>Trauma APP / Surgery Resident / Surgery APP</td><td>Assists with surgical stabilization as directed by the attending physician</td></tr><tr><td>Airway control physician (may be Anesthesia, ED, Trauma or Critical Care Provider)</td><td>Establishes clear airway; Intubates; Obtains surgical airway if indicated; ED attending or Anesthesia dictates airway management in collaboration with Trauma physician</td></tr><tr><td>Respiratory Care</td><td>Assists with airway maintenance; Sets up and manages ventilator; Places airway monitoring devices; Monitors end tidal carbon dioxide (CO2) readings</td></tr><tr><td>Trauma RN (when on duty)</td><td>Responds to all trauma team activations (Trauma Stats, Trauma Alerts and Trauma Evaluations); Ensures adherence to Children's trauma quality indicators; Accompanies critical trauma patients to CT/PICU/OR as appropriate; Assists general surgery, neurosurgery, and/or orthopedic surgery with bedside procedures as directed by the physician; Serves as a clinical resource, encourages professional growth, and promotes evidence based medicine and best practices</td></tr><tr><td>Team lead RN (Pediatric Trauma Specialist when available)</td><td>Primary RN; Documents attending physician dictated primary/secondary survey, orders and trauma diagnostics; Completes all nursing documentation; Provides direct patient care as indicated</td></tr><tr><td>ED RN</td><td>Sets up trauma room; Assists with airway management; Assists with all procedures as needed; Obtains venous access and draws blood for labs; Provides warming measures; Maintains cardiorespiratory monitoring; Administers medications; Communicates nursing reassessments to the recorder: breath sounds and heart tones; assists in monitoring end tidal CO2 readings; pulses and capillary refill; neuro checks; bowel sounds/abdominal reassessment; neurovascular checks; accompanies the unstable patient outside the ED (CT, ICU, OR)</td></tr><tr><td>ED Paramedic / ED Technician</td><td>Sets up cardiorespiratory monitor – correct size setup (neonate, pediatrics, adult) and attachments (cuffs, pulse-ox probe, leads); Point of care (POC) testing at bedside; Places monitor leads and blood pressure (BP) cuff on patient; takes temperature; Sets up defibrillator with appropriate multifunction pads (Paramedic only); Sets up Bair Hugger; sets up IV pump with warmed fluids; Exposes patient; Assures patient is on backboard if cardiopulmonary resuscitation (CPR) is needed; performs chest compressions; Circulates in room and pulls additional supplies as needed; Accompanies unstable patient outside the ED; assists with patient transport as directed</td></tr><tr><td>Laboratory</td><td>Phlebotomist draws blood as needed and transports specimens to lab</td></tr><tr><td>Radiology tech</td><td>Performs ordered diagnostic x-rays</td></tr><tr><td>Security</td><td>Crowd control; Expedites patient transport</td></tr><tr><td>Child Life</td><td>Utilizes distraction therapy as indicated for patient comfort; Serves as liaison with patient's siblings and family</td></tr><tr><td>Pharmacy</td><td>Responds to all Trauma Stats; Dispenses ordered medications ready for administration</td></tr><tr><td>Social Work/Chaplain</td><td>Serves as liaison with patient's family and friends</td></tr></table></div>", "mtp": "<h4>Contact for massive transfusion support questions</h4><p>Contact the Transfusion Medicine Resident On Call: 404-686-5500, enter Pager ID #: 50435#.</p><h4>Blood Bank (Transfusion Services) responsibilities (process H)</h4><ul class=\"il\"><li>For non-ED patients, provide the first MTP in a cooler with RBCs and plasma in a 1:1 ratio based on the patient's weight class and the internal weight based transfusion volume algorithm (see weight-based package table below).</li><li>If the patient has an active (&lt; 72 hour) type/screen collected by collection manager OR has a historical confirmatory blood type in the system, type-compatible products are used in all packages as available.</li><li>If the patient has an inactive type/screen, it should be performed as soon as a specimen is available (preferably before release of package 2). All future products will be type compatible and crossmatch compatible if possible.</li><li>Rh-negative males receive Rh (D) positive platelets in cases of supply shortage; Rh-negative females should receive Rh (D) positive platelets only as a last resort. The blood bank provider on call should be notified by the Blood Bank if Rh-positive products are to be given to Rh-negative females.</li><li>For each subsequent MTP package, RBCs and plasma are given out in a cooler. Platelets and cryoprecipitate are given out at room temperature and should NOT be placed in the cooler at any time.</li></ul><h4>BloodTrack screen steps (ED only)</h4><ul class=\"il\"><li>Section 1, log in: scan or enter your employee user ID barcode, type your password and touch OK. If the barcode is unavailable, touch Manual login, type your employee number, touch Login, enter your PIN (CHOA network password), then touch OK.</li><li>Section 2, select the MTP pack: touch the row \"Touch here for MTP Packs\" and select the appropriate MTP pack based on the patient weight.</li><li>Section 3, enter patient information: the scanner is under the monitor. Scan the patient HAR label. Only the HAR number displays. Touch YES to confirm patient identification.</li><li>Section 4, retrieve blood products (RBC and FFP): a tray illuminates blue — open the fridge door, open the tray, take the unit out, close the tray. The system says \"Scan the unit number\" (it may also ask to scan the product code). The system says \"Inspect the unit\": if acceptable touch YES; if not acceptable touch NO and follow the system instructions. The system approves the transaction and a second drawer illuminates blue; repeat the section 4 steps for each unit. When all units are delivered, the system displays \"You have successfully taken out all the units for the selected MTP pack number\"; touch OK and close the refrigerator door.</li><li>Section 5, cooler: place all units (RBC and FFP) in the cooler (see Policy 7.02 for issuing and storage of blood products). Bring the cooler with units inside to the bedside of the patient. Unused products must be returned to the Blood Bank in a timely fashion.</li></ul><h4>Weight-based MTP package overview</h4><h4>NEONATE, weight 0–5.9 kg</h4><div class=\"rt\"><table><tr><th>Package</th><th>Cryo</th><th>RBC</th><th>Plasma</th><th>Platelet</th></tr><tr><td>1</td><td>—</td><td>½ Unit</td><td>½ Unit</td><td>—</td></tr><tr><td>2</td><td>1 Unit</td><td>½ Unit</td><td>½ Unit</td><td>¼ Apheresis</td></tr><tr><td>3</td><td>—</td><td>½ Unit</td><td>½ Unit</td><td>—</td></tr><tr><td>4</td><td>1 Unit</td><td>½ Unit</td><td>½ Unit</td><td>¼ Apheresis</td></tr><tr><td>5</td><td>—</td><td>½ Unit</td><td>½ Unit</td><td>—</td></tr></table></div><h4>INFANT, weight 6–9.9 kg</h4><div class=\"rt\"><table><tr><th>Package</th><th>Cryo</th><th>RBC</th><th>Plasma</th><th>Platelet</th></tr><tr><td>1</td><td>—</td><td>1 Unit</td><td>1 Unit</td><td>—</td></tr><tr><td>2</td><td>2 Units</td><td>1 Unit</td><td>1 Unit</td><td>½ Apheresis</td></tr><tr><td>3</td><td>—</td><td>1 Unit</td><td>1 Unit</td><td>—</td></tr><tr><td>4</td><td>2 Units</td><td>1 Unit</td><td>1 Unit</td><td>½ Apheresis</td></tr><tr><td>5</td><td>—</td><td>1 Unit</td><td>1 Unit</td><td>—</td></tr></table></div><h4>YOUNGER CHILD, weight 10–25.9 kg</h4><div class=\"rt\"><table><tr><th>Package</th><th>Cryo</th><th>RBC</th><th>Plasma</th><th>Platelet</th></tr><tr><td>1</td><td>—</td><td>2 Units</td><td>2 Units</td><td>—</td></tr><tr><td>2</td><td>4 Units</td><td>2 Units</td><td>2 Units</td><td>1 Apheresis</td></tr><tr><td>3</td><td>—</td><td>2 Units</td><td>2 Units</td><td>—</td></tr><tr><td>4</td><td>4 Units</td><td>2 Units</td><td>2 Units</td><td>1 Apheresis</td></tr><tr><td>5</td><td>—</td><td>2 Units</td><td>2 Units</td><td>—</td></tr></table></div><h4>OLDER CHILD, weight 26–49.9 kg</h4><div class=\"rt\"><table><tr><th>Package</th><th>Cryo</th><th>RBC</th><th>Plasma</th><th>Platelet</th></tr><tr><td>1</td><td>—</td><td>3 Units</td><td>3 Units</td><td>—</td></tr><tr><td>2</td><td>6 Units</td><td>3 Units</td><td>3 Units</td><td>1 Apheresis</td></tr><tr><td>3</td><td>—</td><td>3 Units</td><td>3 Units</td><td>—</td></tr><tr><td>4</td><td>6 Units</td><td>3 Units</td><td>3 Units</td><td>1 Apheresis</td></tr><tr><td>5</td><td>—</td><td>3 Units</td><td>3 Units</td><td>—</td></tr></table></div><h4>ADOLESCENT, weight &gt; 50 kg</h4><div class=\"rt\"><table><tr><th>Package</th><th>Cryo</th><th>RBC</th><th>Plasma</th><th>Platelet</th></tr><tr><td>1</td><td>—</td><td>5 Units</td><td>5 Units</td><td>—</td></tr><tr><td>2</td><td>8 Units</td><td>5 Units</td><td>5 Units</td><td>1 Apheresis</td></tr><tr><td>3</td><td>—</td><td>5 Units</td><td>5 Units</td><td>—</td></tr><tr><td>4</td><td>8 Units</td><td>5 Units</td><td>5 Units</td><td>1 Apheresis</td></tr><tr><td>5</td><td>—</td><td>5 Units</td><td>5 Units</td><td>—</td></tr></table></div><p>Cryo and platelets are given only with packages 2 and 4. RBC and plasma are given in a 1:1 ratio in every package.</p><h4>Additional details from the guideline</h4><ul class=\"il\"><li>The policy states a near 1:1 replacement ratio of pRBCs to plasma as the goal of MTP.</li></ul>", "bat": "<h4>¹ Trauma labs and imaging (per provider discretion based on patient condition)</h4><ul class=\"il\"><li>Basic Trauma Panel: CXR; urinalysis; CBC; CMP; lipase</li><li>Extended Trauma Panel: CXR; urinalysis; CBC; CMP; lipase; PT/PTT; for BAT patients add pelvic films and ensure type and screen has been obtained</li></ul><h4>² Consult Trauma Surgery</h4><ul class=\"il\"><li>All Trauma STATs and Alerts (per Trauma Team Activation policy); escalate to Trauma STAT if the patient is hemodynamically unstable</li><li>When ordering a CT scan of the abdomen</li><li>Immediately with a positive CT scan result</li><li>For admission to the Trauma service</li></ul><h4>³ Admission criteria</h4><ul class=\"il\"><li>Present seatbelt sign</li><li>Uncontrolled pain</li><li>Not tolerating PO</li><li>Altered mental status (from baseline)</li><li>Inability to ambulate</li><li>Trauma Team to review lab results and have a plan of care for the patient prior to admission/transfer to floor</li></ul><h4>⁴ Discharge criteria</h4><ul class=\"il\"><li>Asymptomatic (pain adequately controlled)</li><li>Tolerating PO</li><li>Able to ambulate</li><li>Stable labs</li></ul><h4>ATOMAC protocol key principles</h4><ul class=\"il\"><li>Follow ATLS protocol first</li><li>Patients with peritonitis are managed per surgeon discretion and do not follow the algorithm</li><li>Polytrauma patients may follow the algorithm when not contraindicated</li><li>Continued bleeding: defined by the surgeon (i.e., inadequate Hb increase to transfusion, hemodynamic signs of hypovolemia +/- anemia)</li><li>Stable Hb: a Hb value not dropping more than 0.5 mg/dl in 12 hrs. Repeat Hb is optional</li><li>Any lab suspected to be erroneous may be repeated prior to medical decision-making</li><li>Times refer to time of injury</li><li>Late presentation: stable patients presenting within 48 hrs post injury are still admitted for 24 hrs of observation but Hb rechecks are optional. Injuries &gt; 48 hrs are at surgeon discretion</li><li>Reference: the ATOMAC Guideline</li></ul><h4>Discharge instructions (ATOMAC)</h4><ul class=\"il\"><li>No ibuprofen or other NSAIDs; acetaminophen okay</li><li>May return to school when off opioid pain meds</li><li>Restricted activity for length of (Grade + 2 = weeks) per ASPA Guidelines</li><li>Return to ED for increasing pain, pallor, dizziness, vomiting, worsening shoulder pain, GI bleeding or black tarry stools. Call office for jaundice</li><li>Grade 1-2: follow up phone call at 2 weeks and again at 2 months</li><li>Grade 3-5: office visit at 2 weeks and follow up phone call at 2 months</li><li>No follow-up imaging is required</li><li>Must follow up in clinic to be cleared for sports</li></ul>", "extremity": "<h4>Additional details from the guideline</h4><ul class=\"il\"><li>Tetanus prophylaxis is stated on the open fracture branch as: under 7 years old DTaP; 7 years and older Tdap.</li></ul>", "ir": "<h4>Resource phone numbers</h4><ul class=\"il\"><li>EG ED Charge Nurse: X 5-0311</li><li>EG ED Trauma Nurse: use Voalte Role</li><li>SR ED Charge Nurse: X 5-4938</li><li>SR ED Trauma Nurse: use Voalte Role</li></ul><h4>Responsibilities of the ED Trauma Nurse in IR</h4><p>Assist Anesthesia with:</p><ul class=\"il\"><li>Retrieval of equipment, supplies, medications, fluid, blood</li><li>Patient positioning</li><li>Airway management</li><li>Emergency procedures</li></ul><p>The resource nurse will not be required to take orders or document in the IR suite.</p><h4>Transfer of care</h4><p>SBAR: upon nurse return to the ED, or upon completion of the IR procedure, and to be given to the ICU/OR nurse.</p><h4>After hours for IR trauma</h4><ul class=\"il\"><li>6:30p to 7a weekdays</li><li>24-hour coverage weekends</li></ul>", "open_fx": "<h4>Additional details from the guideline</h4><ul class=\"il\"><li>The dosing table says: if cephalosporin allergy, penicillin-allergic patients can still receive cefazolin. For cephalexin, \"if PCN allergic, use clindamycin.\"</li></ul>", "vte": "<h4>Pharmacologic prophylaxis</h4><p>Enoxaparin</p><ul class=\"il\"><li>Patients &lt; 2 months: 0.75 mg/kg subcutaneous BID, max dose 30 mg</li><li>Patients ≥ 2 months: 0.5 mg/kg subcutaneous BID, max dose 30 mg</li><li>Patients &gt; 60 kg: 40 mg subcutaneous Daily OR 30 mg subcutaneous BID</li><li>Patients &gt; 60 kg AND BMI &gt; 99 percentile: 40 mg subcutaneously BID</li></ul><p>Unfractionated heparin</p><ul class=\"il\"><li>Patients &lt; 1 year: 20 units/kg/hr IV</li><li>Patients ≥ 1 year: 10 units/kg/hr IV</li></ul><p>Continue enoxaparin until the patient can ambulate 150 feet, at baseline mobility, and/or risk factors are resolved.</p><h4>Contraindications to pharmacologic prophylaxis</h4><ul class=\"il\"><li>Ongoing or uncontrolled bleeding</li><li>Uncorrected coagulopathy (PLT &lt; 50,000; fibrinogen &lt; 100; INR &gt; 1.5; or PTT &gt; 2x control)</li><li>Acute arterial ischemic stroke</li><li>Suspected or known intracranial, intraspinal, or paraspinal hematoma</li><li>Major allergy to pork products (LMWH only)</li><li>History of heparin induced thrombocytopenia</li><li>Intracranial monitoring (EVD/Bolt)</li><li>CNS drain (epidural catheter/other)</li><li>Risk for major surgical bleeding within 24-48 hrs</li><li>Family/personal history of bleeding disorder</li><li>Invasive procedure within 24 hours</li></ul><p>Obtain clearance from Neurosurgery to start pharmacologic prophylaxis in patients with spinal or cranial hemorrhage.</p><h4>Monitoring</h4><ul class=\"il\"><li>Monitor heparin assay if Cr clearance &lt; 30 mL/min</li><li>Consider monitoring heparin assay if: Cr clearance &lt; 60 mL/min OR the patient is &lt; 12 months and UOP is &lt; 1 mL/kg/hr</li><li>Heparin assay for LMWH should be 0.2-0.5</li></ul><p>Consider consulting pharmacy or hematology.</p>", "sbirt": "<h4>CRAFFT questions</h4><ul class=\"il\"><li>C — Have you ever ridden in a CAR driven by someone (including yourself) who was \"high\" or had been using alcohol or drugs?</li><li>R — Do you ever use alcohol or drugs to RELAX, feel better about yourself, or fit in?</li><li>A — Do you ever use alcohol/drugs while you are by yourself, ALONE?</li><li>F — Do you ever FORGET things you did while using alcohol or drugs?</li><li>F — Do your family or FRIENDS ever tell you that you should cut down on your drinking or drug use?</li><li>T — Have you gotten into TROUBLE while you were using alcohol or drugs?</li></ul><p>Each \"yes\" answer is one point. A score of two or more indicates the need for further assessment, and Psychiatry should be consulted for the patient.</p><h4>Confidentiality</h4><ul class=\"il\"><li>Information regarding substance use and/or abuse is treated as confidential medical information.</li><li>Results of alcohol and drug testing can be shared with parents or guardians of minor patients without their consent unless the patient is actively \"seeking\" treatment and articulates that he/she does not want the information shared.</li><li>In that case, the information can still be shared with the parents/guardians when: (1) testing was done for medical purposes; (2) the patient is extremely young and/or lacks the capacity for rational choice; or (3) the situation poses a substantial threat to life or physical well-being.</li></ul><h4>Documentation and communication</h4><ul class=\"il\"><li>Document the patient's answers to the CRAFFT Tool in the EPIC template \"SBIRT\".</li><li>Document notification by Trauma Services to psychiatry of a positive screen.</li><li>Document the Brief Intervention administered; referral to psychiatry; referral completed and documented by psychiatry.</li><li>Document a decision by the patient and/or parent not to participate in the CRAFFT screening or the Brief Intervention.</li><li>Document any other interactions with the patient and/or parent regarding the screening and/or clinical response by the hospital health care team.</li><li>Information regarding the Brief Intervention should be communicated to the patient's health care team as appropriate for continuity of care.</li></ul><h4>Definitions</h4><ul class=\"il\"><li>Screening: a procedure to recognize individuals with a disorder before obvious manifestations have occurred; the goal is early recognition, while interventions or treatments are most effective.</li><li>Brief Intervention: techniques/practices that aim to investigate a potential problem and motivate an individual to begin to do something about his/her substance abuse, by patient-directed means or by seeking additional treatment. It usually happens in a single session immediately following a positive screening result and focuses on increasing the patient's understanding of the impact of substance use on health and motivating change. If the patient shows signs of substance dependence or other complications, the provider can refer the patient to a certified youth chemical dependency treatment organization.</li><li>CRAFFT Tool: a validated tool used to screen adolescents for substance-related problems and disorders.</li></ul><h4>Patient and parent handouts (summary)</h4><ul class=\"il\"><li>The adolescent handout says: all injured patients 12 years or older are asked about alcohol and drugs; a trauma clinician asks the CRAFFT questions and answers go in the medical record; information is confidential, but if immediate safety is at risk the team will talk with parents or guardian, after discussing concerning answers with the patient first; the parent gets a fact sheet; anyone in the room is asked to step outside, though a parent has the right to remain present; a special nurse asks \"yes or no\" questions; a nurse practitioner or doctor may come to discuss the answers.</li><li>The parent handout says: the team asks to speak with the child in private so the conversation is honest; if the child's immediate safety is at risk the team will discuss concerns with the parent; answers are documented and reviewed by the healthcare team; a brief intervention is a discussion with a qualified healthcare professional meant to increase the child's understanding of the impact of substance use on health; other resources are suggested if needed.</li><li>Spanish versions of both handouts are included in the source policy.</li></ul><h4>Related policies</h4><p>Toxicology Screens (Trauma Policy and Procedure Manual) and Consent Policy (Administrative Policy Manual).</p>", "csec": "<h4>Short Screen for Child Sex Trafficking</h4><p>Before starting: build rapport. Say that you routinely ask these questions of adolescents to find out whether they may need help. Emphasize that the child does not have to answer. Remind them of the limits of confidentiality (you cannot guarantee that caregivers or others won't eventually see the chart; you are obliged to tell authorities if the child reveals possible abuse or thoughts/actions related to hurting themselves or others). Consider a chaperone in the room, as a shared decision between provider and child. For each \"Yes,\" follow up with questions about details.</p><ul class=\"il\"><li>1. Have you ever broken any bones, been knocked unconscious or had any injuries that required stitches? (If yes, \"Can you tell me about those times?\" — determine if abuse, peer violence, dating violence, or CSEC)</li><li>2. Some kids have a hard time living at home and feel that they need to run away. Have you ever run away from home? (If yes: stayed out all night or longer? how many times? longest time gone? how did you get money for food? where did you stay?)</li><li>3. Kids often use drugs or drink alcohol these days. Do you use drugs or drink alcohol? (follow up with frequency, type of drug, reason for using)</li><li>4. Sometimes kids have run-ins with police. Have you ever had any problems with the police? Do you feel comfortable telling me about them?</li><li>5. Have you been sexually active in the past (oral, vaginal or anal sex)? If yes, ask: \"Have you had more than 5 sexual partners?\"</li><li>6. Have you ever had any sexually transmitted diseases? Yes/No.</li></ul><p>If the child answered YES to 2 or more questions, ask:</p><ul class=\"il\"><li>1) Has a boyfriend, a girlfriend or anyone else ever asked you, or forced you to have sex with them or another person?</li><li>2) Have you ever had to exchange sex for money, food, shelter or something else you wanted? (Kids sometimes feel they have no option except to exchange sex or a sex activity for money, drugs, food or a place to stay.)</li></ul><p>If \"YES\" to either question, ask for details to determine if the child is a potential victim of CSEC.</p><h4>Potential indicators of child commercial sexual exploitation</h4><ul class=\"il\"><li>Initial clinical presentation, presents for evaluation of: acute sexual assault; suicide attempt; serious injury (other than MVC); drug/alcohol intoxication; complication of pregnancy/abortion; vaginal or penile discharge/signs and symptoms of PID</li><li>Child is accompanied by an adult who is: domineering and speaks for the child; apparently intimidating/frightening to the child; not the guardian; multiple youth presenting for treatment</li><li>Child behavior: gives false or changing demographic/historical information (or unable to state where he/she is); appears very submissive, depressed and/or withdrawn</li><li>Historical factors: frequent drug use/misuse; history of sexual or physical abuse or neglect; history of running away (especially &gt; 3 times over the past year), throwaway status or homelessness; prior involvement with child protective services (especially history of foster care); prior involvement with the department of juvenile justice; truancy or doing poorly in school; history of multiple sexual partners, especially over a short period of time; multiple prior STIs and/or history of pregnancy (or fathering a baby); LGBTQ youth; child has an older boyfriend/girlfriend (&gt; 4 years older)</li><li>Physical exam: signs concerning for inflicted injury; tattoos, especially of a man's name or sexually provocative words, or gang insignia; child has a large amount of cash or expensive items incongruous with the remainder of appearance; child has keys to a motel room</li></ul><p>Throwaway status refers to a child being told to leave home or forbidden to return. LGBTQ = lesbian, gay, bisexual, transgender or questioning youth.</p><h4>Issues of confidentiality and assent</h4><ul class=\"il\"><li>Confidentiality cannot be guaranteed to the child; inform the child of the limits of confidentiality.</li><li>You are obligated to share information with others if the child discloses abuse, neglect or intent to harm themselves or others. Commercial sexual exploitation/trafficking is considered child abuse in Georgia and must be reported. Follow Policy 2.25, Child Abuse Management.</li><li>Obtain the child's assent for each step of the assessment if at all possible: medical history, exam, sexual assault evidence kit, STI/pregnancy/drug testing, and pregnancy/STI prophylaxis. If the child does not want an element and their safety or immediate health needs are not jeopardized by foregoing it, the child's wishes should be respected. The sexual assault kit should not be done against the child's wishes, even if law enforcement is eager to obtain it. The provider may carefully explain the need and encourage discussion of the reluctance, but the decision is the child's. Children often later assent once rapport and trust are built. For kit collection see Policy 2.31, Forensic Evidence Collection, Preservation, and Chain of Custody.</li></ul><h4>Obtaining a medical history: separating the child from the accompanying adult and ensuring safety</h4><ul class=\"il\"><li>If at all possible, and with the child's assent, interview the patient alone, without the accompanying parent, guardian or friend. This is especially important in possible CSEC because the companion may be a trafficker or someone working for the trafficker.</li><li>You cannot force the accompanying person to leave, but you can tell both child and companion that it is standard practice for the medical provider/social worker to obtain history from the child alone, and ask the companion to wait in the waiting room or another place well away from the child's room.</li><li>Keep the exam room door closed and staff not walking in and out.</li><li>Before beginning, assess the child's feelings about safety (e.g., \"Is it okay for you to be talking to me now?\").</li><li>If the child hesitates or indicates they don't feel safe, gently ask why and take steps to address the problem. Keep track of time and periodically ask whether they still feel okay talking with you.</li></ul><h4>Protocol for medical exam and evaluation</h4><p>With rare exceptions, the provider needs the child's assent for exam, testing and evidence kit. The exam and evaluation are typically conducted by a nurse practitioner or physician from the child protection team (see the Doc-on-Call schedule: \"Child Advocacy Outpatient Consults\" or \"Child Advocacy inpatient consults\"). If the child is at any Children's Ambulatory location, call the Transfer Center and ask to talk to the physician on call for Child Protection, who will determine where the child should go for the exam. If the child protection nurse practitioner is unavailable to come to the ED, the attending physician is available for consultation, and the physician on call for the child protection team can be reached via Doc-on-Call.</p><ul class=\"il\"><li>1. Consult with SW and attending to identify information already obtained.</li><li>2. Attempt to obtain information on the Child Health Questionnaire, as feasible and as time allows (after discussing limits of confidentiality and assuring that answering is optional). It is not necessary to ask all questions; tailor them to the child and circumstances.</li><li>3. With the child's assent, complete a general physical exam with documentation of: general health and nutritional status; injuries, old and recent; tattoos, brands, gang insignia, unusual clothing or appearance; anogenital exam with magnification and video/photo documentation; sexual assault evidence kit (last contact &lt; 72 hours for pre-adolescent, &lt; 120 hours for adolescents); STI testing of appropriate sites (GC culture throat; urine GC/Chlamydia/Trich NAAT; anal culture GC/Chlamydia; serum for HIV, RPR with reflex titer, HBV, HCV with pre-test HIV counseling; other testing as indicated, e.g., herpes culture); pregnancy testing; drug-facilitated sexual assault urine drug screen and standard urine drug screen if indicated and with patient assent if feasible; other diagnostic testing as indicated (e.g., suspected trauma or other infection).</li><li>4. Offer STI and pregnancy prophylaxis (see the prophylaxis pathway).</li><li>5. Consider HIV prophylaxis and discuss with the patient (see the prophylaxis pathway).</li><li>6. Social Work reports to authorities and to the DFCS Human Trafficking Hotline.</li></ul><h4>Reporting to authorities</h4><p>In Georgia, healthcare providers are mandated reporters of child abuse and neglect. Commercial sexual exploitation/sex trafficking is considered a form of child abuse. When providers have a reasonable suspicion that a child is a victim, they are mandated to contact authorities. At Children's, the social worker is the designated reporter. At least three referrals need to be made by social work:</p><ul class=\"il\"><li>1) DFCS Centralized Intake: 1-855-GA CHILD (1-855-422-4453)</li><li>2) Law enforcement (police or sheriff in the jurisdiction where trafficking/exploitation occurred, if known)</li><li>3) DFCS Human Trafficking Hotline: 1-844-END-CSEC (1-844-363-2732). This is separate from abuse reporting via DFCS centralized intake. Contact as soon as possible so they can begin finding safe housing after discharge and address other immediate issues, and begin their assessment of the child's comprehensive needs.</li><li>4) For transnational victims, contact U.S. Immigration and Customs Enforcement: 1-866-872-4973 (immediate assistance with victim support, legal advocacy and needs assessment).</li></ul><p>When a suspected victim is older than 18 years, CSEC/sex trafficking is considered a crime but does not require a mandated report to authorities. If the patient agrees, the provider may contact law enforcement (social work to make the referral), but should at any rate offer services. Adult resources:</p><ul class=\"il\"><li>Human Trafficking State Hotline: 1-866-END-HTGA (1-866-363-4842)</li><li>Out of Darkness: 404-719-4854 (rescue hotline)</li><li>Wellspring Living: 404-427-3100 (hotline)</li><li>Human trafficking National Hotline: 1-888-3737-888 (guidance to providers as well as victims; can help find services)</li><li>For transnational victims: U.S. Immigration and Customs Enforcement: 1-866-872-4973</li></ul><h4>Other referrals</h4><ul class=\"il\"><li>Psychiatric consult if there are immediate concerns of self-harm or harm to others</li><li>Follow-up at the CHOA Blank Center for Safe and Healthy Children in 2 weeks</li><li>Trauma-focused behavioral health assessment and therapy (consider referral to Zalik Center)</li><li>Primary care follow-up to include HPV vaccination if needed and periodic STI testing at the department of public health clinic, teen clinic, PCP or other primary care site</li><li>OB/GYN care</li><li>Family planning</li><li>Subspecialist if other medical issues are identified</li></ul><h4>Background and terminology</h4><ul class=\"il\"><li>Focus population: children ≥ 11 years, male or female (applies to but is not limited to this group). Target users: all Children's locations; physicians, APPs, nurses, social workers, case managers, interpreters, pharmacists, Child Protection Team members and other staff.</li><li>When children (under 18 years) are involved, there need not be demonstrable force, coercion or other means to count as trafficking; trafficking need not involve travel from one place to another. For this guideline, \"survival sex\" (sex acts in exchange for money, food, shelter or other basic necessities) is considered a form of CSEC. Domestic minor sex trafficking (DMST) involves CSEC of children who are U.S. citizens or legal residents exploited within U.S. territory.</li><li>The average age of entry for child victims is 12–16 years. Boys and girls are vulnerable; male victims tend to be unrecognized and under-reported. Victims rarely present with a chief complaint of \"human trafficking,\" many do not view themselves as victims, and some girls have been manipulated into thinking the trafficker is her \"boyfriend,\" so the provider must be attuned to high-risk circumstances.</li><li>The word \"trafficker\" is used for the person in control of a victim; patients may say \"pimp,\" and the two are used interchangeably by those \"in the life,\" but trafficker is the preferred term.</li></ul><ul class=\"il\"><li>Human trafficking is a major global health and human rights issue; one international study reported victims in 132 countries. The total number of victims is unknown, with estimates into the millions; in one global study up to 60% of victims were women and 27% were children. The female to male ratio is unknown because male victims tend to be unrecognized and under-reported. Some child victims have no prominent risk factors and may live in stable homes.</li><li>Victims may present with closed head injury, strangulation, fractures, abdominal/pelvic trauma, bruising, lacerations, burns, anogenital trauma, STIs, pregnancy, abortion complications, PTSD, depression, suicidality, panic attacks, drug ingestion/overdose/withdrawal, exacerbations of untreated chronic disease (diabetes mellitus, asthma, seizure disorder, bipolar disorder), malnutrition or dehydration. Many victims present at some point for medical care, often to emergency departments and clinics.</li><li>The HIV exposure algorithm in the prophylaxis pathway is from: CDC. Antiretroviral postexposure prophylaxis after sexual, injection-drug use, or other nonoccupational exposure to HIV in the United States. MMWR 2005; 54(RR-02):1.</li></ul><p>Glossary of common street terms</p><div class=\"rt\"><table><tr><th>Term</th><th>Meaning</th></tr><tr><td>Bottom</td><td>Manager/assistant to exploiter; usually female; supervises other victims in the \"family\" or \"stable\"</td></tr><tr><td>Circuit, Track, Runway, Stroll, Blade</td><td>A given area associated with prostitution (streets, cities, states, regions)</td></tr><tr><td>Daddy, Player</td><td>Exploiter, trafficker</td></tr><tr><td>Escort service</td><td>An organization that provides sexual services to buyers, often advertised on the internet, with appointments by phone; adolescent travels to the buyer (\"out-call\") or the buyer comes to the site of service (\"in-call\"); may include brothels, hotels, homes</td></tr><tr><td>Facilitators</td><td>Those who enable or support trafficking: hotels, taxi drivers, advertisers, websites, or other groups</td></tr><tr><td>Gorilla/Guerrilla pimp</td><td>Exploiter who controls mainly through violence</td></tr><tr><td>Head cut</td><td>Victim being beaten down by their trafficker/pimp</td></tr><tr><td>Ho line</td><td>Communication network used by pimps between cities/states/regions to buy/sell victims</td></tr><tr><td>Kiddie stroll</td><td>Area of prostitution involving victims younger than 16 years</td></tr><tr><td>The life, the game</td><td>Commercial sexual activities, typically involving prostitution</td></tr><tr><td>Lot lizard</td><td>Person being prostituted at a truck stop</td></tr><tr><td>Out of pocket</td><td>Victim not under control of a trafficker but working in a pimp-controlled area or disobeying a pimp's orders</td></tr><tr><td>Pay for play (P4P)</td><td>Paid sex, term often used by buyers</td></tr><tr><td>Pimp circle</td><td>Punishment for violation by the victim; several exploiters surround the victim and humiliate, verbally and/or physically abuse her</td></tr><tr><td>Seasoning</td><td>Process of preparing a victim for trafficking; breaking the victim's will through physical and sexual violence, psychological manipulation and abuse, deprivation, isolation, threats and intimidation</td></tr><tr><td>Turn out</td><td>The act of being forced into prostitution</td></tr><tr><td>Water sports, golden showers</td><td>Urinating on a trafficking victim during paid sexual activity</td></tr></table></div><h4>Additional details from the guideline</h4><ul class=\"il\"><li>The Urgent and Primary Care page has a stop sign: at any time, local law enforcement may be called if staff feels there is a flight risk or dangerous situation.</li></ul>", "nat": "<h4>¹ High risk injuries (full list)</h4><ul class=\"il\"><li>1. Skull/facial fracture in child &lt; 2 years or nonverbal child. If ALL low-risk criteria are met (Step 3 path), consult social work and consider discharge per ED Attending/Neurosurgery; if ALL criteria are NOT met, proceed with the NAT work up.</li><li>2. Long bone fracture in child &lt; 2 years of age or nonverbal child. If ALL low-risk criteria are met, consult social work and consider discharge per ED Attending/Orthopedics; if ALL criteria are NOT met, proceed with the NAT work up.</li><li>3. Intracranial injury in a child &lt; 2 years or nonverbal child at any age (exclude MVC)</li><li>4. Rib fracture in child &lt; 3 years or nonverbal child at any age</li><li>5. Patterned and/or symmetrical burns</li><li>6. Domestic violence in the home or presents as victim of domestic violence</li><li>7. Injuries as defined by TEN-4-FACESp: Torso/Ears/Neck (torso includes genitals) in children 4 years of age or younger; any bruising on infants &lt; 4 months; Frenulum/Angle of jaw/Cheeks/Eyelids/Subconjunctival/scleral hemorrhage; patterned bruising</li></ul><h4>\"Red Flag\" considerations</h4><p>Infants with non-accidental trauma often present with non-specific complaints, such as:</p><ul class=\"il\"><li>Irritability in infants &lt; 6 months without fever or other identifiable cause</li><li>BRUEs</li><li>Altered mental status</li><li>Unexplained respiratory distress</li><li>Unexplained vomiting</li><li>Bruising</li><li>Seizure &lt; 6 months</li></ul><h4>\"Red Flag\" populations may include</h4><ul class=\"il\"><li>Premature infant (&lt; 37 weeks)</li><li>Low birth weight/IUGR</li><li>Multiple gestation</li><li>Chronic medical condition</li><li>Failure to thrive (FTT)</li><li>Caregiver with stimulant or drug dependence</li></ul><h4>\"Red Flags\" in patient history may include</h4><ul class=\"il\"><li>No mechanism of injury OR changing mechanism of injury after learning test results/diagnosis</li><li>Mechanism inconsistent with physical and/or developmental capabilities</li><li>Injury as a result of inadequate supervision</li><li>Delay in seeking care</li><li>Prior ED visit with history of inflicted injury and/or DFCS involvement</li></ul><p>Multiple red flags may include multiple concerns this admission or single concerns during multiple admissions (review EPIC FYI).</p><h4>Additional orders/consults by injury or symptom</h4><p>Recommended labs do not need to be resulted prior to ED disposition.</p><div class=\"rt\"><table><tr><th>Injury/symptom</th><th>Recommended labs</th><th>Recommended inpatient consults</th></tr><tr><td>Head injury and/or altered mental status of unknown etiology or abusive head trauma</td><td>—</td><td>Neurology consult for seizure activity; Ophthalmology (abusive head trauma)</td></tr><tr><td>Bleeding/bruising</td><td>DIC; Von Willebrand profile; Factor 9; Consider CPK if extensive bruising</td><td>—</td></tr><tr><td>Bony injury (long bone fracture, multiple fractures, and/or crush injury)</td><td>Vit D 25 hydroxy (routine deficiency testing); Mg, Phos, PTH; Consider CPK if multiple fractures, crush injury, extensive bruising, diffuse myalgia</td><td>—</td></tr><tr><td>Blunt cardiac injury</td><td>EKG</td><td>—</td></tr><tr><td>Nasal/oropharyngeal injury without known mechanism</td><td>—</td><td>ENT</td></tr></table></div><h4>² TEN-4-FACESp</h4><p>TEN-4-FACESp is a bruising clinical decision rule for children &lt; 4 years of age. When is bruising concerning for abuse in children &lt; 4 years of age? If bruising in any of the three components (Regions, Infants, Patterns) is present without a reasonable explanation, strongly consider evaluating for child abuse and/or consulting with an expert in child abuse.</p><ul class=\"il\"><li>Regions (TEN, FACES): Torso, Ears, Neck; Frenulum, Angle of jaw, Cheeks (fleshy part), Eyelids, Subconjunctivae</li><li>Infants: 4 months and younger — any bruise, anywhere</li><li>Patterns: patterned bruising — bruises in specific patterns like slap, grab or loop marks</li></ul><p>Unexplained bruises in these areas most often result from physical assault. TEN-4-FACESp is not to diagnose abuse but to function as a screening tool to improve the recognition of potentially abused children with bruising who require further evaluation. TEN-4-FACESp was developed and validated by Dr. Mary Clyde Pierce and colleagues (Ann &amp; Robert H. Lurie Children's Hospital of Chicago) and is available for free download at luriechildrens.org/ten-4-facesp.</p>"};
+
+// ── CHECKLIST QUESTIONS ("any / all of the following"): tappable items, YES highlights automatically ──
+(function(){
+  function lis(h){const d=document.createElement('div');d.innerHTML=h;const u=d.querySelector(':scope > ul');return u?[].map.call(u.children,function(l){return l.innerHTML;}):[];}
+  function det(h){const m=h.match(/<details[\s\S]*?<\/details>/);return m?m[0]:'';}
+  function set(tid,nid,mode,o){const n=T[tid].nodes[nid];if(!n)return;
+    n.cl={mode:mode,items:o.items||lis(n.info||'')};
+    if(o.q)n.q=o.q;
+    if('info' in o){if(o.info)n.info=o.info;else delete n.info;}
+    else{const d=det(n.info||'');if(d)n.info=d;else delete n.info;}
+    if(o.lbl)n.cl.lbl=o.lbl;}
+  set('tbi','sig','any',{});set('tbi','add','any',{});set('tbi','reassess','all',{});
+  (function(){const n=T.tbi.nodes.mod,d=document.createElement('div');d.innerHTML=n.info;const u=d.querySelector('ul'),last=u.lastElementChild,items=[].map.call(last.querySelectorAll('li'),function(l){return l.innerHTML;});u.removeChild(last);
+    n.cl={mode:'any',items:items,lbl:'Are any of the following present?'};n.q='Manage as listed, then continue as follows:';n.info=u.outerHTML;})();
+  set('cspine','a','any',{});set('cspine','assess1','any',{});set('cspine','assess2','any',{});
+  set('nat','lowS','all',{});set('nat','lowL','all',{});
+  set('sbirt','inc','all',{});
+  set('sbirt','open','any',{items:['Drink any alcohol (more than a few sips)?','Smoke any marijuana or hashish?','Use anything else to get high?'],q:'In a private setting, ask the adolescent to be honest ("Please answer these next questions honestly"), then ask the 3 opening questions. During the past 12 months, did you:',lbl:'Answered YES to:',info:T.sbirt.nodes.open.info});
+  set('bat','d1','any',{items:['Hemodynamic instability','Abnormal GCS','Unreliable physical exam (any distracting injuries)'],q:'Does the patient have ANY of the following?',info:''});
+  [['tbi','sig'],['tbi','add'],['tbi','mod'],['cspine','a'],['cspine','assess1'],['cspine','assess2'],['bat','d1'],['sbirt','open']].forEach(function(p){const o=T[p[0]].nodes[p[1]].opts;o.forEach(function(x){if(/^no/i.test(x.l))x.l='None present';});});
+  [['tbi','reassess'],['nat','lowS'],['nat','lowL'],['sbirt','inc']].forEach(function(p){const o=T[p[0]].nodes[p[1]].opts;o.forEach(function(x){if(/^no/i.test(x.l))x.l='Not all met';else if(/^yes/i.test(x.l)){x.y=1;x.l='All met';}});});
+  [['tbi','ct'],['extremity','emerg'],['ir','call'],['pelvic','ortho'],['open_fx','dtap'],['open_fx','tdap'],['sbirt','all6'],['bat','ct2'],['bat','picu'],['bat','pstable'],['bat','picu24']].forEach(function(p){T[p[0]].nodes[p[1]].noq=1;}); // heading would just repeat the box below
+  ['assess1','assess2'].forEach(function(k){const n=T.cspine.nodes[k];n.q='Assess: are any of the following present?';});
+  [['tbi','cth'],['tbi','reassess'],['cspine','films'],['sbirt','score'],['csec','uc1']].forEach(function(p){
+    const n=T[p[0]].nodes[p[1]],i=n.q.search(/\. (?=[^.]*\?$)/);if(i<0)return;
+    n.act=n.q.slice(0,i+1);n.q=n.q.slice(i+2);
+    if(n.info){const d=document.createElement('div');d.innerHTML=n.info;if(d.textContent.trim()===n.act.replace(/\.$/,''))delete n.info;}
+  });
+})();
+
+// ── CATEGORY DATA ─────────────────────────────────────────────────
+const C={
+  emergency:{label:'Emergency and Trauma',short:'ED Protocols',color:'#B91C1C',iconBg:'#B91C1C',badgeBg:'#FEE2E2',badgeColor:'#991B1B',icon:'alert-triangle',protos:[{id:'tta',name:'Trauma Team Activation',policy:'Policy 3-32',type:'tree'},{id:'bat',name:'Blunt Abdominal Trauma',policy:'BAT CPG',type:'tree'},{id:'mtp',name:'Massive Transfusion Protocol',policy:'Policy 7-23',type:'tree'},{id:'extremity',name:'Extremity and Vascular Injury',policy:'Extremity flowchart',type:'tree'},{id:'ir',name:'IR After Hours',policy:'Workflow Reference',type:'reference'}]},
+  neuro:{label:'Head and Spine',short:'Neurology',color:'#5B21B6',iconBg:'#5B21B6',badgeBg:'#EDE9FE',badgeColor:'#4C1D95',icon:'eye',protos:[{id:'tbi',name:'Traumatic Brain Injury',policy:'TBI flowchart (combined)',type:'tree'},{id:'cspine',name:'C-spine Clearance',policy:'C-spine flowchart',type:'tree'}]},
+  ortho:{label:'Ortho and Fractures',short:'Orthopedics',color:'#065F46',iconBg:'#065F46',badgeBg:'#D1FAE5',badgeColor:'#064E3B',icon:'plus',protos:[{id:'open_fx',name:'Open Fracture Protocol',policy:'Guideline 3.0',type:'tree'},{id:'long_bone',name:'Long Bone Fractures',policy:'Guideline 2.2',type:'tree'},{id:'pelvic',name:'Pelvic and Acetabular',policy:'Guideline 2.1',type:'tree'},{id:'vte',name:'VTE Prophylaxis (PICU)',policy:'VTE CPG',type:'calc'}]},
+  screen:{label:'Screening and Safeguarding',short:'Safeguarding',color:'#92400E',iconBg:'#92400E',badgeBg:'#FEF3C7',badgeColor:'#78350F',icon:'shield-check',protos:[{id:'sbirt',name:'SBIRT / CRAFFT',policy:'Policy 2.35',type:'tree'},{id:'csec',name:'CSEC Pathway',policy:'CSEC Standard Work',type:'tree'},{id:'nat',name:'Non-Accidental Trauma',policy:'NAT Standard Work',type:'tree'}]}
+};
+const TL={tree:'Decision tree',calc:'Calculator',reference:'Reference pathway'};
+const TC={tree:'#004D7A',calc:'#065F46',reference:'#4C1D95'};
+const TB={tree:'#DBEAFE',calc:'#D1FAE5',reference:'#EDE9FE'};
+const LU={};
+Object.keys(C).forEach(cid=>{C[cid].key=cid;C[cid].protos.forEach(p=>LU[p.id]={p,cid});});
+
+
+// ── ORIGINAL DOCUMENTS (page images + PDF shipped in /pages and /pdfs) ──
+const DOCS={"tta": {"t": "Policy 3-32, Trauma Team Activation", "pdf": "pdfs/tta.pdf", "pages": ["pages/tta/p-1.jpg", "pages/tta/p-2.jpg", "pages/tta/p-3.jpg", "pages/tta/p-4.jpg", "pages/tta/p-5.jpg", "pages/tta/p-6.jpg", "pages/tta/p-7.jpg", "pages/tta/p-8.jpg"]}, "bat": {"t": "Blunt Abdominal Trauma CPG", "pdf": "pdfs/bat.pdf", "pages": ["pages/bat/p-1.jpg", "pages/bat/p-2.jpg", "pages/bat/p-3.jpg"]}, "mtp": {"t": "Policy 7-23, Massive Transfusion Protocol", "pdf": "pdfs/mtp.pdf", "pages": ["pages/mtp/p-1.jpg", "pages/mtp/p-2.jpg", "pages/mtp/p-3.jpg", "pages/mtp/p-4.jpg", "pages/mtp/p-5.jpg", "pages/mtp/p-6.jpg", "pages/mtp/p-7.jpg", "pages/mtp/p-8.jpg"]}, "extremity": {"t": "Extremity Injury flowchart", "pdf": "pdfs/extremity.pdf", "pages": ["pages/extremity/p-1.jpg"]}, "ir": {"t": "Trauma Patients in the IR Suite After Hours", "pdf": "pdfs/ir.pdf", "pages": ["pages/ir/p-1.jpg"]}, "tbi": {"t": "TBI flowchart (history of acute traumatic head injury)", "pdf": "pdfs/tbi.pdf", "pages": ["pages/tbi/p-1.jpg"]}, "cspine": {"t": "C-spine clearance flowchart", "pdf": "pdfs/cspine.pdf", "pages": ["pages/cspine/p-1.jpg"]}, "open_fx": {"t": "Open Fracture Management Guideline 3.0", "pdf": "pdfs/open_fx.pdf", "pages": ["pages/open_fx/p-1.jpg", "pages/open_fx/p-2.jpg"]}, "long_bone": {"t": "Long Bone Fractures Guideline 2.2", "pdf": "pdfs/long_bone.pdf", "pages": ["pages/long_bone/p-1.jpg"]}, "pelvic": {"t": "Pelvic and Acetabular Fractures Guideline 2.1", "pdf": "pdfs/pelvic.pdf", "pages": ["pages/pelvic/p-1.jpg", "pages/pelvic/p-2.jpg"]}, "vte": {"t": "VTE Prophylaxis in the PICU", "pdf": "pdfs/vte.pdf", "pages": ["pages/vte/p-1.jpg"]}, "sbirt": {"t": "Policy 2.35, SBIRT / CRAFFT", "pdf": "pdfs/sbirt.pdf", "pages": ["pages/sbirt/p-1.jpg", "pages/sbirt/p-2.jpg", "pages/sbirt/p-3.jpg", "pages/sbirt/p-4.jpg", "pages/sbirt/p-5.jpg", "pages/sbirt/p-6.jpg", "pages/sbirt/p-7.jpg", "pages/sbirt/p-8.jpg", "pages/sbirt/p-9.jpg"]}, "csec": {"t": "CSEC Standard Work (11 years and older)", "pdf": "pdfs/csec.pdf", "pages": ["pages/csec/p-01.jpg", "pages/csec/p-02.jpg", "pages/csec/p-03.jpg", "pages/csec/p-04.jpg", "pages/csec/p-05.jpg", "pages/csec/p-06.jpg", "pages/csec/p-07.jpg", "pages/csec/p-08.jpg", "pages/csec/p-09.jpg", "pages/csec/p-10.jpg", "pages/csec/p-11.jpg", "pages/csec/p-12.jpg", "pages/csec/p-13.jpg", "pages/csec/p-14.jpg"]}, "nat": {"t": "Non-Accidental Trauma Standard Work", "pdf": "pdfs/nat.pdf", "pages": ["pages/nat/p-1.jpg", "pages/nat/p-2.jpg", "pages/nat/p-3.jpg"]}};
+function toolsH(){
+  if(!proto)return '';
+  return '<div class="tools">'+(DOCS[proto.id]?'<button class="tbtn" onclick="openPdf()">'+ico('layout-grid',16)+'View full protocol</button>':'')+'<button class="tbtn" onclick="openReport()">'+ico('alert-triangle',16)+'Report an issue</button></div>';
+}
+function closeOv(id){const o=document.getElementById(id);if(o)o.remove();}
+function openPdf(){
+  if(!proto||!DOCS[proto.id]||document.getElementById('pdfOv'))return;
+  const d=DOCS[proto.id];
+  const o=document.createElement('div');o.id='pdfOv';o.className='ovl';
+  o.innerHTML='<div class="ovh"><button onclick="closeOv(\'pdfOv\')" aria-label="Close document">Close</button><div class="ovt">'+esc(d.t)+'<br><span style="font-weight:400;color:var(--t3)">Original document, '+d.pages.length+' page'+(d.pages.length>1?'s':'')+'</span></div><a href="'+esc(d.pdf)+'" target="_blank" rel="noopener">Open PDF</a></div><div class="ovb" id="pdfBody"><p class="ovhint">Tap a page to zoom in or out.</p>'+d.pages.map(function(u,i){return '<img src="'+esc(u)+'" alt="'+esc(d.t)+' page '+(i+1)+'" loading="lazy" onclick="document.getElementById(\'pdfBody\').classList.toggle(\'z\')">';}).join('')+'</div>';
+  document.querySelector('.shell').appendChild(o);
+}
+// ── TESTER FEEDBACK ──
+// Set formUrl to a Google Form "pre-filled link" (without the entry values) and entries to its entry.NNN ids.
+// Until then, Send copies the report text to the clipboard.
+const FEEDBACK={formUrl:'https://docs.google.com/forms/d/e/1FAIpQLScpUhtdTAx4Vj2oD9AHueKJ0KLqcSdOqSMBcaRA03GVTt0jBQ/viewform',entries:{protocol:'entry.1450332523',step:'entry.1701826681',path:'entry.1791319256',type:'entry.738878041',note:'entry.1000995320'},email:''};
+const APP_BUILD='2026-11-16';
+const RTYPES=['Wrong step or arrow','Wrong answer or outcome','Typo or unclear wording','Something else'];
+let rType=RTYPES[0];
+function plainT(h){const d=document.createElement('div');d.innerHTML=h||'';return (d.textContent||'').replace(/\s+/g,' ').trim();}
+function reportData(note){
+  const n=nds()[nid],e=ends()[nid];
+  return{protocol:proto?proto.name:'',step:plainT(e?('Outcome: '+e.title):(n?n.q:'')),path:hist.map(function(h){return h.ans;}).join(' > ')||'(first step)',type:rType,note:note||'',build:APP_BUILD};
+}
+function openReport(){
+  if(!proto||document.getElementById('rptOv'))return;
+  rType=RTYPES[0];
+  const p=reportData('');
+  const o=document.createElement('div');o.id='rptOv';o.className='rsh';
+  o.onclick=function(ev){if(ev.target===o)closeOv('rptOv');};
+  o.innerHTML='<div class="rsc" role="dialog" aria-modal="true" aria-label="Report an issue"><h3>Report an issue</h3><p class="rctx">'+esc(p.protocol)+'<br>'+esc(p.step)+'</p><div class="rchips">'+RTYPES.map(function(t,i){return '<button class="rchip" aria-pressed="'+(i===0)+'" onclick="setRType('+i+')">'+esc(t)+'</button>';}).join('')+'</div><textarea id="rptNote" placeholder="What should it say or do? (optional)"></textarea><button class="rsend" onclick="sendReport()">Send report</button><button class="rcancel" onclick="closeOv(\'rptOv\')">Cancel</button></div>';
+  document.querySelector('.shell').appendChild(o);
+}
+function setRType(i){rType=RTYPES[i];document.querySelectorAll('.rchip').forEach(function(b,j){b.setAttribute('aria-pressed',j===i);});}
+function reportText(p){return 'Trauma Care Compass issue report\nProtocol: '+p.protocol+'\nStep: '+p.step+'\nPath taken: '+p.path+'\nIssue: '+p.type+'\nDetails: '+(p.note||'(none)')+'\nBuild: '+p.build;}
+function reportDone(msg){const c=document.querySelector('#rptOv .rsc');if(c)c.innerHTML='<h3>Thank you</h3><p class="rdone">'+msg+'</p><button class="rsend" onclick="closeOv(\'rptOv\')">Done</button>';}
+function sendReport(){
+  const ta=document.getElementById('rptNote');const p=reportData(ta?ta.value:'');
+  window.__lastReport=p;
+  if(FEEDBACK.formUrl){
+    try{const u=new URL(FEEDBACK.formUrl);u.searchParams.set('usp','pp_url');Object.keys(FEEDBACK.entries).forEach(function(k){if(FEEDBACK.entries[k])u.searchParams.set(FEEDBACK.entries[k],p[k]);});window.__lastReportUrl=u.toString();window.open(u.toString(),'_blank','noopener');reportDone('The feedback form opened in a new tab with these details filled in. Tap Submit there to finish.');return;}catch(e){}
+  }
+  if(FEEDBACK.email){window.location.href='mailto:'+FEEDBACK.email+'?subject='+encodeURIComponent('Protocol app issue: '+p.protocol)+'&body='+encodeURIComponent(reportText(p));reportDone('Your email app should open with the report ready to send.');return;}
+  const t=reportText(p);
+  const ok=function(){reportDone('The report is copied. Paste it into your testing channel or message.');};
+  const fail=function(){reportDone('Copy this report and send it to the testing team:<br><br><textarea readonly style="width:100%;min-height:120px;box-sizing:border-box" onfocus="this.select()">'+esc(t)+'</textarea>');};
+  try{navigator.clipboard.writeText(t).then(ok,fail);}catch(e){fail();}
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeOv('pdfOv');closeOv('rptOv');}});
+
+// ── STATE ─────────────────────────────────────────────────────────
+let scr='home', cat=null, proto=null, nid='', hist=[], drawer=false;
+let sq=''; // search query
+let checkedItems=new Set(); // checked indices for current checklist node
+
+// ── TREE HELPERS ──────────────────────────────────────────────────
+function tobj(){return proto&&T[proto.id]?T[proto.id]:null;}
+function nds(){const t=tobj();return t?t.nodes:{};}
+function ends(){const t=tobj();return t?t.ends:{};}
+function dn(){return Object.keys(nds());}
+
+// ── OUTCOME HELPERS ───────────────────────────────────────────────
+const KIND={esc:'esc',ok:'act',clr:'clr'};
+const KICON={esc:'alert-triangle',act:'arrow-right',clr:'check',nxt:'chevron-right'};
+function dest(nx){
+  const e=ends()[nx];
+  if(e)return{k:KIND[e.type]||'act',tag:e.tag};
+  const n=nds()[nx];
+  return{k:'nxt',tag:'Next: '+(n?n.k:'')};
+}
+function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function optBtn(o,isGate,locked){
+  const d=dest(o.nx);
+  return '<button class="ob '+d.k+'"'+(isGate?' data-g="1"':'')+(locked?' disabled':'')+' data-nx="'+esc(o.nx)+'" data-ans="'+esc(o.l)+'" onclick="pick(this.dataset.nx,this.dataset.ans)"><div class="ostr '+d.k+'" aria-hidden="true"></div><div class="obd">'+(d.k==='nxt'?'':'<span class="otg">'+ico(KICON[d.k],12)+'<span>'+d.tag+'</span></span>')+'<span class="olb">'+esc(o.l)+'</span></div></button>';
+}
+function reqOk(nd){return nd.checks.every(function(_,i){return (nd.optional||[]).indexOf(i)>-1||checkedItems.has(i);});}
+function checkRow(txt,j,on,optional){
+  return '<button class="tckr'+(on?' ckd':'')+'" onclick="toggleCheck('+j+')" aria-pressed="'+on+'"><div class="tcci" aria-hidden="true">'+ico('check',10)+'</div><span>'+txt+(optional?' <em class="opt-note">optional</em>':'')+'</span></button>';
+}
+const RC_DEFAULT={unit:'risk factor',noun:'factor',lowName:'Moderate risk',highName:'High risk',lowBadge:'MODERATE',highBadge:'HIGH RISK',noneBadge:'NONE SELECTED',suffix:'2 or more = High Risk',zeroLbl:'No factors selected — Continue (Moderate risk)'};
+function riskState(nd){
+  const rc=Object.assign({},RC_DEFAULT,nd.riskCalc);
+  const count=rc.factors.filter(function(_,i){return checkedItems.has(i);}).length;
+  const hi=count>=rc.threshold;
+  const nx=hi?rc.nxHigh:rc.nxLow;
+  const nm=hi?rc.highName:rc.lowName;
+  const pl=count===1?'':'s';
+  return{rc:rc,count:count,hi:hi,nx:nx,d:dest(nx),
+    cls:count===0?'':hi?'high':'mod',
+    badge:count===0?rc.noneBadge:hi?rc.highBadge:rc.lowBadge,
+    desc:count+' '+rc.noun+pl+' selected · '+rc.suffix,
+    ans:count+' '+rc.unit+pl+' — '+nm,
+    lbl:count===0?rc.zeroLbl:'Continue — '+nm+' ('+count+' '+rc.noun+pl+')'};
+}
+function tierState(nd){
+  let ix=0,count=0,top=-1;
+  nd.tiers.forEach(function(t,ti){t.items.forEach(function(){if(checkedItems.has(ix)){count++;if(top<0)top=ti;}ix++;});});
+  const t=top>=0?nd.tiers[top]:null;
+  const nx=t?t.nx:nd.nxNone;
+  return{count:count,nx:nx,d:dest(nx),cls:t?t.cls:'',badge:t?t.name.replace(/ criteria$/,'').toUpperCase():'NONE SELECTED',
+    desc:count+' selected'+(t&&nd.tiers.length>1?' · highest level met':''),
+    ans:t?(t.name.replace(/ criteria$/,'')+' — '+count+' selected'):'None selected',
+    lbl:t?'Continue — '+t.name.replace(/ criteria$/,'')+' ('+count+' selected)':(nd.noneLbl||'None selected — continue')};
+}
+function embedH(e){
+  return '<details class="emb" ontoggle="embOpen(this)" data-src="'+esc(e.url)+'"><summary>'+esc(e.title)+'</summary><p class="emn">'+esc(e.note)+'</p><a class="emlink" href="'+esc(e.url)+'" target="_blank" rel="noopener noreferrer">Open in MDCalc \u2197</a><div class="emfw"></div><p class="emn">If the calculator does not load here, use the Open in MDCalc link.</p></details>';
+}
+function embOpen(el){
+  if(!el.open)return;
+  const w=el.querySelector('.emfw');
+  if(w&&!w.firstChild){const f=document.createElement('iframe');f.src=el.dataset.src;f.title='SIPA calculator (MDCalc)';f.loading='lazy';f.referrerPolicy='no-referrer';f.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox');w.appendChild(f);}
+}
+function riskCtrHTML(st){
+  return '<div class="risk-ctr '+st.cls+'" id="risk-ctr"><span class="risk-ct">'+st.count+'</span><div class="risk-info"><div class="risk-desc">'+st.desc+'</div><span class="risk-lv">'+st.badge+'</span></div></div>';
+}
+function riskBtn(st){
+  return '<button class="ob '+st.d.k+'" data-nx="'+esc(st.nx)+'" data-ans="'+esc(st.ans)+'" onclick="pick(this.dataset.nx,this.dataset.ans)"><div class="ostr '+st.d.k+'" aria-hidden="true"></div><div class="obd">'+(st.d.k==='nxt'?'':'<span class="otg">'+ico(KICON[st.d.k],12)+'<span>'+st.d.tag+'</span></span>')+'<span class="olb">'+esc(st.lbl)+'</span></div></button>';
+}
+
+// ── MAIN RENDER ───────────────────────────────────────────────────
+function r(){
+  const co=document.getElementById('content');
+  const nb=document.getElementById('navBack');
+  const nt=document.getElementById('ntitle');
+  const ns=document.getElementById('nstep');
+  const tb=document.getElementById('tabbar');
+  const fab=document.getElementById('fab');
+  const inP=scr==='tree'||scr==='terminal';
+  tb.style.display=inP?'none':'flex';
+  const tt=document.getElementById('themeToggle');if(tt)tt.style.display=scr==='home'?'flex':'none';
+  if(fab){fab.classList.toggle('inp',inP);}
+  nb.classList.toggle('v',scr!=='home');
+  ns.textContent='';
+  const tbar=document.querySelector('.topbar');if(tbar)tbar.classList.toggle('home',scr==='home');
+  if(scr==='home'){nt.textContent='Trauma Care Compass';}
+  else if(scr==='browse'){document.getElementById('blbl').textContent='Back';nt.textContent=cat.short;}
+  else if(scr==='tree'){
+    document.getElementById('blbl').textContent=hist.length?'Undo':'Back';
+    nt.textContent=proto?proto.name:'';
+  }
+  else if(scr==='terminal'){
+    document.getElementById('blbl').textContent='Undo';
+    nt.textContent=proto?proto.name:'';
+  }
+  co.innerHTML={home:homeH,browse:browseH,tree:treeH,terminal:termH}[scr]();
+  document.querySelectorAll('.shell>.drww').forEach(function(e){e.remove();});
+  const dw=co.querySelector('.drww');if(dw)document.querySelector('.shell').appendChild(dw);
+  co.scrollTop=0;syncHash();
+}
+
+// ── HOME + SEARCH ─────────────────────────────────────────────────
+const CAT_TAGLINES={
+  emergency:'Trauma activation &nbsp;&middot;&nbsp; hemorrhage control &nbsp;&middot;&nbsp; vascular injury',
+  neuro:'TBI assessment &nbsp;&middot;&nbsp; ICP management &nbsp;&middot;&nbsp; C-spine clearance',
+  ortho:'Fracture management &nbsp;&middot;&nbsp; antibiotics &nbsp;&middot;&nbsp; VTE prophylaxis',
+  screen:'Substance use &nbsp;&middot;&nbsp; trafficking &nbsp;&middot;&nbsp; abuse screening'
+};
+
+function defaultContent(){
+  const cards=Object.keys(C).map(k=>{
+    const c=C[k];
+    return`<button class="cat-card" onclick="openCat('${k}')">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px">
+        <div style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;color:var(--cat-${k})" aria-hidden="true">${ico(c.icon,26)}</div>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--border2);margin-top:3px;flex-shrink:0"><path d="M9 6l6 6l-6 6"/></svg>
+      </div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--cat-${k});margin-bottom:6px">${c.protos.length} protocols</div>
+      <div style="font-size:16.5px;font-weight:700;color:var(--t1);letter-spacing:-.025em;line-height:1.2;margin-bottom:7px">${c.label}</div>
+      <div style="font-size:14px;color:var(--t3);line-height:1.5">${CAT_TAGLINES[k]||''}</div>
+    </button>`;
+  }).join('');
+  return`<div class="sh">Categories</div><div class="cats-grid">${cards}</div>`;
+}
+
+function searchResultsHTML(q){
+  const ql=q.trim().toLowerCase();
+  if(!ql)return defaultContent();
+  const res=[];
+  Object.keys(C).forEach(cid=>{
+    const c=C[cid];
+    c.protos.forEach(p=>{
+      if(p.name.toLowerCase().includes(ql)||p.policy.toLowerCase().includes(ql)||c.label.toLowerCase().includes(ql)||TL[p.type].toLowerCase().includes(ql))
+        res.push({p,c});
+    });
+  });
+  if(!res.length)return`<div class="nores">No protocols matching <strong>"${q.replace(/</g,'&lt;')}"</strong><br><span style="font-size:12px">Try a condition, protocol name, or category</span></div>`;
+  const rows=res.map(({p,c})=>`<button class="pr" onclick="openById('${p.id}')"><div class="pbar" style="background:var(--cat-${c.key})" aria-hidden="true"></div><div class="pin"><div class="pna">${p.name}</div><div class="pm"><span class="pty" style="background:var(--tb-${p.type});color:var(--tc-${p.type})">${TL[p.type]}</span><span class="ppo">${c.short}</span></div></div><span class="pch" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></span></button>`).join('');
+  return`<div class="sh">${res.length} result${res.length>1?'s':''} for "${q.replace(/</g,'&lt;')}"</div><div class="cl">${rows}</div>`;
+}
+
+function homeH(){
+  const clrBtn=sq?`<button class="sclr" onclick="clearSearch()" aria-label="Clear search"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg></button>`:'';
+  return`<div class="so"><label class="sb" for="srch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--t3);flex-shrink:0"><circle cx="10" cy="10" r="7"/><path d="M21 21l-6 -6"/></svg><input type="search" id="srch" placeholder="Search protocols, conditions, medications" value="${sq.replace(/"/g,'&quot;')}" oninput="handleSearch(this.value)" autocomplete="off" aria-label="Search protocols">${clrBtn}</label></div><div id="srchResults">${sq?searchResultsHTML(sq):defaultContent()}</div>`;
+}
+
+// KEY FIX: update only the results div, keep the input focused
+function handleSearch(q){
+  sq=q;
+  const el=document.getElementById('srchResults');
+  if(el)el.innerHTML=searchResultsHTML(q);
+  // Update clear button visibility without re-rendering input
+  const existing=document.querySelector('.sclr');
+  const sb=document.querySelector('.sb');
+  if(sb){
+    if(q&&!existing){
+      const btn=document.createElement('button');
+      btn.className='sclr';btn.setAttribute('aria-label','Clear search');
+      btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg>';
+      btn.onclick=clearSearch;
+      sb.appendChild(btn);
+    }else if(!q&&existing){
+      existing.remove();
+    }
+  }
+}
+
+function clearSearch(){
+  sq='';
+  const inp=document.getElementById('srch');
+  const el=document.getElementById('srchResults');
+  const clr=document.querySelector('.sclr');
+  if(inp){inp.value='';inp.focus();}
+  if(clr)clr.remove();
+  if(el)el.innerHTML=defaultContent();
+}
+
+// ── BROWSE ────────────────────────────────────────────────────────
+function browseH(){
+  const rows=cat.protos.map(p=>`<button class="pr" onclick="openById('${p.id}')"><div class="pbar" style="background:var(--cat-${cat.key})" aria-hidden="true"></div><div class="pin"><div class="pna">${p.name}</div><div class="pm"><span class="pty" style="background:var(--tb-${p.type});color:var(--tc-${p.type})">${TL[p.type]}</span><span class="ppo">${p.policy}</span></div></div><span class="pch" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></span></button>`).join('');
+  return`<div class="bh"><div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--cat-${cat.key});flex-shrink:0" aria-hidden="true">${ico(cat.icon,26)}</div><div><div class="bnn">${cat.label}</div><div class="bsu">${cat.protos.length} protocols — all interactive</div></div></div><div class="cl">${rows}</div>`;
+}
+
+// ── TREE ──────────────────────────────────────────────────────────
+function treeH(){
+  const nd=nds()[nid];if(!nd)return'';
+  const sn=hist.length+1;
+  let inf=nd.info||'',ent='';const em=inf.match(/<details class="entryd">[\s\S]*?<\/details>/);if(em){ent=em[0];inf=inf.replace(em[0],'').trim();}
+  let b=`<div class="tw"><div class="prg"><span class="stp">Step ${sn}</span></div><p class="tk">${nd.k}</p>${ent?`<div class="tif entb">${ent}</div>`:''}${nd.act?`<div class="tif actb"><p class="clmg">Do first:</p><p>${nd.act}</p></div>`:''}${nd.noq?'':`<h2 class="tq">${nd.q}</h2>`}`;
+  if(inf)b+=`<div class="tif">${inf}</div>`;
+  if(nd.cl){
+    const met=clMet(nd);
+    b+='<div class="tif clist"><p class="clh">'+(nd.cl.lbl||(nd.cl.mode==='all'?'Tap each one that is met:':'Tap each one that is present:'))+'</p><div class="clrows">'+nd.cl.items.map(function(x,j){return '<button class="clrow'+(checkedItems.has(j)?' ckd':'')+'" onclick="toggleCl('+j+')" aria-pressed="'+checkedItems.has(j)+'"><span class="clbx" aria-hidden="true">'+ico('check',12)+'</span><span>'+x+'</span></button>';}).join('')+'</div><p class="clst" id="clst">'+clStatus(nd)+'</p></div>';
+    b+='<div class="ots" id="cl-ots">'+clOpts(nd,met)+'</div>';
+  } else
+  if(nd.tiers){
+    const st=tierState(nd);let ix=0,embPlaced=false;
+    nd.tiers.forEach(function(t){
+      b+='<p class="tier-h '+t.cls+'">'+esc(t.name)+'</p><div class="tck">';
+      let g='';
+      t.items.forEach(function(it){
+        const item=typeof it==='string'?{t:it}:it;
+        if(item.grp&&item.grp!==g){g=item.grp;b+='<p class="grp-h">'+esc(g)+'</p>';}
+        b+=checkRow(item.t,ix,checkedItems.has(ix),false);ix++;
+        if(nd.embed&&!embPlaced&&/age-specific hypotension/i.test(item.t)){b+=embedH(nd.embed);embPlaced=true;}
+      });
+      b+='</div>';
+    });
+    if(nd.embed&&!embPlaced)b+=embedH(nd.embed);
+    b+=riskCtrHTML(st);
+    b+='<div class="ots" id="risk-ots">'+riskBtn(st)+'</div>';
+  } else if(nd.riskCalc){
+    const st=riskState(nd);
+    b+='<div class="tck">'+st.rc.factors.map(function(f,j){return checkRow(f,j,checkedItems.has(j),false);}).join('')+'</div>';
+    b+=riskCtrHTML(st);
+    b+='<div class="ots" id="risk-ots">'+riskBtn(st)+'</div>';
+  } else if(nd.checks){
+    const ok=reqOk(nd);
+    b+='<div class="tck">'+nd.checks.map(function(c,j){return checkRow(c,j,checkedItems.has(j),(nd.optional||[]).indexOf(j)>-1);}).join('')+'</div>';
+    b+='<p class="ck-hint"'+(ok?' style="display:none"':'')+'>'+(nd.hint||'Check all items above to continue')+'</p>';
+    b+='<div class="ots">'+nd.opts.map(function(o,k){const g=!nd.gateOnly||nd.gateOnly.indexOf(k)>-1;return optBtn(o,g,g&&!ok);}).join('')+'</div>';
+  } else {
+    b+='<div class="ots">'+nd.opts.map(function(o){return optBtn(o,false,false);}).join('')+'</div>';
+  }
+  if(hist.length){
+    const hl=hist.length;
+    b+=`<button class="trb" onclick="openDrawer()" aria-haspopup="dialog"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--blue)"><path d="M13 5h8"/><path d="M13 9h5"/><path d="M13 15h8"/><path d="M13 19h5"/><rect x="3" y="4" width="6" height="6" rx="1"/><rect x="3" y="14" width="6" height="6" rx="1"/></svg><span>${hl} decision${hl>1?'s':''} logged</span><span style="margin-left:auto;color:var(--border2)" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></span></button>`;
+  }
+  if(drawer){
+    const items=hist.map((h,j)=>{const n=nds()[h.nid];return`<div class="drwr"><div class="drwn" aria-hidden="true">${j+1}</div><div>${trailBody(h,'drwq','drwa')}</div></div>`;}).join('');
+    b+=`<div class="drww" role="dialog" aria-modal="true"><div class="drwo" onclick="closeDrawer()"></div><div class="drwd"><div class="drwh"><span class="drwl">Decision trail</span><button class="drwc" onclick="closeDrawer()" aria-label="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg></button></div>${items}</div></div>`;
+  }
+  return b+refH()+toolsH()+'</div>';
+}
+function refSec(h){const p=h.split(/<h4>/);let o=p[0];for(let i=1;i<p.length;i++){const j=p[i].indexOf('</h4>');o+='<details class="rfs"><summary>'+p[i].slice(0,j)+'</summary><div class="rfsb">'+p[i].slice(j+5)+'</div></details>';}return o;}
+function refH(){return proto&&REF[proto.id]?'<details class="rfd"><summary>Reference details from the guideline</summary><div class="rfb">'+refSec(REF[proto.id])+'</div></details>':'';}
+
+// ── TERMINAL ──────────────────────────────────────────────────────
+function termH(){
+  const e=ends()[nid];if(!e)return'';
+  const path=hist.map((h,i)=>`<div class="tmpr"><div class="tmpn" aria-hidden="true">${i+1}</div><div>${trailBody(h,'tmpq','tmpa')}</div></div>`).join('');
+  return`<div class="tmw"><div class="tmc ${e.type}"><div class="tmtg">${ico(KICON[KIND[e.type]||'act'],13)}<span>${e.tag}</span></div><h2 class="tmti">${e.title}</h2><div class="tmbd">${e.body}</div></div>${refH()}<div class="tmpath">${path}</div><button class="bp" onclick="startTree()">Start pathway over</button><button class="bg2" onclick="backToCat()">Back to ${cat?cat.short:'protocols'}</button>${toolsH()}</div>`;
+}
+
+// ── CHAT ──────────────────────────────────────────────────────────
+const CHATBASE_ID='YVH0W_ZJbfX22eVM91HlF';
+
+function openChat(){
+  if(document.getElementById('chatOv'))return;
+  const sw=document.querySelector('.shell');
+  const o=document.createElement('div');
+  o.id='chatOv';o.className='chatov';
+  o.innerHTML=`
+    <div class="ctb">
+      <div class="is"></div>
+      <div class="cnr">
+        <button class="cbk" onclick="closeChat()"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6l6 6"/></svg><span>Close</span></button>
+        <div class="ctt">CHOA AI Assistant</div>
+        <span class="cbdge">AI</span>
+      </div>
+    </div>
+    <div class="clinks" id="chatLinks" hidden></div>
+    <iframe
+      id="chatFrame"
+      src="https://www.chatbase.co/chatbot-iframe/${CHATBASE_ID}"
+      style="flex:1;width:100%;border:none;display:block"
+      allow="clipboard-write"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="CHOA AI Assistant">
+    </iframe>`;
+  sw.appendChild(o);
+}
+
+function closeChat(){
+  const o=document.getElementById('chatOv');
+  if(o)o.remove();
+}
+
+// Chat replies -> "Open in app" buttons. The Chatbase iframe posts an
+// 'assistant-message' event to this page when a reply finishes.
+const PROTO_RX={
+  tta:/\btta\b|trauma team activation|trauma alert|stat activation/i,
+  bat:/\bbat\b|blunt abdominal|atomac/i,
+  mtp:/\bmtp\b|massive transfusion/i,
+  extremity:/vascular (and|&) extremity|extremity (and|&) vascular|extremity injur|vascular injur|hard signs/i,
+  ir:/\bir after[- ]hours\b/i,
+  tbi:/\btbi\b|traumatic brain|head injur|concussion|pecarn|\bicp\b|intracranial pressure/i,
+  cspine:/c-?spine|cervical spine/i,
+  open_fx:/open fracture|gustilo/i,
+  long_bone:/long bone|femur fracture|femoral fracture/i,
+  pelvic:/pelvic|acetabul|pelvis/i,
+  vte:/\bvte\b|venous thromboembolism|enoxaparin/i,
+  sbirt:/sbirt|crafft/i,
+  csec:/csec|sex trafficking|sexual exploitation/i,
+  nat:/\bnat\b|non-?accidental|child abuse|ten-4/i
+};
+function protoMatches(text){
+  const found=[];
+  const ex=/#\/p\/([a-z_]+)/g;let m;
+  while((m=ex.exec(text))){if(LU[m[1]]&&found.every(function(f){return f.id!==m[1];}))found.push({id:m[1],at:-1});}
+  Object.keys(PROTO_RX).forEach(function(id){
+    const mm=text.match(PROTO_RX[id]);
+    if(mm&&found.every(function(f){return f.id!==id;}))found.push({id:id,at:mm.index});
+  });
+  found.sort(function(a,b){return a.at-b.at;});
+  return found.slice(0,3).map(function(f){return f.id;});
+}
+function showChatLinks(text){
+  const bar=document.getElementById('chatLinks');if(!bar)return;
+  const ids=protoMatches(text||'');
+  if(!ids.length){bar.hidden=true;bar.innerHTML='';return;}
+  bar.innerHTML='<span class="cl-l">Open in app</span>'+ids.map(function(id){return '<button class="cl-b" onclick="openFromChat(\''+id+'\')">'+LU[id].p.name+ico('chevron-right',13)+'</button>';}).join('');
+  bar.hidden=false;
+}
+function openFromChat(id){closeChat();openById(id);}
+window.addEventListener('message',function(ev){
+  const f=document.getElementById('chatFrame');
+  if(!f||ev.source!==f.contentWindow)return;
+  let o='';try{o=new URL(f.src).origin;}catch(e){}
+  if(ev.origin!==o)return;
+  const d=ev.data;
+  if(d&&d.type==='assistant-message'&&d.data&&typeof d.data.content==='string')showChatLinks(d.data.content);
+});
+
+// ── NAVIGATION ────────────────────────────────────────────────────
+function goHome(){scr='home';cat=null;proto=null;nid='';hist=[];drawer=false;sq='';setTab('home');r();}
+function openCat(k){sq='';cat=C[k];scr='browse';drawer=false;r();}
+function openById(id){sq='';const e=LU[id];if(!e)return;proto=e.p;cat=C[e.cid];startTree();}
+function clMet(nd){const n=checkedItems.size,m=nd.cl.items.length;return nd.cl.mode==='all'?n===m:n>0;}
+function clStatus(nd){const n=checkedItems.size,m=nd.cl.items.length;
+  return nd.cl.mode==='all'?(n===m?n+' of '+m+' met: YES selected':n+' of '+m+' met (all are needed for YES)'):(n?n+' checked: YES selected':'None checked');}
+function clOpts(nd,met){return nd.opts.map(function(o){let h=optBtn(o,false,false);if(met&&(o.y||/^yes/i.test(o.l)))h=h.replace('class="ob ','class="ob pre ');return h;}).join('');}
+function toggleCl(j){
+  if(checkedItems.has(j))checkedItems.delete(j);else checkedItems.add(j);
+  const nd=nds()[nid];if(!nd||!nd.cl)return;
+  const el=document.querySelectorAll('.clrow')[j];if(el){el.classList.toggle('ckd',checkedItems.has(j));el.setAttribute('aria-pressed',checkedItems.has(j));}
+  const s=document.getElementById('clst');if(s)s.textContent=clStatus(nd);
+  const o=document.getElementById('cl-ots');if(o)o.innerHTML=clOpts(nd,clMet(nd));
+}
+function toggleCheck(idx){
+  if(checkedItems.has(idx))checkedItems.delete(idx);else checkedItems.add(idx);
+  const nd=nds()[nid];if(!nd)return;
+  const rowEl=document.querySelectorAll('.tckr')[idx];
+  if(rowEl){rowEl.classList.toggle('ckd',checkedItems.has(idx));rowEl.setAttribute('aria-pressed',checkedItems.has(idx));}
+  if(nd.tiers||nd.riskCalc){
+    const st=nd.tiers?tierState(nd):riskState(nd);
+    const ctr=document.getElementById('risk-ctr');
+    if(ctr){ctr.className='risk-ctr '+st.cls;ctr.querySelector('.risk-ct').textContent=st.count;ctr.querySelector('.risk-desc').textContent=st.desc;ctr.querySelector('.risk-lv').textContent=st.badge;}
+    const ots=document.getElementById('risk-ots');if(ots)ots.innerHTML=riskBtn(st);
+    return;
+  }
+  if(nd.checks){
+    const ok=reqOk(nd);
+    document.querySelectorAll('.ob[data-g]').forEach(function(bt){bt.disabled=!ok;});
+    const hint=document.querySelector('.ck-hint');if(hint)hint.style.display=ok?'none':'block';
+  }
+}
+function startTree(){const t=tobj();if(!t)return;nid=t.start;hist=[];drawer=false;checkedItems=new Set();scr='tree';r();}
+function selTexts(n){let ix=0;const out=[];
+  if(n.tiers){n.tiers.forEach(function(t){t.items.forEach(function(it){if(checkedItems.has(ix))out.push(plainT(typeof it==='string'?it:it.t));ix++;});});}
+  else if(n.riskCalc){n.riskCalc.factors.forEach(function(f,i){if(checkedItems.has(i))out.push(plainT(f));});}
+  else if(n.cl){n.cl.items.forEach(function(f,i){if(checkedItems.has(i))out.push(plainT(f));});}
+  return out;}
+function trailBody(h,qc,ac){const n=nds()[h.nid];
+  return '<div class="'+qc+'">'+esc(n?plainT(n.q):'')+'</div><div class="'+ac+'">'+esc(h.ans)+'</div>'+(h.sel&&h.sel.length?'<ul class="tmsel">'+h.sel.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>':'');}
+function pick(nx,ans){const cn=nds()[nid];hist.push({nid,ans,sel:cn&&(cn.tiers||cn.riskCalc||cn.cl)?selTexts(cn):null});nid=nx;drawer=false;checkedItems=new Set();scr=ends()[nid]?'terminal':'tree';r();}
+function goBack(){
+  drawer=false;checkedItems=new Set();
+  if(scr==='terminal'){if(hist.length){const p=hist.pop();nid=p.nid;scr='tree';}else{scr='browse';if(cat)setTab(cat.key);}r();return;}
+  if(scr==='tree'){if(hist.length){const p=hist.pop();nid=p.nid;}else{scr='browse';if(cat)setTab(cat.key);}r();return;}
+  if(scr==='browse'){scr='home';cat=null;setTab('home');r();return;}
+}
+function backToCat(){scr='browse';if(cat)setTab(cat.key);r();}
+function openDrawer(){drawer=true;r();}
+function closeDrawer(){drawer=false;r();}
+function switchTab(id){setTab(id);if(id==='home')goHome();else{sq='';cat=C[id];scr='browse';drawer=false;r();}}
+function setTab(id){
+  document.querySelectorAll('.tab').forEach(t=>{
+    const on=t.id.replace('t-','')===id;
+    t.classList.toggle('on',on);
+    t.setAttribute('aria-current',on?'true':'false');
+  });
+}
+
+// ── DEEP LINKS ────────────────────────────────────────────────────
+// #/p/<protocol id> opens a protocol, #/c/<category> opens a category.
+function setHash(h){try{if((location.hash||'')!==h)history.replaceState(null,'',location.pathname+location.search+h);}catch(e){}}
+function syncHash(){
+  if(scr==='tree'||scr==='terminal')setHash(proto?'#/p/'+proto.id:'');
+  else if(scr==='browse')setHash(cat?'#/c/'+cat.key:'');
+  else setHash('');
+}
+function routeFromHash(){
+  const m=(location.hash||'').match(/^#\/([pc])\/([a-z_]+)$/);
+  closeChat();
+  if(!m)return false;
+  if(m[1]==='p'&&LU[m[2]]){openById(m[2]);return true;}
+  if(m[1]==='c'&&C[m[2]]){switchTab(m[2]);return true;}
+  return false;
+}
+window.addEventListener('hashchange',function(){if(!routeFromHash())goHome();});
+
+// ── THEME ─────────────────────────────────────────────────────────
+const ICON_MOON='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6.4 6.4 0 0 0 9 9a9 9 0 1 1 -9 -9z"/></svg>';
+const ICON_SUN='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.9 4.9l1.4 1.4"/><path d="M17.7 17.7l1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M4.9 19.1l1.4 -1.4"/><path d="M17.7 6.3l1.4 -1.4"/></svg>';
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem('choa-theme',t);}catch(e){}
+  const tt=document.getElementById('themeToggle');
+  if(tt){tt.innerHTML=t==='dark'?ICON_SUN:ICON_MOON;tt.setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode');}
+}
+function toggleTheme(){applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');}
+applyTheme((function(){try{return localStorage.getItem('choa-theme')||'light';}catch(e){return 'light';}})());
+
+if(!routeFromHash())r();
+</script>
+</body>
+</html>
